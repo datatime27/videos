@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"chessbot/lib/boards"
 	"flag"
-	"boards"
 )
 
 var (
@@ -100,11 +100,14 @@ func InitTest() *boards.Board {
 }
 
 func main() {
-	board := InitTest()
-	s := board.String()
-	fmt.Printf("%v\n", s)
-	if err := os.WriteFile(*path, []byte(s), 0666); err != nil {
+	flag.Parse()
+	if *path == "" {
+		panic("Must provide --path")
+	}
+	board := Init()
+	fmt.Printf("%v\n", board.String())
+	if err := os.WriteFile(*path, []byte(board.Format(false)), 0666); err != nil {
 		panic(err)
 	}
-
+	fmt.Printf("Wrote: %v\n", *path)
 }

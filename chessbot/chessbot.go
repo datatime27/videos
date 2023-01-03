@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
+	"chessbot/lib/boards"
+	"chessbot/lib/pieces"
 	"flag"
-	"boards"
-	"pieces"
 )
 
 var (
@@ -33,8 +33,12 @@ func StringPrompt(label string) string {
 }
 
 func main() {
+	flag.Parse()
+	if *path == "" {
+		panic("Must provide --path")
+	}
 
-	var myColor int8
+	var myColor pieces.Color
 	if *color == "w" {
 		myColor = pieces.White
 	} else if *color == "b" {
@@ -48,7 +52,7 @@ func main() {
 		panic(err)
 	}
 
-	board := boards.ParseBoard(data, true)
+	board := boards.ParseBoard(ctx, data, true)
 	// board.MovePiece(6, 0, 2, 0) // Pawn
 	// board.MovePiece(0, 3, 3, 1) // Queen
 	fmt.Printf("Value: %d\n", board.Evaluation)
@@ -59,16 +63,18 @@ func main() {
 	start := time.Now()
 	leafBoard := board.FindMoves(ctx)
 	duration := time.Duration(time.Now().Sub(start))
-	fmt.Printf("Time: %v\nAll Nodes: %d\nLeaf Nodes: %d\nValue: %d\n", duration, ctx.AllNodes, ctx.LeafNodes, leafBoard.Evaluation)
-	fmt.Printf("History: %v\n", leafBoard.History)
+	nodesPerSec := float64(ctx.AllNodes) / duration.Seconds()
+	leafNodesPerSec := float64(ctx.LeafNodes) / duration.Seconds()
+	fmt.Printf("Time: %v\n", duration)
+	fmt.Printf("All Nodes: %d (%.2f per sec)\n", ctx.AllNodes, nodesPerSec)
+	fmt.Printf("Leaf Nodes: %d (%.2f per sec)\n\n", ctx.LeafNodes, leafNodesPerSec)
 
-	fmt.Printf("First Move:\n%v\n", leafBoard.FirstMove.String())
-
-	fmt.Printf("Leaf Move:\nValue:%v\n%v\n", leafBoard.Evaluation, leafBoard.String())
+	fmt.Printf("Leaf Move:\n%v\n\n", leafBoard.String())
+	fmt.Printf("Next Move:\n%v\n\n", leafBoard.FirstMove.String())
 
 	answer := StringPrompt("Write file? y/n")
-	if answer == "y" {
-		if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.String()), 0666); err != nil {
+	if answer != "n" {
+		if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.Format(false)), 0666); err != nil {
 			panic(err)
 		}
 		fmt.Println("Wrote file")
