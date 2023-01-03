@@ -53,8 +53,6 @@ func main() {
 	}
 
 	board := boards.ParseBoard(ctx, data, true)
-	// board.MovePiece(6, 0, 2, 0) // Pawn
-	// board.MovePiece(0, 3, 3, 1) // Queen
 	fmt.Printf("Value: %d\n", board.Evaluation)
 	fmt.Printf("%v\n", board)
 

@@ -97,6 +97,7 @@ var (
 	}
 )
 
+// Struct to pass along all global fields
 type Context struct {
 	MaxDepth int8
 	Color    pieces.Color
@@ -114,6 +115,7 @@ func NewContext(maxDepth int8, color pieces.Color) *Context {
 	}
 }
 
+// Main struct to contain the representation of the board after a given move.
 type Board struct {
 	board         [8][8]int8
 	depth         int8
@@ -237,6 +239,7 @@ func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) 
 	b.History += fmt.Sprintf("%v %v %v, ", p.Print(false), verb, printLocation(newrank, newfile))
 }
 
+// Evaluate the final score of the board based on the pieces on the board.
 func (b *Board) EvaluateMaterial(ctx *Context) {
 	var sum int = 0
 	var weightedSum int = 0
@@ -281,58 +284,9 @@ func (b *Board) EvaluateMaterial(ctx *Context) {
 	b.WeightedEvaluation = deadKing
 }
 
-/*
-func (b *Board) spawnDecision(ctx *Context, oldRank, oldFile, newRank, newFile int,
-	piece *pieces.Piece, allowTake, allowNoTake bool, alpha, beta int8, leafBoard **Board) bool {
-	if !b.moveAvailable(newRank, newFile, piece, allowTake, allowNoTake) {
-		return false
-	}
-	newBoard := b.ChildNode()
-	newBoard.MovePiece(ctx, oldRank, oldFile, newRank, newFile)
-	newBoard.EvaluateMaterial(ctx)
-	ctx.AllNodes++
-	var minimaxBoard *Board
-	// Terminal node - evaulate
-	if newBoard.depth == ctx.MaxDepth || newBoard.Evaluation == deadKing || newBoard.Evaluation == -deadKing {
-		// fmt.Printf("Eval %v\n", printLocation(newRank, newFile))
-		ctx.LeafNodes++
-		minimaxBoard = newBoard
-	} else {
-		// fmt.Printf("%v Child FindMoves %v\n", printLocation(oldRank, oldFile), printLocation(newRank, newFile))
-		minimaxBoard = newBoard.minimax(ctx, alpha, beta) // Recursive call down
-	}
-
-	// fmt.Printf("%v %v\n", b.DebugString(), minimaxBoard.DebugString())
-
-	if b.myTurn {
-		if minimaxBoard.Evaluation > (*leafBoard).Evaluation ||
-			(minimaxBoard.Evaluation == (*leafBoard).Evaluation && b.depth < minimaxBoard.depth) {
-			*leafBoard = minimaxBoard
-		}
-		if minimaxBoard.Evaluation > alpha {
-			alpha = minimaxBoard.Evaluation
-			// fmt.Printf("alpha = %v\n", alpha)
-		}
-	} else if !b.myTurn {
-		if minimaxBoard.Evaluation < (*leafBoard).Evaluation ||
-			(minimaxBoard.Evaluation == (*leafBoard).Evaluation && b.depth > minimaxBoard.depth) {
-			*leafBoard = minimaxBoard
-		}
-		if minimaxBoard.Evaluation < beta {
-			beta = minimaxBoard.Evaluation
-			// fmt.Printf("beta = %v\n", beta)
-		}
-	}
-	// fmt.Printf("alpha = %v, beta = %v\n", alpha, beta)
-
-	if beta <= alpha {
-		ctx.pruneTheRest = true
-		fmt.Printf("Prune alpha %v\n", minimaxBoard.DebugString())
-	}
-	return true
-}
-*/
-
+// Check if a given move is allowed.
+// Some pawn moves are only allowed for capture (diagonal).
+// Some pawn moves are NOT allowed for capture (forward).
 func (b *Board) moveAvailable(
 	rank, file int, piece *pieces.Piece, allowCapture, allowNoCapture bool) bool {
 	isValid := rank >= 0 && rank < 8 && file >= 0 && file < 8
@@ -356,17 +310,22 @@ func (b *Board) moveAvailable(
 	return false
 }
 
+// Entry point for chessbot to begin recursion.
 func (b *Board) FindMoves(ctx *Context) *Board {
 	return b.minimax(ctx, -infinity, infinity)
 }
 
+// Recursive depth first function to step through each board in the decision tree.
+// Alpha and beta pruning is used to trim unneeded nodes.
 func (b *Board) minimax(ctx *Context, alpha, beta int) *Board {
+	// We actually search depths 2 more than MaxDepth so that we can evalation
+	// capture moves after MaxDepth
 	if b.depth >= ctx.MaxDepth+2 || b.WeightedEvaluation == deadKing || b.WeightedEvaluation == -deadKing {
-		//fmt.Printf("Eval %v %v %v\n", b.depth, b.Evaluation, b.History)
 		ctx.LeafNodes++
 		return b
 	}
 
+	// Hacky way to initialize minmax value to infinity
 	minimaxBoard := &Board{History: b.History}
 	if b.myTurn {
 		minimaxBoard.WeightedEvaluation = -infinity
@@ -374,14 +333,12 @@ func (b *Board) minimax(ctx *Context, alpha, beta int) *Board {
 		minimaxBoard.WeightedEvaluation = infinity
 	}
 
+	// We have reached our depth limit.
+	// Just search capture moves from this node down.
 	allowNoCaptures := true
 	if b.depth >= ctx.MaxDepth {
-		// We have reached our depth limit.
-		// Just search capture moves from this node down.
 		allowNoCaptures = false
-		// 	fmt.Printf("captureOnly Depth = %v History = %v\n", b.depth, b.History)
 	}
-	// fmt.Printf("captureOnly = %v Depth = %v\n", captureOnly, b.depth)
 
 	for _, newBoard := range b.getMoves(ctx, allowNoCaptures) {
 		// Recursively traverse downwards
@@ -406,68 +363,24 @@ func (b *Board) minimax(ctx *Context, alpha, beta int) *Board {
 				beta = eval.WeightedEvaluation
 			}
 		}
-		// fmt.Printf("alpha = %v, beta = %v\n", alpha, beta)
 
 		if beta <= alpha {
 			break
-			// fmt.Printf("Prune alpha %v\n", minimaxBoard.DebugString())
 		}
 
 	}
 
+	// There were no eligible moves here, so just return the existing board.
 	if minimaxBoard.WeightedEvaluation == infinity || minimaxBoard.WeightedEvaluation == -infinity {
 		ctx.LeafNodes++
 		minimaxBoard = b
 	}
-	// fmt.Printf("minimaxBoard.FirstMove == nil %v Depth %d\n", minimaxBoard.FirstMove == nil, minimaxBoard.depth)
 	return minimaxBoard
 }
 
-/*
-func (b *Board) minimax1(ctx *Context, alpha, beta int8) *Board {
-	ctx.pruneTheRest = false
-	leafBoard := &Board{History: b.History}
-	if b.myTurn {
-		leafBoard.Evaluation = -infinity
-	} else {
-		leafBoard.Evaluation = infinity
-	}
-
-	for rank := 0; rank < 8; rank++ {
-		for file := 0; file < 8; file++ {
-			piece := pieces.Decode(b.board[rank][file])
-			// Only look at the correct pieces for this turn
-			if (piece.IsSameColor(ctx.Color)) != b.myTurn {
-				continue
-			}
-
-			switch piece.Piece {
-			case pieces.Pawn:
-				b.movePawn(ctx, rank, file, piece, alpha, beta, &leafBoard)
-			case pieces.Rook, pieces.Bishop, pieces.Queen, pieces.King:
-				b.moveSlidingPiece(ctx, rank, file, piece, alpha, beta, &leafBoard)
-			default:
-				continue
-			}
-			// if ctx.pruneTheRest {
-			// 	fmt.Printf("Pruning %v %v\n", b.DebugString(), leafBoard.DebugString())
-			// 	ctx.pruneTheRest = false
-			// 	return leafBoard
-			// }
-		}
-	}
-	if leafBoard.Evaluation == infinity-1 || leafBoard.Evaluation == -infinity+1 {
-		// fmt.Printf("No moves found for %v %v %v\n", leafBoard.Evaluation, b.Evaluation, b.History)
-		leafBoard = b
-	}
-	return leafBoard
-}
-*/
-
+// Get all eligible moves on the board for the current player.
+// allowNoCaptures determines if we just want capture moves or all moves.
 func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
-	// if !allowNoCaptures {
-	// 	return []*Board{}
-	// }
 	type scoredMoves struct {
 		score int
 		board *Board
@@ -496,7 +409,8 @@ func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
 			// Assign score to each move
 			for _, move := range moves {
 				score := 0
-				// Prioritize moves where we capture most valuable pieces with a our least pieces.
+				// Prioritize moves where we capture a valuable piece
+				// with a less valuable pieces.
 				if move.capturedPiece != nil {
 					score += 10*move.capturedPiece.Value() - piece.Value()
 				}
@@ -505,48 +419,17 @@ func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
 					score += pieces.Value[pieces.Queen]
 				}
 				// Deprioritize moving a piece that would be captured by a pawn.
-				if b.getCellsOppoentPawnsCanCapture(ctx)[[2]int{rank, file}] {
+				if b.getCellsOpponentPawnsCanCapture(ctx)[[2]int{rank, file}] {
 					score -= piece.Value()
 				}
 
 				sortedMoves = append(sortedMoves, scoredMoves{score, move})
 			}
-
-			// switch piece.Class {
-			// case pieces.Pawn:
-			// 	moves[pieces.Pawn] = append(moves[pieces.Pawn], b.generatePawnMoves(ctx, rank, file, piece)...)
-			// case pieces.Knight:
-			// 	moves[pieces.Knight] = append(moves[pieces.Knight], b.generateKnightMoves(ctx, rank, file, piece)...)
-			// case pieces.Bishop:
-			// 	moves[pieces.Bishop] = append(moves[pieces.Bishop], b.generateSlidingMoves(ctx, rank, file, piece)...)
-			// case pieces.Rook:
-			// 	moves[pieces.Rook] = append(moves[pieces.Rook], b.generateSlidingMoves(ctx, rank, file, piece)...)
-			// case pieces.Queen:
-			// 	moves[pieces.Queen] = append(moves[pieces.Queen], b.generateSlidingMoves(ctx, rank, file, piece)...)
-			// case pieces.King:
-			// 	moves[pieces.King] = append(moves[pieces.King], b.generateSlidingMoves(ctx, rank, file, piece)...)
-			// default:
-			// 	continue
-			// }
 		}
 	}
 
-	// Prioritize moves from least valuable piece to most valuable.
-	// allMoves := []*Board{}
-	// for _, class := range []pieces.Class{
-	// 	pieces.Pawn,
-	// 	pieces.Knight,
-	// 	pieces.Bishop,
-	// 	pieces.Rook,
-	// 	pieces.Queen,
-	// 	pieces.King} {
-	// 	allMoves = append(allMoves, moves[class]...)
-	// }
-	// return allMoves
-
-	// Sort the list of moves by score
+	// Sort the list of moves by score and return them
 	sort.SliceStable(sortedMoves, func(i, j int) bool {
-		// return false
 		return sortedMoves[i].score > sortedMoves[j].score
 	})
 	moves := []*Board{}
@@ -557,6 +440,10 @@ func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
 	return moves
 }
 
+// Generate a new board given the old and new rank+file coordinates.
+// Some pawn moves are only allowed for capture (diagonal).
+// Some pawn moves are NOT allowed for capture (forward).
+// Some pawn moves are used for promotion.
 func (b *Board) generateMove(ctx *Context, oldRank, oldFile, newRank, newFile int,
 	piece *pieces.Piece, allowCapture, allowNoCapture bool, promote bool) []*Board {
 	if !b.moveAvailable(newRank, newFile, piece, allowCapture, allowNoCapture) {
@@ -564,6 +451,7 @@ func (b *Board) generateMove(ctx *Context, oldRank, oldFile, newRank, newFile in
 	}
 	newBoard := b.ChildNode()
 	newBoard.MovePiece(ctx, oldRank, oldFile, newRank, newFile)
+
 	// Pawn Promotion
 	if promote {
 		newQueen := pieces.Piece{
@@ -589,6 +477,7 @@ func (b *Board) generatePawnMoves(ctx *Context, rank, file int, piece *pieces.Pi
 	moves = append(moves, b.generateMove(ctx, rank, file, rank+direction, file+1, piece, true, false, false)...)
 	moves = append(moves, b.generateMove(ctx, rank, file, rank+direction, file-1, piece, true, false, false)...)
 
+	// If we only are searching for capture moves, then we are done here.
 	if !allowNoCaptures {
 		return moves
 	}
@@ -628,40 +517,8 @@ func (b *Board) generateKnightMoves(ctx *Context, rank, file int, piece *pieces.
 	return moves
 }
 
-/*
-func (b *Board) movePawn(ctx *Context, rank, file int, piece *pieces.Piece, alpha, beta int8, leafBoard **Board) {
-	var direction int = 1
-	if piece.Color == pieces.Black {
-		direction = -1
-	}
-	// Pawn forward one space - no capture
-	b.spawnDecision(ctx, rank, file, rank+direction, file, piece, false, true, alpha, beta, leafBoard)
-	if ctx.pruneTheRest {
-		return
-	}
-
-	// Pawn diagonal - capture only
-	b.spawnDecision(ctx, rank, file, rank+direction, file+1, piece, true, false, alpha, beta, leafBoard)
-	if ctx.pruneTheRest {
-		return
-	}
-	b.spawnDecision(ctx, rank, file, rank+direction, file-1, piece, true, false, alpha, beta, leafBoard)
-	if ctx.pruneTheRest {
-		return
-	}
-
-	// Pawn forward 2 - Init only - no capture
-	// This doesn't work if the cell in front of the pawn is occupied
-	// fmt.Printf("movePawn %v %v %v\n", rank+direction, file, b.board[rank+direction][file])
-	if ((rank == 1 && piece.Color == pieces.White) || (rank == 6 && piece.Color == pieces.Black)) &&
-		b.board[rank+direction][file] == pieces.None {
-		b.spawnDecision(ctx, rank, file, rank+direction*2, file, piece, false, true, alpha, beta, leafBoard)
-		if ctx.pruneTheRest {
-			return
-		}
-	}
-}
-*/
+// Bishops, Rooks, Queen, and King are really all just variations of a sliding
+// piece. So we use the same logic here.
 func (b *Board) generateSlidingMoves(ctx *Context, rank, file int, piece *pieces.Piece, allowNoCaptures bool) []*Board {
 	moves := []*Board{}
 	dirs := sliderPieceDirs[piece.Class]
@@ -697,45 +554,9 @@ func (b *Board) generateSlidingMoves(ctx *Context, rank, file int, piece *pieces
 	return moves
 }
 
-/*
-func (b *Board) moveSlidingPiece(ctx *Context, rank, file int, piece *pieces.Piece, alpha, beta int8, leafBoard **Board) {
-	dirs := sliderPieceDirs[piece.Piece]
-	distance := sliderPieceDistance[piece.Piece]
-	for _, dir := range dirs {
-		rankDir := dir[0]
-		fileDir := dir[1]
-		// fmt.Printf("%v:  Dir: %v %v\n", piece.Print(), rankDir, fileDir)
-
-		for i := 1; i <= distance; i++ {
-			newRank := rank + rankDir*i
-			newFile := file + fileDir*i
-
-			// fmt.Printf("dir[%v,%v] q to %v\n", rankDir, fileDir, printLocation(newRank, newFile))
-
-			// Piece is unable to move in this direction - No need to continue further
-			if !b.spawnDecision(ctx, rank, file, newRank, newFile, piece, true, true, alpha, beta, leafBoard) {
-				// fmt.Printf("Unable to move in this direction i: %v %v:  %v\n", i, piece.Print(), printLocation(newRank, newFile))
-				break
-			}
-			if ctx.pruneTheRest {
-				return
-			}
-
-			newPiece := pieces.Decode(b.board[newRank][newFile])
-
-			// piece has hit a piece along this direction (opponent piece) - No need to continue further
-			if newPiece.IsOppositeColor(piece.Color) {
-				// fmt.Printf("Opponent hit i: %v %v:  %v %v\n", i, piece.Print(), printLocation(newRank, newFile), b.board[newRank][newFile])
-				break
-			}
-			// fmt.Printf("Continue forward i: %v %v:  %v\n", i, piece.Print(), printLocation(newRank, newFile))
-
-		}
-	}
-}
-*/
-
-func (b *Board) getCellsOppoentPawnsCanCapture(ctx *Context) map[[2]int]bool {
+// Generates a list of cells that the opponents' pawns can capture.
+// This is used to help order move priorities.
+func (b *Board) getCellsOpponentPawnsCanCapture(ctx *Context) map[[2]int]bool {
 	cells := map[[2]int]bool{} // rank and file
 	for rank := 0; rank < 8; rank++ {
 		for file := 0; file < 8; file++ {
@@ -766,6 +587,7 @@ func (b *Board) getCellsOppoentPawnsCanCapture(ctx *Context) map[[2]int]bool {
 	return cells
 }
 
+// Read board text file.
 func ParseBoard(ctx *Context, data []byte, myTurn bool) *Board {
 	b := &Board{
 		depth:  0,
@@ -778,7 +600,7 @@ func ParseBoard(ctx *Context, data []byte, myTurn bool) *Board {
 	for _, row := range rows {
 		row = strings.TrimSpace(row)
 
-		// Skip comments
+		// Skip comment lines
 		if len(row) == 0 || row[0] == '#' {
 			continue
 		}

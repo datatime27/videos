@@ -75,12 +75,15 @@ func (p *Piece) Print(bold bool) string {
 func (p *Piece) Value() int {
 	return Value[p.Class]
 }
+
+// This provides evaluation of the board by including weighted values for
+// pieces by class.
 func (p *Piece) ValueWeightedByLocation(rank, file int) int {
 	value := Value[p.Class]
 	rankWeight := 0
-	fileWieght := 0
+	fileWeight := 0
 	switch p.Class {
-	// Move Pawns forward
+	// Encourage Pawns to move forward
 	case Pawn:
 		if p.Color == White {
 			rankWeight = rank - 1
@@ -88,14 +91,14 @@ func (p *Piece) ValueWeightedByLocation(rank, file int) int {
 			rankWeight = 6 - rank
 		}
 
-	// Keep Kings back
+	// Discourage Kings from moving forward
 	case King:
 		if p.Color == White {
 			rankWeight = 7 - rank
 		} else {
 			rankWeight = rank
 		}
-	// Move other pieces towards the center of the board
+	// Encourage other pieces towards the center of the board
 	case Knight, Bishop, Rook, Queen:
 		if rank <= 3 {
 			rankWeight = rank
@@ -109,7 +112,7 @@ func (p *Piece) ValueWeightedByLocation(rank, file int) int {
 			fileWeight = 7 - file
 		}
 	}
-	return value + rankWeight + fileWieght
+	return value + rankWeight + fileWeight
 }
 
 func (p *Piece) Encode() int8 {

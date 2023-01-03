@@ -12,6 +12,7 @@ var (
 	path = flag.String("path", "", "location of file with board layout")
 )
 
+// Standard board layout
 func Init() *boards.Board {
 	b := &boards.Board{}
 
@@ -55,6 +56,8 @@ func Init() *boards.Board {
 
 	return b
 }
+
+// Smaller board for testing.
 func InitTest() *boards.Board {
 	b := &boards.Board{}
 
