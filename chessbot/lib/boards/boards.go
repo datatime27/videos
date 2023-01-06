@@ -11,8 +11,9 @@ import (
 const (
 	hr = "-------------------------------------\n"
 
-	infinity = 100000
-	deadKing = 1000
+	infinity      = 100000
+	deadKing      = 1000
+	historyPrefix = "# History: "
 )
 
 var (
@@ -124,7 +125,7 @@ type Board struct {
 	capturedPiece *pieces.Piece
 	isPromotion   bool
 
-	History            string
+	History            []string
 	Evaluation         int
 	WeightedEvaluation int
 	FirstMove          *Board
@@ -170,10 +171,22 @@ func (b *Board) Format(bold bool) string {
 	sb.WriteString("\n")
 	sb.WriteString(fmt.Sprintf("# Evaluation: %d\n", b.Evaluation))
 	sb.WriteString(fmt.Sprintf("# WeightedEvaluation: %d\n", b.WeightedEvaluation))
-	sb.WriteString(fmt.Sprintf("# History: %v\n", b.History))
+	sb.WriteString(b.formatHistory())
 
 	return sb.String()
 }
+func (b *Board) formatHistory() string {
+	var sb strings.Builder
+	for index, move := range b.History {
+		if index%2 == 0 {
+			sb.WriteString(historyPrefix + move + ", ")
+		} else {
+			sb.WriteString(move + "\n")
+		}
+	}
+	return sb.String()
+}
+
 func (b *Board) DebugString() string {
 	return fmt.Sprintf("Depth: %v Evalution: %v History: %v", b.depth, b.WeightedEvaluation, b.History)
 }
@@ -221,7 +234,14 @@ func (b *Board) SetPiece(location, piece string) {
 	b.board[rank][file] = p.Encode()
 }
 
-func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) {
+func (b *Board) SetMove(srcLocation, dstLocation string) {
+	oldfile := fileParse[string(srcLocation[0])]
+	oldrank := rankParse[string(srcLocation[1])]
+	newfile := fileParse[string(dstLocation[0])]
+	newrank := rankParse[string(dstLocation[1])]
+	b.MovePiece(oldrank, oldfile, newrank, newfile)
+}
+func (b *Board) MovePiece(oldrank, oldfile, newrank, newfile int) {
 	old := &b.board[oldrank][oldfile]
 
 	new := &b.board[newrank][newfile]
@@ -236,7 +256,7 @@ func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) 
 	b.targetCell = [2]int{newrank, newfile}
 
 	p := pieces.Decode(*new)
-	b.History += fmt.Sprintf("%v %v %v, ", p.Print(false), verb, printLocation(newrank, newfile))
+	b.History = append(b.History, fmt.Sprintf("%v %v %v", p.Print(false), verb, printLocation(newrank, newfile)))
 }
 
 // Evaluate the final score of the board based on the pieces on the board.
@@ -450,7 +470,7 @@ func (b *Board) generateMove(ctx *Context, oldRank, oldFile, newRank, newFile in
 		return []*Board{}
 	}
 	newBoard := b.ChildNode()
-	newBoard.MovePiece(ctx, oldRank, oldFile, newRank, newFile)
+	newBoard.MovePiece(oldRank, oldFile, newRank, newFile)
 
 	// Pawn Promotion
 	if promote {
@@ -600,7 +620,18 @@ func ParseBoard(ctx *Context, data []byte, myTurn bool) *Board {
 	for _, row := range rows {
 		row = strings.TrimSpace(row)
 
-		// Skip comment lines
+		if strings.HasPrefix(row, historyPrefix) {
+			segs := strings.Split(strings.TrimPrefix(row, historyPrefix), ",")
+			for _, seg := range segs {
+				seg = strings.TrimSpace(seg)
+				if len(seg) > 0 {
+					b.History = append(b.History, seg)
+				}
+			}
+			continue
+		}
+
+		// Skip other comment lines
 		if len(row) == 0 || row[0] == '#' {
 			continue
 		}

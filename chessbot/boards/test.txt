@@ -1,16 +1,20 @@
   | a | b | c | d | e | f | g | h | 
 -------------------------------------
-8 |   |   | k |   |   |   |   |   | 8
-7 | p |   | b |   |   | p |   |   | 7
-6 | P |   |   |   | r | p |   |   | 6
-5 |   |   |   |   |   |   | p |   | 5
-4 |   |   |   |   |   |   |   | p | 4
-3 |   |   |   | r |   |   |   |   | 3
-2 |   |   | p |   |   |   | K |   | 2
-1 |   |   |   |   |   |   |   |   | 1
+8 | r | n | b | q | k | b | n | r | 8
+7 |   |   | p |   | p | p | p | p | 7
+6 |   |   |   |   |   |   |   |   | 6
+5 | p | p |   | p |   |   |   |   | 5
+4 | P |   |   |   |   |   |   | P | 4
+3 |   | P |   | P |   |   |   |   | 3
+2 | R |   | P | N | P | P | P | R | 2
+1 |   |   | B | Q | K | B | N |   | 1
 -------------------------------------
   | a | b | c | d | e | f | g | h | 
 
-# Evaluation: -180
-# WeightedEvaluation: -200
-# History: K to g2, 
+# Evaluation: 0
+# WeightedEvaluation: -5
+# History: P to a4, p to a5
+# History: P to d3, p to d5
+# History: N to d2, P to d4
+# History: R to h2, P to h5
+# History: R to a2, p to b5
