@@ -38,7 +38,7 @@ func main() {
 
 	fmt.Println("Moving piece...\n")
 
-	board.SetMove(ctx, src, dst)
+	board.SetMove(src, dst)
 	board.EvaluateMaterial(ctx)
 	fmt.Printf("%v\n", board)
 

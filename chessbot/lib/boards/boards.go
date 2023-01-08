@@ -195,7 +195,7 @@ func (b *Board) ChildNode() *Board {
 		board:   b.board,
 		depth:   b.depth + 1,
 		myTurn:  !b.myTurn,
-		History: b.History,
+		History: append([]string{}, b.History...),
 	}
 	if b.FirstMove == nil {
 		newBoard.FirstMove = newBoard
@@ -257,6 +257,8 @@ func (b *Board) MovePiece(oldrank, oldfile, newrank, newfile int) {
 
 	p := pieces.Decode(*new)
 	b.History = append(b.History, fmt.Sprintf("%v %v %v", p.Print(false), verb, printLocation(newrank, newfile)))
+	// fmt.Printf("%v\n", b.String())
+	// fmt.Printf("%v\n", printLocation(b.targetCell[0], b.targetCell[1]))
 }
 
 // Evaluate the final score of the board based on the pieces on the board.
@@ -346,7 +348,7 @@ func (b *Board) minimax(ctx *Context, alpha, beta int) *Board {
 	}
 
 	// Hacky way to initialize minmax value to infinity
-	minimaxBoard := &Board{History: b.History}
+	minimaxBoard := &Board{}
 	if b.myTurn {
 		minimaxBoard.WeightedEvaluation = -infinity
 	} else {
@@ -359,6 +361,7 @@ func (b *Board) minimax(ctx *Context, alpha, beta int) *Board {
 	if b.depth >= ctx.MaxDepth {
 		allowNoCaptures = false
 	}
+	// fmt.Printf("Depth: %d allowNoCaptures: %v LastMove: %v\n", b.depth, allowNoCaptures, b.History[len(b.History)-1])
 
 	for _, newBoard := range b.getMoves(ctx, allowNoCaptures) {
 		// Recursively traverse downwards
@@ -409,6 +412,10 @@ func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
 	for rank := 0; rank < 8; rank++ {
 		for file := 0; file < 8; file++ {
 			piece := pieces.Decode(b.board[rank][file])
+			// Skip empty cells
+			if piece.Class == pieces.ClassNone {
+				continue
+			}
 			// Only look at the correct pieces for this turn
 			if (piece.IsSameColor(ctx.Color)) != b.myTurn {
 				continue
@@ -418,10 +425,10 @@ func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
 			switch piece.Class {
 			case pieces.Pawn:
 				moves = append(moves, b.generatePawnMoves(ctx, rank, file, piece, allowNoCaptures)...)
-			case pieces.Knight:
-				moves = append(moves, b.generateKnightMoves(ctx, rank, file, piece, allowNoCaptures)...)
-			case pieces.Bishop, pieces.Rook, pieces.Queen, pieces.King:
-				moves = append(moves, b.generateSlidingMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			// case pieces.Knight:
+			// 	moves = append(moves, b.generateKnightMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			// case pieces.Bishop, pieces.Rook, pieces.Queen, pieces.King:
+			// 	moves = append(moves, b.generateSlidingMoves(ctx, rank, file, piece, allowNoCaptures)...)
 			default:
 				continue
 			}
@@ -517,6 +524,7 @@ func (b *Board) generatePawnMoves(ctx *Context, rank, file int, piece *pieces.Pi
 	}
 
 	// Pawn forward one space - no capture
+	// fmt.Printf("Pawn forward one space %v\n", printLocation(rank, file))
 	moves = append(moves, b.generateMove(ctx, rank, file, rank+direction, file, piece, false, true, false)...)
 
 	return moves
@@ -581,6 +589,11 @@ func (b *Board) getCellsOpponentPawnsCanCapture(ctx *Context) map[[2]int]bool {
 	for rank := 0; rank < 8; rank++ {
 		for file := 0; file < 8; file++ {
 			piece := pieces.Decode(b.board[rank][file])
+
+			// Skip empty cells
+			if piece.Class == pieces.ClassNone {
+				continue
+			}
 			// Only look at opponent pawns that can capture my pieces.
 			if (piece.IsSameColor(ctx.Color)) == b.myTurn {
 				continue
