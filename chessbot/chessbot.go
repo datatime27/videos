@@ -13,9 +13,11 @@ import (
 )
 
 var (
-	path  = flag.String("path", "", "location of file with board layout")
-	color = flag.String("color", "w", "color of the  player w|b")
-	depth = flag.Int("depth", 3, "How many ply forward to look ahead")
+	path        = flag.String("path", "", "location of file with board layout")
+	displayPath = flag.String("display", "html/display.html", "location output display html")
+	color       = flag.String("color", "w", "color of the  player w|b")
+	depth       = flag.Int("depth", 3, "How many ply forward to look ahead")
+	acceptMove  = flag.Bool("y", false, "Automatically accept move and file write.")
 )
 
 // StringPrompt asks for a string value using the label
@@ -46,6 +48,7 @@ func main() {
 	} else {
 		panic("--color must be 'w' or 'b'")
 	}
+
 	ctx := boards.NewContext(int8(*depth), myColor)
 	data, err := os.ReadFile(*path)
 	if err != nil {
@@ -53,8 +56,16 @@ func main() {
 	}
 
 	board := boards.ParseBoard(ctx, data, true)
-	fmt.Printf("Value: %d\n", board.Evaluation)
 	fmt.Printf("%v\n", board)
+
+	move := flag.Arg(0)
+	if len(move) > 0 {
+		fmt.Println("\nMoving piece...\n")
+
+		board.SetMove(ctx, move)
+		board.EvaluateMaterial(ctx)
+		fmt.Printf("%v\n", board)
+	}
 
 	fmt.Println("Calculating....\n")
 
@@ -70,12 +81,24 @@ func main() {
 	fmt.Printf("Leaf Move:\n%v\n\n", leafBoard.String())
 	fmt.Printf("Next Move:\n%v\n\n", leafBoard.FirstMove.String())
 
-	answer := StringPrompt("Write file? y/n")
-	if answer != "n" {
+	if *acceptMove {
 		if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.Format(false)), 0666); err != nil {
 			panic(err)
 		}
+		if err := leafBoard.FirstMove.WriteHTML(*displayPath); err != nil {
+			panic(err)
+		}
 		fmt.Println("Wrote file")
+	} else {
+		answer := StringPrompt("Write file? y/n")
+		if answer != "n" {
+			if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.Format(false)), 0666); err != nil {
+				panic(err)
+			}
+			if err := leafBoard.FirstMove.WriteHTML(*displayPath); err != nil {
+				panic(err)
+			}
+			fmt.Println("Wrote file")
+		}
 	}
-
 }

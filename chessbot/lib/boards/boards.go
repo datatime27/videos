@@ -234,11 +234,36 @@ func (b *Board) SetPiece(location, piece string) {
 	b.board[rank][file] = p.Encode()
 }
 
-func (b *Board) SetMove(srcLocation, dstLocation string) {
-	oldfile := fileParse[string(srcLocation[0])]
-	oldrank := rankParse[string(srcLocation[1])]
-	newfile := fileParse[string(dstLocation[0])]
-	newrank := rankParse[string(dstLocation[1])]
+func (b *Board) SetMove(ctx *Context, move string) {
+	var piece *pieces.Piece
+	var src, dst string
+	if len(move) == 4 {
+		src = move[0:2]
+		dst = move[2:4]
+		piece = b.GetPiece(src)
+
+	} else if len(move) == 5 {
+		piece = pieces.Parse(string(move[0]))
+		src = move[1:3]
+		dst = move[3:5]
+		if piece.Class != b.GetPiece(src).Class {
+			panic("Wrong piece at source location")
+		}
+	} else {
+		panic("Wrong number of letter for manual move")
+	}
+
+	if piece.Class == pieces.ClassNone {
+		panic("Cannot move empty cell")
+	}
+	if piece.IsSameColor(ctx.Color) {
+		panic("Cannot move your own piece manually")
+	}
+
+	oldfile := fileParse[string(src[0])]
+	oldrank := rankParse[string(src[1])]
+	newfile := fileParse[string(dst[0])]
+	newrank := rankParse[string(dst[1])]
 	b.MovePiece(oldrank, oldfile, newrank, newfile)
 }
 func (b *Board) MovePiece(oldrank, oldfile, newrank, newfile int) {
@@ -425,10 +450,10 @@ func (b *Board) getMoves(ctx *Context, allowNoCaptures bool) []*Board {
 			switch piece.Class {
 			case pieces.Pawn:
 				moves = append(moves, b.generatePawnMoves(ctx, rank, file, piece, allowNoCaptures)...)
-			// case pieces.Knight:
-			// 	moves = append(moves, b.generateKnightMoves(ctx, rank, file, piece, allowNoCaptures)...)
-			// case pieces.Bishop, pieces.Rook, pieces.Queen, pieces.King:
-			// 	moves = append(moves, b.generateSlidingMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			case pieces.Knight:
+				moves = append(moves, b.generateKnightMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			case pieces.Bishop, pieces.Rook, pieces.Queen, pieces.King:
+				moves = append(moves, b.generateSlidingMoves(ctx, rank, file, piece, allowNoCaptures)...)
 			default:
 				continue
 			}

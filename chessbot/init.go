@@ -9,7 +9,8 @@ import (
 )
 
 var (
-	path = flag.String("path", "", "location of file with board layout")
+	path        = flag.String("path", "", "location of file with board layout")
+	displayPath = flag.String("display", "html/display.html", "location output display html")
 )
 
 // Standard board layout
@@ -110,6 +111,9 @@ func main() {
 	board := Init()
 	fmt.Printf("%v\n", board.String())
 	if err := os.WriteFile(*path, []byte(board.Format(false)), 0666); err != nil {
+		panic(err)
+	}
+	if err := board.WriteHTML(*displayPath); err != nil {
 		panic(err)
 	}
 	fmt.Printf("Wrote: %v\n", *path)
