@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <style>
@@ -7,57 +8,92 @@ td {
     font-size: 24px;
     font-weight: bold;
 }
+.border {
+    border-style:solid;
+    border-color: red;
+    border-width: 5px;
+    width: 70px;
+    height: 70px;
+}
+input {
+    font-size: 24px;
+}
 
 </style>
+<script>
+var cellwidth=80;
+const fileLookup = new Map();
+fileLookup.set(0, "a");
+fileLookup.set(1, "b");
+fileLookup.set(2, "c");
+fileLookup.set(3, "d");
+fileLookup.set(4, "e");
+fileLookup.set(5, "f");
+fileLookup.set(6, "g");
+fileLookup.set(7, "h");
+
+function pieceClick(piece,location){
+    moveoutput = document.getElementById("moveoutput")
+    if (moveoutput.value.length == 0){ 
+    		moveoutput.value = piece+location;
+    } else {
+    		moveoutput.value += location;
+    }
+}
+
+function emptyClick(event){
+    rank = 8 - Math.floor((event.y-event.target.getBoundingClientRect().top)/cellwidth)
+    file = Math.floor((event.x-event.target.getBoundingClientRect().left)/cellwidth)
+    
+    moveoutput = document.getElementById("moveoutput")
+    moveoutput.value += fileLookup.get(file)+rank
+}
+</script>
+
 </head>
-<table cellpadding="0" cellspacing="0" style="background:white;border:1px #c8ccd1 solid;padding:0;margin:auto">
+<body>
+<table align="left" cellpadding="0" cellspacing="0" style="background:white;border:1px #c8ccd1 solid;padding:0;margin:auto">
 <tbody>
 <tr><td></td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td></tr>
 <tr>
 <td>8</td>
 <td colspan="8" rowspan="8">
 <div style="position:relative">
-<img alt="Chessboard480.svg" src="icons/Chessboard480.svg.png" />
-
-<div style="position:absolute;top:0px;left:0px;"><img src="icons/Chess_rdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:80px"><img src="icons/Chess_ndt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:160px;"><img src="icons/Chess_bdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:240px;"><img src="icons/Chess_qdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:320px;"><img src="icons/Chess_kdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:400px;"><img src="icons/Chess_bdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:480px;"><img src="icons/Chess_ndt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:560px;"><img src="icons/Chess_rdt45.svg.png" /></div>
+<img src="icons/Chessboard480.svg.png" onclick="emptyClick(event)"/>
 
 
-<div style="position:absolute;top:80px;left:0px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:80px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:160px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:240px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:320px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:400px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:480px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:560px;"><img src="icons/Chess_pdt45.svg.png" /></div>
-
-
-<div style="position:absolute;top:480px;left:0px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:80px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:160px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:240px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:320px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:400px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:480px;"><img src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:560px;"><img src="icons/Chess_plt45.svg.png" /></div>
-
-
-<div style="position:absolute;top:560px;left:0px;"><img src="icons/Chess_rlt45.svg.png"  /></div>
-<div style="position:absolute;top:560px;left:80px;"><img src="icons/Chess_nlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:160px;"><img src="icons/Chess_blt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:240px;"><img src="icons/Chess_qlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:320px;"><img src="icons/Chess_klt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:400px;"><img src="icons/Chess_blt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:480px;"><img src="icons/Chess_nlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:560px;"><img src="icons/Chess_rlt45.svg.png" /></div>
-
+<div style="position:absolute;top:560px;left:0px;"><img onclick="pieceClick('R','a1')" class="border" src="icons/Chess_rlt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:80px;"><img onclick="pieceClick('N','b1')" class="" src="icons/Chess_nlt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:160px;"><img onclick="pieceClick('B','c1')" class="" src="icons/Chess_blt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:240px;"><img onclick="pieceClick('Q','d1')" class="" src="icons/Chess_qlt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:320px;"><img onclick="pieceClick('K','e1')" class="" src="icons/Chess_klt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:400px;"><img onclick="pieceClick('B','f1')" class="" src="icons/Chess_blt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:480px;"><img onclick="pieceClick('N','g1')" class="" src="icons/Chess_nlt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:560px;"><img onclick="pieceClick('R','h1')" class="" src="icons/Chess_rlt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:0px;"><img onclick="pieceClick('P','a2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:80px;"><img onclick="pieceClick('P','b2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:160px;"><img onclick="pieceClick('P','c2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:240px;"><img onclick="pieceClick('P','d2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:320px;"><img onclick="pieceClick('P','e2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:400px;"><img onclick="pieceClick('P','f2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:480px;"><img onclick="pieceClick('P','g2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:560px;"><img onclick="pieceClick('P','h2')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:0px;"><img onclick="pieceClick('p','a7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:80px;"><img onclick="pieceClick('p','b7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:160px;"><img onclick="pieceClick('p','c7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:240px;"><img onclick="pieceClick('p','d7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:320px;"><img onclick="pieceClick('p','e7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:400px;"><img onclick="pieceClick('p','f7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:480px;"><img onclick="pieceClick('p','g7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:80px;left:560px;"><img onclick="pieceClick('p','h7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:0px;"><img onclick="pieceClick('r','a8')" class="" src="icons/Chess_rdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:80px;"><img onclick="pieceClick('n','b8')" class="" src="icons/Chess_ndt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:160px;"><img onclick="pieceClick('b','c8')" class="" src="icons/Chess_bdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:240px;"><img onclick="pieceClick('q','d8')" class="" src="icons/Chess_qdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:320px;"><img onclick="pieceClick('k','e8')" class="" src="icons/Chess_kdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:400px;"><img onclick="pieceClick('b','f8')" class="" src="icons/Chess_bdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:480px;"><img onclick="pieceClick('n','g8')" class="" src="icons/Chess_ndt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:560px;"><img onclick="pieceClick('r','h8')" class="" src="icons/Chess_rdt45.svg.png" /></div>
 <td>8</td>
 </tr>
 
@@ -81,4 +117,11 @@ td {
 </tr>
 </tbody>
 </table>
+<div>
+    <h3>move output:</h3>
+    <input type=text id="moveoutput" value="" size=8/>
+    <input type=button value="copy to clipboard" onclick="navigator.clipboard.writeText(moveoutput.value);"/>
+    <input type=button value="clear" onclick="moveoutput.value=''"/>
+</div>
+</body>
 </html>

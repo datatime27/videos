@@ -27,20 +27,54 @@ td {
     width: 70px;
     height: 70px;
 }
+input {
+    font-size: 24px;
+}
 
 </style>
+<script>
+var cellwidth=80;
+const fileLookup = new Map();
+fileLookup.set(0, "a");
+fileLookup.set(1, "b");
+fileLookup.set(2, "c");
+fileLookup.set(3, "d");
+fileLookup.set(4, "e");
+fileLookup.set(5, "f");
+fileLookup.set(6, "g");
+fileLookup.set(7, "h");
+
+function pieceClick(piece,location){
+    moveoutput = document.getElementById("moveoutput")
+    if (moveoutput.value.length == 0){ 
+    		moveoutput.value = piece+location;
+    } else {
+    		moveoutput.value += location;
+    }
+}
+
+function emptyClick(event){
+    rank = 8 - Math.floor((event.y-event.target.getBoundingClientRect().top)/cellwidth)
+    file = Math.floor((event.x-event.target.getBoundingClientRect().left)/cellwidth)
+    
+    moveoutput = document.getElementById("moveoutput")
+    moveoutput.value += fileLookup.get(file)+rank
+}
+</script>
+
 </head>
-<table cellpadding="0" cellspacing="0" style="background:white;border:1px #c8ccd1 solid;padding:0;margin:auto">
+<body>
+<table align="left" cellpadding="0" cellspacing="0" style="background:white;border:1px #c8ccd1 solid;padding:0;margin:auto">
 <tbody>
 <tr><td></td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td></tr>
 <tr>
 <td>8</td>
 <td colspan="8" rowspan="8">
 <div style="position:relative">
-<img src="icons/Chessboard480.svg.png" />
+<img src="icons/Chessboard480.svg.png" onclick="emptyClick(event)"/>
 
 {{range $item := .Items}}
-<div style="position:absolute;top:{{$item.Top}}px;left:{{$item.Left}}px;"><img class="{{$item.Border}}" src="{{$item.Src}}" /></div>{{end}}
+<div style="position:absolute;top:{{$item.Top}}px;left:{{$item.Left}}px;"><img onclick="pieceClick('{{$item.Piece}}','{{$item.Location}}')" class="{{$item.Border}}" src="{{$item.Src}}" /></div>{{end}}
 <td>8</td>
 </tr>
 
@@ -64,6 +98,13 @@ td {
 </tr>
 </tbody>
 </table>
+<div>
+    <h3>move output:</h3>
+    <input type=text id="moveoutput" value="" size=8/>
+    <input type=button value="copy to clipboard" onclick="navigator.clipboard.writeText(moveoutput.value);"/>
+    <input type=button value="clear" onclick="moveoutput.value=''"/>
+</div>
+</body>
 </html>
 `))
 
@@ -91,10 +132,12 @@ type Config struct {
 	Items []Item
 }
 type Item struct {
-	Top    int
-	Left   int
-	Src    string
-	Border string
+	Location string
+	Piece    string
+	Top      int
+	Left     int
+	Src      string
+	Border   string
 }
 
 func (b *Board) WriteHTML(path string) error {
@@ -113,9 +156,11 @@ func (b *Board) WriteHTML(path string) error {
 			}
 
 			item := Item{
-				Top:  640 - (rank+1)*80,
-				Left: file * 80,
-				Src:  srcLookup[p.Color][p.Class],
+				Location: printLocation(rank, file),
+				Piece:    p.Print(false),
+				Top:      640 - (rank+1)*80,
+				Left:     file * 80,
+				Src:      srcLookup[p.Color][p.Class],
 			}
 			if b.targetCell == [2]int{rank, file} {
 				item.Border = "border"

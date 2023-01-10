@@ -1,20 +1,15 @@
   | a | b | c | d | e | f | g | h | 
 -------------------------------------
 8 | r | n | b | q | k | b | n | r | 8
-7 |   |   | p |   | p | p | p | p | 7
+7 | p | p | p | p | p | p | p | p | 7
 6 |   |   |   |   |   |   |   |   | 6
-5 | p | p |   | p |   |   |   |   | 5
-4 | P |   |   |   |   |   |   | P | 4
-3 |   | P |   | P |   |   |   |   | 3
-2 | R |   | P | N | P | P | P | R | 2
-1 |   |   | B | Q | K | B | N |   | 1
+5 |   |   |   |   |   |   |   |   | 5
+4 |   |   |   |   |   |   |   |   | 4
+3 |   |   |   |   |   |   |   |   | 3
+2 | P | P | P | P | P | P | P | P | 2
+1 | R | N | B | Q | K | B | N | R | 1
 -------------------------------------
   | a | b | c | d | e | f | g | h | 
 
 # Evaluation: 0
-# WeightedEvaluation: -5
-# History: P to a4, p to a5
-# History: P to d3, p to d5
-# History: N to d2, P to d4
-# History: R to h2, P to h5
-# History: R to a2, p to b5
+# WeightedEvaluation: 0
