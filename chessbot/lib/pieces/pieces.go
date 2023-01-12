@@ -79,9 +79,14 @@ func (p *Piece) Value() int {
 // This provides evaluation of the board by including weighted values for
 // pieces by class.
 func (p *Piece) ValueWeightedByLocation(rank, file int) int {
+	const pawnMultiplier = 1
+	const kingMultiplier = 5
+	const mainMultiplier = 10
+
 	value := Value[p.Class]
 	rankWeight := 0
 	fileWeight := 0
+
 	switch p.Class {
 	// Encourage Pawns to move forward
 	case Pawn:
@@ -90,6 +95,7 @@ func (p *Piece) ValueWeightedByLocation(rank, file int) int {
 		} else {
 			rankWeight = 6 - rank
 		}
+		rankWeight *= pawnMultiplier
 
 	// Discourage Kings from moving forward
 	case King:
@@ -98,6 +104,8 @@ func (p *Piece) ValueWeightedByLocation(rank, file int) int {
 		} else {
 			rankWeight = rank
 		}
+		rankWeight *= kingMultiplier
+
 	// Encourage other pieces towards the center of the board
 	case Knight, Bishop, Rook, Queen:
 		if rank <= 3 {
@@ -105,12 +113,14 @@ func (p *Piece) ValueWeightedByLocation(rank, file int) int {
 		} else {
 			rankWeight = 7 - rank
 		}
+		rankWeight *= mainMultiplier
 
 		if file <= 3 {
 			fileWeight = file
 		} else {
 			fileWeight = 7 - file
 		}
+		fileWeight *= mainMultiplier
 	}
 	return value + rankWeight + fileWeight
 }

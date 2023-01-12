@@ -1,15 +1,46 @@
   | a | b | c | d | e | f | g | h | 
 -------------------------------------
-8 | r | n | b | q | k | b | n | r | 8
-7 | p | p | p | p | p | p | p | p | 7
-6 |   |   |   |   |   |   |   |   | 6
-5 |   |   |   |   |   |   |   |   | 5
-4 |   |   |   |   |   |   |   |   | 4
-3 |   |   |   |   |   |   |   |   | 3
-2 | P | P | P | P | P | P | P | P | 2
-1 | R | N | B | Q | K | B | N | R | 1
+8 | r |   |   |   |   |   | k |   | 8
+7 |   |   | p |   |   |   | p | p | 7
+6 |   | p |   |   | P |   |   |   | 6
+5 | p |   |   |   |   |   |   |   | 5
+4 | P |   | b | P |   |   |   |   | 4
+3 |   |   | P |   |   |   |   |   | 3
+2 | K |   |   |   |   |   |   |   | 2
+1 |   |   | q |   |   |   |   |   | 1
 -------------------------------------
   | a | b | c | d | e | f | g | h | 
 
-# Evaluation: 0
-# WeightedEvaluation: 0
+# Evaluation: -180
+# WeightedEvaluation: -244
+# History: P to f4, n to f6
+# History: N to f3, p to e6
+# History: P to d3, n to c6
+# History: N to d2, b to e7
+# History: P to h4, n to g4
+# History: P to a3, n to e3
+# History: R to h3, n x d1
+# History: K x d1, p to d5
+# History: N to e5, n x e5
+# History: P x e5, p to b6
+# History: R to a2, O-O
+# History: P to d4, p to f6
+# History: P x f6, b to d6
+# History: R to d3, q x f6
+# History: P to b4, q x h4
+# History: P to c3, p to a5
+# History: P to b5, q to h1
+# History: K to c2, r x f1
+# History: N x f1, q x f1
+# History: K to b1, q x g2
+# History: K to a1, b to d7
+# History: R to d2, q to g1
+# History: R to c2, b x b5
+# History: P to e4, q to d1
+# History: P to a4, b to d3
+# History: P x d5, b to f4
+# History: R to b2, b x c1
+# History: R to b1, q x c2
+# History: R x c1, q x c1+
+# History: K to a2, b to c4+
+# History: P x e6, 

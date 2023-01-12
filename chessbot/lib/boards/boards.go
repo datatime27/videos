@@ -237,36 +237,96 @@ func (b *Board) SetPiece(location, piece string) {
 func (b *Board) SetMove(ctx *Context, move string) {
 	var piece *pieces.Piece
 	var src, dst string
-	if len(move) == 4 {
-		src = move[0:2]
-		dst = move[2:4]
-		piece = b.GetPiece(src)
 
-	} else if len(move) == 5 {
-		piece = pieces.Parse(string(move[0]))
-		src = move[1:3]
-		dst = move[3:5]
-		if piece.Class != b.GetPiece(src).Class {
-			panic("Wrong piece at source location")
-		}
+	if move == "O-O" || move == "O-O-O" {
+		b.moveCastle(ctx, move)
 	} else {
-		panic("Wrong number of letter for manual move")
+
+		if len(move) == 4 {
+			src = move[0:2]
+			dst = move[2:4]
+			piece = b.GetPiece(src)
+
+		} else if len(move) == 5 {
+			piece = pieces.Parse(string(move[0]))
+			src = move[1:3]
+			dst = move[3:5]
+			if piece.Class != b.GetPiece(src).Class {
+				panic("Wrong piece at source location")
+			}
+		} else {
+			panic("Unable to read move " + move)
+		}
+
+		if piece.Class == pieces.ClassNone {
+			panic("Cannot move empty cell")
+		}
+		if piece.IsSameColor(ctx.Color) {
+			panic("Cannot move your own piece manually")
+		}
+
+		oldfile := fileParse[string(src[0])]
+		oldrank := rankParse[string(src[1])]
+		newfile := fileParse[string(dst[0])]
+		newrank := rankParse[string(dst[1])]
+		b.MovePiece(ctx, oldrank, oldfile, newrank, newfile)
 	}
 
-	if piece.Class == pieces.ClassNone {
-		panic("Cannot move empty cell")
+	myTurn := b.myTurn
+	b.myTurn = false
+	if b.isCheck(ctx) {
+		b.History[len(b.History)-1] += "+"
 	}
-	if piece.IsSameColor(ctx.Color) {
-		panic("Cannot move your own piece manually")
-	}
+	b.myTurn = myTurn
 
-	oldfile := fileParse[string(src[0])]
-	oldrank := rankParse[string(src[1])]
-	newfile := fileParse[string(dst[0])]
-	newrank := rankParse[string(dst[1])]
-	b.MovePiece(oldrank, oldfile, newrank, newfile)
 }
-func (b *Board) MovePiece(oldrank, oldfile, newrank, newfile int) {
+
+func (b *Board) moveCastle(ctx *Context, move string) {
+	const srcKing = 4
+	const dstNearKing = 6
+	const dstFarKing = 2
+	const srcNearRook = 7
+	const dstNearRook = 5
+	const srcFarRook = 0
+	const dstFarRook = 3
+
+	var srcRook, dstRook, dstKing int
+	if move == "O-O" {
+		srcRook = srcNearRook
+		dstRook = dstNearRook
+		dstKing = dstNearKing
+	} else if move == "O-O-O" {
+		srcRook = srcFarRook
+		dstRook = dstFarRook
+		dstKing = dstFarKing
+	}
+
+	// We are moving opponent's piece
+	enemyRank := 7
+	if ctx.Color == pieces.Black {
+		enemyRank = 0
+	}
+
+	king := pieces.Decode(b.board[enemyRank][srcKing])
+	if king.Class != pieces.King {
+		panic("King is not found on " + printLocation(enemyRank, srcKing))
+	}
+	rook := pieces.Decode(b.board[enemyRank][srcRook])
+	if rook.Class != pieces.Rook {
+		panic("Rook is not found on " + printLocation(enemyRank, srcRook))
+	}
+
+	b.board[enemyRank][srcKing] = pieces.EmptyCell // remove king
+	b.board[enemyRank][dstKing] = king.Encode()    // add king
+	b.board[enemyRank][srcRook] = pieces.EmptyCell // remove rook
+	b.board[enemyRank][dstRook] = rook.Encode()    // add rook
+	b.History = append(b.History, move)
+	b.targetCell = [2]int{enemyRank, dstKing}
+	return
+
+}
+
+func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) {
 	old := &b.board[oldrank][oldfile]
 
 	new := &b.board[newrank][newfile]
@@ -284,6 +344,16 @@ func (b *Board) MovePiece(oldrank, oldfile, newrank, newfile int) {
 	b.History = append(b.History, fmt.Sprintf("%v %v %v", p.Print(false), verb, printLocation(newrank, newfile)))
 	// fmt.Printf("%v\n", b.String())
 	// fmt.Printf("%v\n", printLocation(b.targetCell[0], b.targetCell[1]))
+}
+
+func (b *Board) isCheck(ctx *Context) bool {
+	for _, move := range b.getMoves(ctx, false) {
+		fmt.Printf("captured piece %v\n", move.capturedPiece.Print(true))
+		if move.capturedPiece != nil && move.capturedPiece.Class == pieces.King {
+			return true
+		}
+	}
+	return false
 }
 
 // Evaluate the final score of the board based on the pieces on the board.
@@ -359,7 +429,15 @@ func (b *Board) moveAvailable(
 
 // Entry point for chessbot to begin recursion.
 func (b *Board) FindMoves(ctx *Context) *Board {
-	return b.minimax(ctx, -infinity, infinity)
+	leafBoard := b.minimax(ctx, -infinity, infinity)
+	myTurn := leafBoard.FirstMove.myTurn
+	leafBoard.FirstMove.myTurn = true
+	if leafBoard.FirstMove.isCheck(ctx) {
+		leafBoard.FirstMove.History[len(leafBoard.FirstMove.History)-1] += "+"
+	}
+	leafBoard.FirstMove.myTurn = myTurn
+	return leafBoard
+
 }
 
 // Recursive depth first function to step through each board in the decision tree.
@@ -502,7 +580,7 @@ func (b *Board) generateMove(ctx *Context, oldRank, oldFile, newRank, newFile in
 		return []*Board{}
 	}
 	newBoard := b.ChildNode()
-	newBoard.MovePiece(oldRank, oldFile, newRank, newFile)
+	newBoard.MovePiece(ctx, oldRank, oldFile, newRank, newFile)
 
 	// Pawn Promotion
 	if promote {

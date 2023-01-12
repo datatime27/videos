@@ -1,11 +1,9 @@
 package boards
 
 import (
+	"html/template"
 	"os"
 
-	// "fmt"
-	"html/template"
-	// "strings"
 	"chessbot/lib/pieces"
 )
 
@@ -14,7 +12,14 @@ var (
 <html>
 <head>
 <style>
-td {
+.board {
+	background:white;
+	border:1px #c8ccd1 solid;
+	padding:0;
+	margin:auto;
+	margin-right: 20px;
+}
+.board tr td{
     text-align: center;
     width: 26px;
     font-size: 24px;
@@ -26,6 +31,12 @@ td {
     border-width: 5px;
     width: 70px;
     height: 70px;
+}
+.history td {
+    font-size: 24px;
+}
+div{
+    font-size: 24px;
 }
 input {
     font-size: 24px;
@@ -64,7 +75,7 @@ function emptyClick(event){
 
 </head>
 <body>
-<table align="left" cellpadding="0" cellspacing="0" style="background:white;border:1px #c8ccd1 solid;padding:0;margin:auto">
+<table class="board" align="left" cellpadding="0" cellspacing="0" >
 <tbody>
 <tr><td></td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td></tr>
 <tr>
@@ -104,6 +115,16 @@ function emptyClick(event){
     <input type=button value="copy to clipboard" onclick="navigator.clipboard.writeText(moveoutput.value);"/>
     <input type=button value="clear" onclick="moveoutput.value=''"/>
 </div>
+<div>Evaluation: {{.Evaluation}}</div>
+<div>WeightedEvaluation: {{.WeightedEvaluation}}</div>
+<h3>History:</h3>
+<table border=1 class="history">
+{{range $row := .History}}
+<tr>
+{{range $cell := $row}}
+<td>{{$cell}}</td>{{end}}
+</tr>{{end}}
+</table>
 </body>
 </html>
 `))
@@ -129,7 +150,10 @@ function emptyClick(event){
 )
 
 type Config struct {
-	Items []Item
+	Items              []Item
+	History            [][2]string
+	Evaluation         int
+	WeightedEvaluation int
 }
 type Item struct {
 	Location string
@@ -147,7 +171,20 @@ func (b *Board) WriteHTML(path string) error {
 	}
 	defer f.Close()
 
-	config := Config{}
+	history := [][2]string{}
+	for index, move := range b.History {
+		if index%2 == 0 {
+			history = append(history, [2]string{move, ""})
+		} else {
+			history[len(history)-1][1] = move
+		}
+	}
+
+	config := Config{
+		Evaluation:         b.Evaluation,
+		WeightedEvaluation: b.WeightedEvaluation,
+		History:            history,
+	}
 	for rank := 0; rank < 8; rank++ {
 		for file := 0; file < 8; file++ {
 			p := pieces.Decode(b.board[rank][file])

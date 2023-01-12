@@ -2,7 +2,14 @@
 <html>
 <head>
 <style>
-td {
+.board {
+	background:white;
+	border:1px #c8ccd1 solid;
+	padding:0;
+	margin:auto;
+	margin-right: 20px;
+}
+.board tr td{
     text-align: center;
     width: 26px;
     font-size: 24px;
@@ -14,6 +21,12 @@ td {
     border-width: 5px;
     width: 70px;
     height: 70px;
+}
+.history td {
+    font-size: 24px;
+}
+div{
+    font-size: 24px;
 }
 input {
     font-size: 24px;
@@ -52,7 +65,7 @@ function emptyClick(event){
 
 </head>
 <body>
-<table align="left" cellpadding="0" cellspacing="0" style="background:white;border:1px #c8ccd1 solid;padding:0;margin:auto">
+<table class="board" align="left" cellpadding="0" cellspacing="0" >
 <tbody>
 <tr><td></td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td></tr>
 <tr>
@@ -62,38 +75,20 @@ function emptyClick(event){
 <img src="icons/Chessboard480.svg.png" onclick="emptyClick(event)"/>
 
 
-<div style="position:absolute;top:560px;left:0px;"><img onclick="pieceClick('R','a1')" class="border" src="icons/Chess_rlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:80px;"><img onclick="pieceClick('N','b1')" class="" src="icons/Chess_nlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:160px;"><img onclick="pieceClick('B','c1')" class="" src="icons/Chess_blt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:240px;"><img onclick="pieceClick('Q','d1')" class="" src="icons/Chess_qlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:320px;"><img onclick="pieceClick('K','e1')" class="" src="icons/Chess_klt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:400px;"><img onclick="pieceClick('B','f1')" class="" src="icons/Chess_blt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:480px;"><img onclick="pieceClick('N','g1')" class="" src="icons/Chess_nlt45.svg.png" /></div>
-<div style="position:absolute;top:560px;left:560px;"><img onclick="pieceClick('R','h1')" class="" src="icons/Chess_rlt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:0px;"><img onclick="pieceClick('P','a2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:80px;"><img onclick="pieceClick('P','b2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:160px;"><img onclick="pieceClick('P','c2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:240px;"><img onclick="pieceClick('P','d2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:320px;"><img onclick="pieceClick('P','e2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:400px;"><img onclick="pieceClick('P','f2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:480px;"><img onclick="pieceClick('P','g2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:480px;left:560px;"><img onclick="pieceClick('P','h2')" class="" src="icons/Chess_plt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:0px;"><img onclick="pieceClick('p','a7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:80px;"><img onclick="pieceClick('p','b7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:560px;left:160px;"><img onclick="pieceClick('q','c1')" class="" src="icons/Chess_qdt45.svg.png" /></div>
+<div style="position:absolute;top:480px;left:0px;"><img onclick="pieceClick('K','a2')" class="" src="icons/Chess_klt45.svg.png" /></div>
+<div style="position:absolute;top:400px;left:160px;"><img onclick="pieceClick('P','c3')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:320px;left:0px;"><img onclick="pieceClick('P','a4')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:320px;left:160px;"><img onclick="pieceClick('b','c4')" class="" src="icons/Chess_bdt45.svg.png" /></div>
+<div style="position:absolute;top:320px;left:240px;"><img onclick="pieceClick('P','d4')" class="" src="icons/Chess_plt45.svg.png" /></div>
+<div style="position:absolute;top:240px;left:0px;"><img onclick="pieceClick('p','a5')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:160px;left:80px;"><img onclick="pieceClick('p','b6')" class="" src="icons/Chess_pdt45.svg.png" /></div>
+<div style="position:absolute;top:160px;left:320px;"><img onclick="pieceClick('P','e6')" class="border" src="icons/Chess_plt45.svg.png" /></div>
 <div style="position:absolute;top:80px;left:160px;"><img onclick="pieceClick('p','c7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:240px;"><img onclick="pieceClick('p','d7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:320px;"><img onclick="pieceClick('p','e7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
-<div style="position:absolute;top:80px;left:400px;"><img onclick="pieceClick('p','f7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
 <div style="position:absolute;top:80px;left:480px;"><img onclick="pieceClick('p','g7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
 <div style="position:absolute;top:80px;left:560px;"><img onclick="pieceClick('p','h7')" class="" src="icons/Chess_pdt45.svg.png" /></div>
 <div style="position:absolute;top:0px;left:0px;"><img onclick="pieceClick('r','a8')" class="" src="icons/Chess_rdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:80px;"><img onclick="pieceClick('n','b8')" class="" src="icons/Chess_ndt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:160px;"><img onclick="pieceClick('b','c8')" class="" src="icons/Chess_bdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:240px;"><img onclick="pieceClick('q','d8')" class="" src="icons/Chess_qdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:320px;"><img onclick="pieceClick('k','e8')" class="" src="icons/Chess_kdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:400px;"><img onclick="pieceClick('b','f8')" class="" src="icons/Chess_bdt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:480px;"><img onclick="pieceClick('n','g8')" class="" src="icons/Chess_ndt45.svg.png" /></div>
-<div style="position:absolute;top:0px;left:560px;"><img onclick="pieceClick('r','h8')" class="" src="icons/Chess_rdt45.svg.png" /></div>
+<div style="position:absolute;top:0px;left:480px;"><img onclick="pieceClick('k','g8')" class="" src="icons/Chess_kdt45.svg.png" /></div>
 <td>8</td>
 </tr>
 
@@ -123,5 +118,166 @@ function emptyClick(event){
     <input type=button value="copy to clipboard" onclick="navigator.clipboard.writeText(moveoutput.value);"/>
     <input type=button value="clear" onclick="moveoutput.value=''"/>
 </div>
+<div>Evaluation: -180</div>
+<div>WeightedEvaluation: -244</div>
+<h3>History:</h3>
+<table border=1 class="history">
+
+<tr>
+
+<td>P to f4</td>
+<td>n to f6</td>
+</tr>
+<tr>
+
+<td>N to f3</td>
+<td>p to e6</td>
+</tr>
+<tr>
+
+<td>P to d3</td>
+<td>n to c6</td>
+</tr>
+<tr>
+
+<td>N to d2</td>
+<td>b to e7</td>
+</tr>
+<tr>
+
+<td>P to h4</td>
+<td>n to g4</td>
+</tr>
+<tr>
+
+<td>P to a3</td>
+<td>n to e3</td>
+</tr>
+<tr>
+
+<td>R to h3</td>
+<td>n x d1</td>
+</tr>
+<tr>
+
+<td>K x d1</td>
+<td>p to d5</td>
+</tr>
+<tr>
+
+<td>N to e5</td>
+<td>n x e5</td>
+</tr>
+<tr>
+
+<td>P x e5</td>
+<td>p to b6</td>
+</tr>
+<tr>
+
+<td>R to a2</td>
+<td>O-O</td>
+</tr>
+<tr>
+
+<td>P to d4</td>
+<td>p to f6</td>
+</tr>
+<tr>
+
+<td>P x f6</td>
+<td>b to d6</td>
+</tr>
+<tr>
+
+<td>R to d3</td>
+<td>q x f6</td>
+</tr>
+<tr>
+
+<td>P to b4</td>
+<td>q x h4</td>
+</tr>
+<tr>
+
+<td>P to c3</td>
+<td>p to a5</td>
+</tr>
+<tr>
+
+<td>P to b5</td>
+<td>q to h1</td>
+</tr>
+<tr>
+
+<td>K to c2</td>
+<td>r x f1</td>
+</tr>
+<tr>
+
+<td>N x f1</td>
+<td>q x f1</td>
+</tr>
+<tr>
+
+<td>K to b1</td>
+<td>q x g2</td>
+</tr>
+<tr>
+
+<td>K to a1</td>
+<td>b to d7</td>
+</tr>
+<tr>
+
+<td>R to d2</td>
+<td>q to g1</td>
+</tr>
+<tr>
+
+<td>R to c2</td>
+<td>b x b5</td>
+</tr>
+<tr>
+
+<td>P to e4</td>
+<td>q to d1</td>
+</tr>
+<tr>
+
+<td>P to a4</td>
+<td>b to d3</td>
+</tr>
+<tr>
+
+<td>P x d5</td>
+<td>b to f4</td>
+</tr>
+<tr>
+
+<td>R to b2</td>
+<td>b x c1</td>
+</tr>
+<tr>
+
+<td>R to b1</td>
+<td>q x c2</td>
+</tr>
+<tr>
+
+<td>R x c1</td>
+<td>q x c1&#43;</td>
+</tr>
+<tr>
+
+<td>K to a2</td>
+<td>b to c4&#43;</td>
+</tr>
+<tr>
+
+<td>P x e6</td>
+<td></td>
+</tr>
+</table>
 </body>
 </html>

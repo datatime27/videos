@@ -48,7 +48,6 @@ func main() {
 	} else {
 		panic("--color must be 'w' or 'b'")
 	}
-
 	ctx := boards.NewContext(int8(*depth), myColor)
 	data, err := os.ReadFile(*path)
 	if err != nil {
