@@ -71,14 +71,15 @@ func main() {
 	start := time.Now()
 	leafBoard := board.FindMoves(ctx)
 	duration := time.Duration(time.Now().Sub(start))
+
+	fmt.Printf("Leaf Move:\n%v\n\n", leafBoard.String())
+	fmt.Printf("Next Move:\n%v\n\n", leafBoard.FirstMove.String())
+
 	nodesPerSec := float64(ctx.AllNodes) / duration.Seconds()
 	leafNodesPerSec := float64(ctx.LeafNodes) / duration.Seconds()
 	fmt.Printf("Time: %v\n", duration)
 	fmt.Printf("All Nodes: %d (%.2f per sec)\n", ctx.AllNodes, nodesPerSec)
 	fmt.Printf("Leaf Nodes: %d (%.2f per sec)\n\n", ctx.LeafNodes, leafNodesPerSec)
-
-	fmt.Printf("Leaf Move:\n%v\n\n", leafBoard.String())
-	fmt.Printf("Next Move:\n%v\n\n", leafBoard.FirstMove.String())
 
 	if *acceptMove {
 		if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.Format(false)), 0666); err != nil {

@@ -348,7 +348,7 @@ func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) 
 
 func (b *Board) isCheck(ctx *Context) bool {
 	for _, move := range b.getMoves(ctx, false) {
-		fmt.Printf("captured piece %v\n", move.capturedPiece.Print(true))
+		// fmt.Printf("captured piece %v\n", move.capturedPiece.Print(true))
 		if move.capturedPiece != nil && move.capturedPiece.Class == pieces.King {
 			return true
 		}
@@ -445,7 +445,7 @@ func (b *Board) FindMoves(ctx *Context) *Board {
 func (b *Board) minimax(ctx *Context, alpha, beta int) *Board {
 	// We actually search depths 2 more than MaxDepth so that we can evalation
 	// capture moves after MaxDepth
-	if b.depth >= ctx.MaxDepth+2 || b.WeightedEvaluation == deadKing || b.WeightedEvaluation == -deadKing {
+	if b.depth >= ctx.MaxDepth*2 || b.WeightedEvaluation == deadKing || b.WeightedEvaluation == -deadKing {
 		ctx.LeafNodes++
 		return b
 	}
