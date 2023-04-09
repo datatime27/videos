@@ -121,6 +121,7 @@ type Board struct {
 	board         [8][8]int8
 	depth         int8
 	myTurn        bool
+	srcCell       [2]int
 	targetCell    [2]int
 	capturedPiece *pieces.Piece
 	isPromotion   bool
@@ -131,6 +132,9 @@ type Board struct {
 	FirstMove          *Board
 }
 
+func printCell(cell [2]int) string {
+	return printLocation(cell[0], cell[1])
+}
 func printLocation(rank, file int) string {
 	if rank < 0 || rank >= 8 || file < 0 || file >= 8 {
 		return fmt.Sprintf("Offboard[rank:%v,file:%v]", rank, file)
@@ -321,6 +325,7 @@ func (b *Board) moveCastle(ctx *Context, move string) {
 	b.board[enemyRank][srcRook] = pieces.EmptyCell // remove rook
 	b.board[enemyRank][dstRook] = rook.Encode()    // add rook
 	b.History = append(b.History, move)
+	b.srcCell = [2]int{enemyRank, dstRook}
 	b.targetCell = [2]int{enemyRank, dstKing}
 	return
 
@@ -338,6 +343,7 @@ func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) 
 	*new = *old
 	*old = pieces.EmptyCell
 
+	b.srcCell = [2]int{oldrank, oldfile}
 	b.targetCell = [2]int{newrank, newfile}
 
 	p := pieces.Decode(*new)

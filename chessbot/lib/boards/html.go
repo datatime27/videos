@@ -1,8 +1,11 @@
 package boards
 
 import (
+	"fmt"
 	"html/template"
+	"net/url"
 	"os"
+	"strings"
 
 	"chessbot/lib/pieces"
 )
@@ -109,6 +112,8 @@ function emptyClick(event){
 </tr>
 </tbody>
 </table>
+FEN: {{.Fen}}<br>
+FEN Link: <a target="fen" href="{{.FenLink}}">{{.FenLink}}</a><br>
 <div>
     <h3>move output:</h3>
     <input type=text id="moveoutput" value="" size=8/>
@@ -154,6 +159,8 @@ type Config struct {
 	History            [][2]string
 	Evaluation         int
 	WeightedEvaluation int
+	Fen                string
+	FenLink            string
 }
 type Item struct {
 	Location string
@@ -180,10 +187,14 @@ func (b *Board) WriteHTML(path string) error {
 		}
 	}
 
+	fen := b.formatFen()
+
 	config := Config{
 		Evaluation:         b.Evaluation,
 		WeightedEvaluation: b.WeightedEvaluation,
 		History:            history,
+		Fen:                fen,
+		FenLink:            b.formatFenLink(fen),
 	}
 	for rank := 0; rank < 8; rank++ {
 		for file := 0; file < 8; file++ {
@@ -207,4 +218,43 @@ func (b *Board) WriteHTML(path string) error {
 		}
 	}
 	return htmlTemplate.Execute(f, config)
+}
+
+func (b *Board) formatFenLink(fen string) string {
+	baseURL := "https://lichess1.org/export/fen.gif"
+	v := url.Values{}
+	v.Set("fen", fen)
+	v.Set("variant", "standard")
+	v.Set("theme", "brown")
+	v.Set("piece", "cburnett")
+	if b.srcCell != b.targetCell {
+		v.Set("lastMove", printCell(b.srcCell)+printCell(b.targetCell))
+	}
+	return baseURL + "?" + v.Encode()
+}
+
+func (b *Board) formatFen() string {
+	var sb strings.Builder
+	numBlankSquares := 0
+	for rank := 7; rank >= 0; rank-- {
+		for file := 0; file < 8; file++ {
+			p := pieces.Decode(b.board[rank][file])
+			if p.Class == pieces.ClassNone {
+				numBlankSquares++
+				continue
+			}
+			if numBlankSquares > 0 {
+				sb.WriteString(fmt.Sprintf("%d", numBlankSquares))
+				numBlankSquares = 0
+			}
+			sb.WriteString(p.Print(false))
+
+		}
+		if numBlankSquares > 0 {
+			sb.WriteString(fmt.Sprintf("%d", numBlankSquares))
+			numBlankSquares = 0
+		}
+		sb.WriteString("/")
+	}
+	return strings.Trim(sb.String(), "/")
 }
