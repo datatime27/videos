@@ -35,6 +35,7 @@ func StringPrompt(label string) string {
 }
 
 func main() {
+	args := os.Args
 	flag.Parse()
 	if *path == "" {
 		panic("Must provide --path")
@@ -48,13 +49,16 @@ func main() {
 	} else {
 		panic("--color must be 'w' or 'b'")
 	}
+	var board *boards.Board
 	ctx := boards.NewContext(int8(*depth), myColor)
 	data, err := os.ReadFile(*path)
-	if err != nil {
+	if os.IsNotExist(err) {
+		board = boards.NewBoard(ctx, true)
+	} else if err != nil {
 		panic(err)
+	} else {
+		board = boards.ParseBoard(ctx, data, true)
 	}
-
-	board := boards.ParseBoard(ctx, data, true)
 	fmt.Printf("%v\n", board)
 
 	move := flag.Arg(0)
@@ -85,20 +89,25 @@ func main() {
 		if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.Format(false)), 0666); err != nil {
 			panic(err)
 		}
-		if err := leafBoard.FirstMove.WriteHTML(*displayPath); err != nil {
+		if err := leafBoard.FirstMove.WriteHTML(*displayPath, args); err != nil {
 			panic(err)
 		}
 		fmt.Println("Wrote file")
+		fmt.Println(leafBoard.FirstMove.CurrentMove())
+		fmt.Println(leafBoard.FirstMove.FenLink())
 	} else {
 		answer := StringPrompt("Write file? y/n")
 		if answer != "n" {
 			if err := os.WriteFile(*path, []byte(leafBoard.FirstMove.Format(false)), 0666); err != nil {
 				panic(err)
 			}
-			if err := leafBoard.FirstMove.WriteHTML(*displayPath); err != nil {
+			if err := leafBoard.FirstMove.WriteHTML(*displayPath, args); err != nil {
 				panic(err)
 			}
 			fmt.Println("Wrote file")
+			fmt.Println(leafBoard.FirstMove.CurrentMove())
+			fmt.Println(leafBoard.FirstMove.FenLink())
+
 		}
 	}
 }

@@ -116,6 +116,55 @@ func NewContext(maxDepth int8, color pieces.Color) *Context {
 	}
 }
 
+// Standard board layout
+func NewBoard(ctx *Context, myTurn bool) *Board {
+	b := &Board{
+		depth:  0,
+		myTurn: myTurn,
+	}
+
+	// White
+	b.SetPiece("a1", "R")
+	b.SetPiece("b1", "N")
+	b.SetPiece("c1", "B")
+	b.SetPiece("d1", "Q")
+	b.SetPiece("e1", "K")
+	b.SetPiece("f1", "B")
+	b.SetPiece("g1", "N")
+	b.SetPiece("h1", "R")
+
+	b.SetPiece("a2", "P")
+	b.SetPiece("b2", "P")
+	b.SetPiece("c2", "P")
+	b.SetPiece("d2", "P")
+	b.SetPiece("e2", "P")
+	b.SetPiece("f2", "P")
+	b.SetPiece("g2", "P")
+	b.SetPiece("h2", "P")
+
+	// Black
+	b.SetPiece("a8", "r")
+	b.SetPiece("b8", "n")
+	b.SetPiece("c8", "b")
+	b.SetPiece("d8", "q")
+	b.SetPiece("e8", "k")
+	b.SetPiece("f8", "b")
+	b.SetPiece("g8", "n")
+	b.SetPiece("h8", "r")
+
+	b.SetPiece("a7", "p")
+	b.SetPiece("b7", "p")
+	b.SetPiece("c7", "p")
+	b.SetPiece("d7", "p")
+	b.SetPiece("e7", "p")
+	b.SetPiece("f7", "p")
+	b.SetPiece("g7", "p")
+	b.SetPiece("h7", "p")
+
+	b.EvaluateMaterial(ctx)
+	return b
+}
+
 // Main struct to contain the representation of the board after a given move.
 type Board struct {
 	board         [8][8]int8
@@ -239,25 +288,35 @@ func (b *Board) SetPiece(location, piece string) {
 }
 
 func (b *Board) SetMove(ctx *Context, move string) {
-	var piece *pieces.Piece
-	var src, dst string
-
 	if move == "O-O" || move == "O-O-O" {
 		b.moveCastle(ctx, move)
 	} else {
+		var piece *pieces.Piece
+		var src, dst string
+		var allowNoCaptures bool
 
-		if len(move) == 4 {
-			src = move[0:2]
-			dst = move[2:4]
-			piece = b.GetPiece(src)
-
-		} else if len(move) == 5 {
+		if len(move) == 5 { // Pd2d4
 			piece = pieces.Parse(string(move[0]))
 			src = move[1:3]
 			dst = move[3:5]
 			if piece.Class != b.GetPiece(src).Class {
 				panic("Wrong piece at source location")
 			}
+		} else if len(move) == 4 && move[1] == 'x' { // Nxc3
+			piece = pieces.Parse(string(move[0]))
+			allowNoCaptures = false
+			dst = move[2:4]
+		} else if len(move) == 3 { // Nc3
+			piece = pieces.Parse(string(move[0]))
+			allowNoCaptures = true
+			dst = move[1:3]
+		} else if len(move) == 2 { // e4
+			piece = &pieces.Piece{
+				Class: pieces.Pawn,
+				Color: pieces.OppositeColor(ctx.Color),
+			}
+			allowNoCaptures = true
+			dst = move[0:2]
 		} else {
 			panic("Unable to read move " + move)
 		}
@@ -268,11 +327,16 @@ func (b *Board) SetMove(ctx *Context, move string) {
 		if piece.IsSameColor(ctx.Color) {
 			panic("Cannot move your own piece manually")
 		}
-
-		oldfile := fileParse[string(src[0])]
-		oldrank := rankParse[string(src[1])]
 		newfile := fileParse[string(dst[0])]
 		newrank := rankParse[string(dst[1])]
+
+		var oldfile, oldrank int
+		if src != "" {
+			oldfile = fileParse[string(src[0])]
+			oldrank = rankParse[string(src[1])]
+		} else {
+			oldrank, oldfile = b.discoverSrcPiece(ctx, piece, allowNoCaptures, newrank, newfile)
+		}
 		b.MovePiece(ctx, oldrank, oldfile, newrank, newfile)
 	}
 
@@ -282,7 +346,6 @@ func (b *Board) SetMove(ctx *Context, move string) {
 		b.History[len(b.History)-1] += "+"
 	}
 	b.myTurn = myTurn
-
 }
 
 func (b *Board) moveCastle(ctx *Context, move string) {
@@ -329,6 +392,52 @@ func (b *Board) moveCastle(ctx *Context, move string) {
 	b.targetCell = [2]int{enemyRank, dstKing}
 	return
 
+}
+
+func (b *Board) discoverSrcPiece(
+	ctx *Context,
+	srcPiece *pieces.Piece,
+	allowNoCaptures bool,
+	dstrank, dstfile int) (int, int) {
+	candidateCells := [][2]int{}
+
+	for rank := 0; rank < 8; rank++ {
+		for file := 0; file < 8; file++ {
+			piece := pieces.Decode(b.board[rank][file])
+			if piece.IsSameColor(ctx.Color) { // Skip our pieces
+				continue
+			}
+			if piece.Class != srcPiece.Class { // Wrong kind of piece
+				continue
+			}
+			moves := []*Board{}
+			switch piece.Class {
+			case pieces.Pawn:
+				moves = append(moves, b.generatePawnMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			case pieces.Knight:
+				moves = append(moves, b.generateKnightMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			case pieces.Bishop, pieces.Rook, pieces.Queen, pieces.King:
+				moves = append(moves, b.generateSlidingMoves(ctx, rank, file, piece, allowNoCaptures)...)
+			default:
+				continue
+			}
+			for _, move := range moves {
+				if move.targetCell == [2]int{dstrank, dstfile} {
+					candidateCells = append(candidateCells, [2]int{rank, file})
+				}
+			}
+		}
+	}
+	if len(candidateCells) == 1 {
+		return candidateCells[0][0], candidateCells[0][1]
+	}
+	if len(candidateCells) == 0 {
+		panic("Cannot find piece to move")
+	}
+	if len(candidateCells) > 1 {
+		panic(fmt.Sprintf("There are multiple pieces that could be moved: %v", candidateCells))
+	}
+	return -1, -1
 }
 
 func (b *Board) MovePiece(ctx *Context, oldrank, oldfile, newrank, newfile int) {

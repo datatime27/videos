@@ -41,6 +41,9 @@ var (
 div{
     font-size: 24px;
 }
+pre {
+    font-size: 12px;
+}
 input {
     font-size: 24px;
 }
@@ -114,10 +117,17 @@ function emptyClick(event){
 </table>
 FEN: {{.Fen}}<br>
 FEN Link: <a target="fen" href="{{.FenLink}}">{{.FenLink}}</a><br>
+<p>
+Answer:
+<pre>
+{{.CurrentMove}}
+{{.FenLink}}
+</pre>
 <div>
     <h3>move output:</h3>
+    <pre id="cmd">{{.Cmd}}</pre>
     <input type=text id="moveoutput" value="" size=8/>
-    <input type=button value="copy to clipboard" onclick="navigator.clipboard.writeText(moveoutput.value);"/>
+    <input type=button value="copy to clipboard" onclick="navigator.clipboard.writeText(cmd.innerHTML+' '+moveoutput.value);"/>
     <input type=button value="clear" onclick="moveoutput.value=''"/>
 </div>
 <div>Evaluation: {{.Evaluation}}</div>
@@ -159,6 +169,8 @@ type Config struct {
 	History            [][2]string
 	Evaluation         int
 	WeightedEvaluation int
+	CurrentMove        string
+	Cmd                string
 	Fen                string
 	FenLink            string
 }
@@ -171,7 +183,7 @@ type Item struct {
 	Border   string
 }
 
-func (b *Board) WriteHTML(path string) error {
+func (b *Board) WriteHTML(path string, args []string) error {
 	f, err := os.Create(path)
 	if err != nil {
 		return err
@@ -189,12 +201,17 @@ func (b *Board) WriteHTML(path string) error {
 
 	fen := b.formatFen()
 
+	cmd := "go run chessbot.go "
+	cmd += strings.Join(args[1:], " ")
+
 	config := Config{
 		Evaluation:         b.Evaluation,
 		WeightedEvaluation: b.WeightedEvaluation,
 		History:            history,
 		Fen:                fen,
-		FenLink:            b.formatFenLink(fen),
+		Cmd:                cmd,
+		CurrentMove:        b.CurrentMove(),
+		FenLink:            b.FormatFenLink(fen),
 	}
 	for rank := 0; rank < 8; rank++ {
 		for file := 0; file < 8; file++ {
@@ -219,8 +236,10 @@ func (b *Board) WriteHTML(path string) error {
 	}
 	return htmlTemplate.Execute(f, config)
 }
-
-func (b *Board) formatFenLink(fen string) string {
+func (b *Board) FenLink() string {
+	return b.FormatFenLink(b.formatFen())
+}
+func (b *Board) FormatFenLink(fen string) string {
 	baseURL := "https://lichess1.org/export/fen.gif"
 	v := url.Values{}
 	v.Set("fen", fen)
@@ -231,6 +250,15 @@ func (b *Board) formatFenLink(fen string) string {
 		v.Set("lastMove", printCell(b.srcCell)+printCell(b.targetCell))
 	}
 	return baseURL + "?" + v.Encode()
+}
+func (b *Board) CurrentMove() string {
+	if len(b.History) == 0 {
+		return ""
+	}
+	move := b.History[len(b.History)-1]
+	letter := strings.ToUpper(string(move[0]))
+	name := pieces.FullName(letter)
+	return name + move[1:]
 }
 
 func (b *Board) formatFen() string {

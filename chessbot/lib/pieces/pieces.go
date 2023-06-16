@@ -36,6 +36,15 @@ var (
 		"N": Knight,
 		"P": Pawn,
 	}
+	fullName = map[string]string{
+		"K": "King",
+		"Q": "Queen",
+		"R": "Rook",
+		"B": "Bishop",
+		"N": "Knight",
+		"P": "Pawn",
+	}
+
 	print = map[Class]string{
 		ClassNone: " ",
 		King:      "K",
@@ -55,6 +64,10 @@ var (
 		Queen:     90,
 	}
 )
+
+func FullName(letter string) string {
+	return fullName[letter]
+}
 
 type Piece struct {
 	Class Class
@@ -154,6 +167,15 @@ func (p *Piece) IsOppositeColor(color Color) bool {
 		return true
 	}
 	return false
+}
+func OppositeColor(color Color) Color {
+	if color == Black {
+		return White
+	}
+	if color == White {
+		return Black
+	}
+	return ColorNone
 }
 
 func Parse(notation string) *Piece {
