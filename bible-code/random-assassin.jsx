@@ -1,0 +1,1117 @@
+
+function addColorText(layer, index, color) {
+    var animator = layer.property('Text').property('Animators').addProperty('ADBE Text Animator');
+    var colorProp = animator.property('Properties').addProperty('ADBE Text Fill Color');
+    colorProp.setValueAtTime(0,[0,0,0]);
+    colorProp.setValueAtTime(1,color);
+    var selector = animator.property('Selectors').addProperty('ADBE Text Selector');
+    var advanced = selector.property('Advanced');
+    advanced.property('Based On').setValue(2); // Characters
+    advanced.property('Units').setValue(2); // Index
+    var start = selector.property('ADBE Text Index Start').setValue(index)
+    var end = selector.property('ADBE Text Index End').setValue(index+1)
+}
+
+
+var font_size = 30;
+var tracking = 700;
+
+var positionX = 960;
+var positionY = 540;
+
+var width = 1800;
+var height = 900;
+
+var letterWidth = 22.2
+var letterHeight = 36.0
+var wrapLength = 22
+
+var originX = positionX - width/2
+var originY = positionY - height/2
+
+var text = "RSRADLMEPCPMSUMNTUSAISELTSSTHIGSGCLTRYIERLETNENGWOAPOTRTULRSATGLISLGRIERSSSACAEOWAPETEMCONCAASEFBCDFLERNOISETAUTONIRONLEEECPIRYMOSEVKNABETAROOLNNAEFRSRCIPRYTEHCORPETERTPNMSLLLHEESHCADSNIEATDISDENLREOUOHSLEPIAAHRWCEISEGAOFCORALNREAMPECADNIAOEPROEDODAADWICEARAKEVNOAEFGDOESCRAULRAUICETERTYPKSSRELGIDNEECKMIPHUFEFMIEVATAERNUCLIRNNTPTWIIWSSREACMLNLPVOIUCFNDLMIICANMMSENKDOOWFOEEUCNLPEHWLTOTARNRPFHIHEHNERPCIWNNEUATASNIMUHNLTFIOOPERAGENYRNPNSNECNHESCENILRGTIETOLUDGWRGTNAOOANCFRNRTNIRTNPINTDCOLTTECTEGGHCCEATISSGRDELDRVIDIOAHDCIADBIEECELEMREAOEAOTCLECAANDNCULIIORFEALIHEYOEMUOOSEDVFRAPMLCMINTMPDHRSTEENCOIFRSAMLNMTEAONSPOEISWTICRAOKPEPEHILNOIPARFBONAYEMMEARESTRPAIATELNESELTEEAAARLOKHITTSEENCIERNIGSRBNKSGELHORKUSNAHTESCREPOOPNEGTDETOEETLTNADUPRNNLCRYWOILPRSERSSEYRIBUIMIUETICHSOSIYITCLNMPSUATPTHOLCOURTELNFNETLSOMRBNNIWORNBOUGBEEOLYTBROIBPIRECESLAOSEEAENTAREEOLTSUGOTVSAPHEORRTOUMSTERODTACSRHLOBARSUIUTYCSAHCDILCRRKMMAOECLEECOPNNMANIARAAREARHOIRMCRLEODCNRRGLCTUHDLNESTTHIHTLHSTUIWEWESSSRHCOYLEOIPGCNVYLIASNEDEPOROTITHEAMUAESDRERHNRNOSESOLMNLCMMEILLHCCSOONWSOYEGNNEOLLREERVDIOHDEFOEEEARMLLGWMSISNCNLCDTOTEBRCLRRELNOOOCNBRENSOLCCUUINDMNSOEKRTBCHAIFEITOFEEOAEDSYRGCOCODUSYNCECRNGRUIABNDNAMNSFLMEITEBHEEIIDHRTIIWRASMACINNNAKEEOROKORSEOHMOEGSSECITSNRTATMCCTTRHIECINCROLRETDNUORCUTITDOEMRCNCRACNSAWRYANITSRTCITLRREASUHTRHNISRTMSMUOHPHEEBSEOOEAEAIEETOOIERIERMRTBRNMECIIUYAIOBUTGERDCWAROEFDMCIISICKAURMTTHEMWWYDEGFAUINRVKOUEUEEHBIOAACAIEOHOLCATNBENEIERIRIETSKNEUROMIOEIRVNNIGLIPIOCUSBAIOOWESNELGNEFNSSTIDURSBTVLOBLSIAFLIROVOYLMIOIGADPRBHRSEERNOEAEUOWEATCTOTLOOMGRNMWUTSRADRSSESOAIFDMUEHFLLRRNICMMSAOADNGPMIOTEATCTERCRESTLHSOYPUEOEOVSCRTGMYADYAATYTPRKCAYNCNLPHEATNITTNUDYATETEIRSDNORIUETDPRDSHRDAIWHARIHHGLOTREECSLNISTEILESCREIOLTIKAFLDROLCSAEAILCTREEAAESNENGWCEFBDRMROOAHSPNLMTFHUONAUNOILSGOPPLCTRTOTTEORWATSCNPONELYRFARRIUEOWASDATROLEOKNEFESRTUPBLOIATREIPNSDNIWLNIRENWGROOTFRPECRTEREOLOSOLLDMINLTERLNUSEAEBEAFCMKPIWRMSILTHREOSENORLIYPCRNHRAETSRYNNSTYPVMIPSRIHWESOMRYAMPWLCYLLERISLOGPDUEBLECEGEAASUEHCDELPORDFLAIATNLUECANIUKIEAHTAPACECVTOOIMCRCDENIASVDTEDLRETNORLIETOAHELNFIEIEAGEEKTKILENRAORAOHARSSBHEIGFRNSPPIINDRTEVGUSEENRLABYSSELRPAIMCAREMUOSRFEROSCTUPNTELLTAIONDCULKNRUNREOFAAEMLELSPANBSLTIOTONESUEMMSNRAGTAIMROROEEESUITGENRTOURANHRMFNRCLTERRNUIAUEIAIEIOLLEHELTRNIAOONCACMHIEEDDIRTRRLOSUDIWMAECIBIEETNEEAEASARIOATCLIWOOCSYURCNTIALINDCNWIEATIOTASESCTEORKMNSNBELGHNBGBUTERINISRIAEUTHPTTAATURRIPRAMSRNURBPIIINLROAPSAMESGIRITLMUSTEOSNTRLNDEHLUCNBEMRTBCFTEMLAUEWRLRRREKIRLOIANOCDNEPIIARNTETTTIETEHIRDIEALCTFWICKLEASHEUHMORODLSEUCFBTLDRSLBIATHEORDIEAVPIPMDLAIINFHGOMELASTTPLFESLROUAKLLUESNLNITRPOSRPIDDIRINGTNTMOWOMLEHSEAGPHCSPDHUAUOMTSIASHIENTCUILHTHTOEIEAGOAIREEITHNGLSSIEEIISBTRNGEKNYOATCYOPCPBICTUNAETDURSOISUSMBANELBANLTPEAFWDTYESOIEMNORTNITCRIKFBNSOEPSAUILULEAPGARTETIEAECIEWATDKLSNEFSRCRETUCHRLNRNCILMCTTTORTUSITTESAETITVURTFCODHLINVBOAFOETUNLIOLDAHENOIIIMTACRAACEPDMULAROARACGMACDTSIRNULPRDPNLOALEOAAEEICRYVEHCLNFHFNDLCMAGALNRIIFORELNDNLOBKLOCKAIESBPWNMUNHTENAMLHCAEDGLSOIOATEBPRNHNNDCRNEYSHOENEOIIILEASARAPALFRNEHLORGYRSIRCRASLEIDLITRLEAYDIDETAHNRAEIRAURSNEICTCHRTOWRDRISFEHETNKRHENSDNAHRPMPOSTOCTTLOGHTAINYRFRISAKLERBTRNRHDRIIMGELEOSYSOOTATEPAUTSNCMEERONATPTRERIUIIRRTLMEHKRNRIILAEIASPCOINEDCCEBPSTOTOSMSRCTEOORTLAAEPAEURBBNBSAKSOPRELREHEOLDDRIMETOBTNLVLEMITEOAOPNDOIRRNODRORAWTBUHFNLNFTSSITTHAECSPLSANOOOAIGEOLROIRIOOCYPUTITHBIRUSNDOMROERMKNFARODROUCWEOTPANRCASMAESPUOBFOFNERADNLIUDPGHEAEEONTMLBRDYNOACTNESDTGODNSVSNRTPSRCRMNEVRELHUAMSOHRAKSEOYKAYOMOVYWLUNUEEAYSWONUTCLRKAAAFEETSAECSMAEREOTTNTOCFHERRDYMANTSCHGELSLLIADEROAAETALRYTICPLYMEEOEPOSSPOSTTSLTOOSOAITANATUIUNTEONNELOILECPIGIEKINEMPYOSYNCPILIAORTUUIYGITLOUHGERETOEEEACEHCPSESEGVGDTTEMRNTCDTEADBRDTTNAREMEDAYPRPPRONHCEMURPMATRMIIDOIRCRAYPGNIRESEARKCADULNNELFINLTCRDIRLHLIDMAALDIREOTSOBTNOCSOAWOTOAADSILRSTAANOORBOBREEUSLIEAGUVADETHRRESPIALUERIGSDSFIAESIRDELOMALITHOMWOFTRSIKNESRBEIITTTREETOKIMUSLSCSWOOLRASSLHKONRTIEITRTACIIDBBHEICOTEFLMDARULLDTEEYRUREANCAPHOOOCOOPSNNLEHILSVIGEAEOROETRRKABEAOEAAIYCBBOHLHIIEORERL";
+
+app.beginUndoGroup('bible-code');
+var comp = app.project.activeItem;
+
+label = comp.layers.addBoxText([width,height], text);
+label.threeDLayer = true
+
+var textProp = label.property("Source Text");
+label.position.setValue([positionX, positionY]);
+var textDocument = textProp.value;
+textDocument.fontSize = font_size;
+textDocument.fillColor = [0, 0, 0];
+textDocument.tracking = tracking;
+textProp.setValue(textDocument);
+
+var animator = label.property('Text').property('Animators').addProperty('ADBE Text Animator');
+var colorProp = animator.property('Properties').addProperty('ADBE Text Fill Color');
+colorProp.setValueAtTime(0,[0,0,0]);
+colorProp.setValueAtTime(1,[0.8, 0.8, 0.8]);
+
+// "RABIN": 1169-1213 skip:11 
+addColorText(label, 1169, [0.9, 0.078259625, 0.09696952])  //R
+addColorText(label, 1180, [0.9, 0.078259625, 0.09696952])  //A
+addColorText(label, 1191, [0.9, 0.078259625, 0.09696952])  //B
+addColorText(label, 1202, [0.9, 0.078259625, 0.09696952])  //I
+addColorText(label, 1213, [0.9, 0.078259625, 0.09696952])  //N
+
+// "NIBAR": 1654-2134 skip:120 
+addColorText(label, 1654, [0.9, 0.3554536, 0.5637796])  //N
+addColorText(label, 1774, [0.9, 0.3554536, 0.5637796])  //I
+addColorText(label, 1894, [0.9, 0.3554536, 0.5637796])  //B
+addColorText(label, 2014, [0.9, 0.3554536, 0.5637796])  //A
+addColorText(label, 2134, [0.9, 0.3554536, 0.5637796])  //R
+
+// "NIBAR": 1284-2216 skip:233 
+addColorText(label, 1284, [0.9, 0.0153410975, 0.2])  //N
+addColorText(label, 1517, [0.9, 0.0153410975, 0.2])  //I
+addColorText(label, 1750, [0.9, 0.0153410975, 0.2])  //B
+addColorText(label, 1983, [0.9, 0.0153410975, 0.2])  //A
+addColorText(label, 2216, [0.9, 0.0153410975, 0.2])  //R
+
+// "LEHI": 969-990 skip:7 
+addColorText(label, 969, [0.5, 0.5, 0.0])  //L
+addColorText(label, 976, [0.5, 0.5, 0.0])  //E
+addColorText(label, 983, [0.5, 0.5, 0.0])  //H
+addColorText(label, 990, [0.5, 0.5, 0.0])  //I
+
+// "LEHI": 906-1254 skip:116 
+addColorText(label, 906, [0.9, 0.0, 0.493142])  //L
+addColorText(label, 1022, [0.9, 0.0, 0.493142])  //E
+addColorText(label, 1138, [0.9, 0.0, 0.493142])  //H
+addColorText(label, 1254, [0.9, 0.0, 0.493142])  //I
+
+// "SHOT": 1494-1839 skip:115 
+addColorText(label, 1494, [0.9269868, 0.0, 0.0])  //S
+addColorText(label, 1609, [0.9269868, 0.0, 0.0])  //H
+addColorText(label, 1724, [0.9269868, 0.0, 0.0])  //O
+addColorText(label, 1839, [0.9269868, 0.0, 0.0])  //T
+
+// "DEAD": 958-1666 skip:236 
+addColorText(label, 958, [0.1, 0.2, 0.9])  //D
+addColorText(label, 1194, [0.1, 0.2, 0.9])  //E
+addColorText(label, 1430, [0.1, 0.2, 0.9])  //A
+addColorText(label, 1666, [0.1, 0.2, 0.9])  //D
+
+// "DEAD": 904-1588 skip:228 
+addColorText(label, 904, [0.2, 0.9, 0.3])  //D
+addColorText(label, 1132, [0.2, 0.9, 0.3])  //E
+addColorText(label, 1360, [0.2, 0.9, 0.3])  //A
+addColorText(label, 1588, [0.2, 0.9, 0.3])  //D
+
+// "RIMA": 1870-2893 skip:341 
+addColorText(label, 1870, [0.2, 0.4, 0.0])  //R
+addColorText(label, 2211, [0.2, 0.4, 0.0])  //I
+addColorText(label, 2552, [0.2, 0.4, 0.0])  //M
+addColorText(label, 2893, [0.2, 0.4, 0.0])  //A
+
+// "LAGI": 1083-2124 skip:347 
+addColorText(label, 1083, [0.2, 0.7, 0.0])  //L
+addColorText(label, 1430, [0.2, 0.7, 0.0])  //A
+addColorText(label, 1777, [0.2, 0.7, 0.0])  //G
+addColorText(label, 2124, [0.2, 0.7, 0.0])  //I
+
+// "DEAD": 1995-3036 skip:347 
+addColorText(label, 1995, [0.1, 0.7, 0.0])  //D
+addColorText(label, 2342, [0.1, 0.7, 0.0])  //E
+addColorText(label, 2689, [0.1, 0.7, 0.0])  //A
+addColorText(label, 3036, [0.1, 0.7, 0.0])  //D
+
+/*
+// "TSEHC": 24-1268 skip:311 
+addColorText(label, 24, [0.4, 0.4, 0.9])  //T
+addColorText(label, 335, [0.4, 0.4, 0.9])  //S
+addColorText(label, 646, [0.4, 0.4, 0.9])  //E
+addColorText(label, 957, [0.4, 0.4, 0.9])  //H
+addColorText(label, 1268, [0.4, 0.4, 0.9])  //C
+
+// "TSEHC": 804-2516 skip:428 
+addColorText(label, 804, [0.9, 0.0, 0.9])  //T
+addColorText(label, 1232, [0.9, 0.0, 0.9])  //S
+addColorText(label, 1660, [0.9, 0.0, 0.9])  //E
+addColorText(label, 2088, [0.9, 0.0, 0.9])  //H
+addColorText(label, 2516, [0.9, 0.0, 0.9])  //C
+
+
+
+// "IHEL": 813-1506 skip:231 
+addColorText(label, 813, [0.0, 0.3581842, 0.9])  //I
+addColorText(label, 1044, [0.0, 0.3581842, 0.9])  //H
+addColorText(label, 1275, [0.0, 0.3581842, 0.9])  //E
+addColorText(label, 1506, [0.0, 0.3581842, 0.9])  //L
+
+// "RIMA": 651-2304 skip:551 
+addColorText(label, 651, [0.6046603, 0.47025454, 0.6645601])  //R
+addColorText(label, 1202, [0.6046603, 0.47025454, 0.6645601])  //I
+addColorText(label, 1753, [0.6046603, 0.47025454, 0.6645601])  //M
+addColorText(label, 2304, [0.6046603, 0.47025454, 0.6645601])  //A
+
+
+
+// "IHEL": 2072-2120 skip:16 
+addColorText(label, 2072, [0.30091187, 0.25760633, 0.81363994])  //I
+addColorText(label, 2088, [0.30091187, 0.25760633, 0.81363994])  //H
+addColorText(label, 2104, [0.30091187, 0.25760633, 0.81363994])  //E
+addColorText(label, 2120, [0.30091187, 0.25760633, 0.81363994])  //L
+
+// "LAGI": 1185-1254 skip:23 
+addColorText(label, 1185, [0.21426387, 0.1903286, 0.31805816])  //L
+addColorText(label, 1208, [0.21426387, 0.1903286, 0.31805816])  //A
+addColorText(label, 1231, [0.21426387, 0.1903286, 0.31805816])  //G
+addColorText(label, 1254, [0.21426387, 0.1903286, 0.31805816])  //I
+
+// "LEHI": 2157-2256 skip:33 
+addColorText(label, 2157, [0.46888983, 0.14151707, 0.29310185])  //L
+addColorText(label, 2190, [0.46888983, 0.14151707, 0.29310185])  //E
+addColorText(label, 2223, [0.46888983, 0.14151707, 0.29310185])  //H
+addColorText(label, 2256, [0.46888983, 0.14151707, 0.29310185])  //I
+
+// "AMIR": 999-1104 skip:35 
+addColorText(label, 999, [0.67908466, 0.109276526, 0.20318687])  //A
+addColorText(label, 1034, [0.67908466, 0.109276526, 0.20318687])  //M
+addColorText(label, 1069, [0.67908466, 0.109276526, 0.20318687])  //I
+addColorText(label, 1104, [0.67908466, 0.109276526, 0.20318687])  //R
+
+// "LEHI": 805-928 skip:41 
+addColorText(label, 805, [0.3608714, 0.28533664, 0.8624914])  //L
+addColorText(label, 846, [0.3608714, 0.28533664, 0.8624914])  //E
+addColorText(label, 887, [0.3608714, 0.28533664, 0.8624914])  //H
+addColorText(label, 928, [0.3608714, 0.28533664, 0.8624914])  //I
+
+// "IHEL": 1966-2113 skip:49 
+addColorText(label, 1966, [0.29311424, 0.14854129, 0.752573])  //I
+addColorText(label, 2015, [0.29311424, 0.14854129, 0.752573])  //H
+addColorText(label, 2064, [0.29311424, 0.14854129, 0.752573])  //E
+addColorText(label, 2113, [0.29311424, 0.14854129, 0.752573])  //L
+
+// "TOHS": 872-1019 skip:49 
+addColorText(label, 872, [0.20658267, 0.4326675, 0.69671917])  //T
+addColorText(label, 921, [0.20658267, 0.4326675, 0.69671917])  //O
+addColorText(label, 970, [0.20658267, 0.4326675, 0.69671917])  //H
+addColorText(label, 1019, [0.20658267, 0.4326675, 0.69671917])  //S
+
+// "IGAL": 2009-2180 skip:57 
+addColorText(label, 2009, [0.5238203, 0.0141515415, 0.15832828])  //I
+addColorText(label, 2066, [0.5238203, 0.0141515415, 0.15832828])  //G
+addColorText(label, 2123, [0.5238203, 0.0141515415, 0.15832828])  //A
+addColorText(label, 2180, [0.5238203, 0.0141515415, 0.15832828])  //L
+
+// "RIMA": 2228-2405 skip:59 
+addColorText(label, 2228, [0.60725343, 0.4876208, 0.079453625])  //R
+addColorText(label, 2287, [0.60725343, 0.4876208, 0.079453625])  //I
+addColorText(label, 2346, [0.60725343, 0.4876208, 0.079453625])  //M
+addColorText(label, 2405, [0.60725343, 0.4876208, 0.079453625])  //A
+
+// "LAYE": 1513-1729 skip:72 
+addColorText(label, 1513, [0.5948086, 0.029560326, 0.6920246])  //L
+addColorText(label, 1585, [0.5948086, 0.029560326, 0.6920246])  //A
+addColorText(label, 1657, [0.5948086, 0.029560326, 0.6920246])  //Y
+addColorText(label, 1729, [0.5948086, 0.029560326, 0.6920246])  //E
+
+// "SHOT": 1317-1542 skip:75 
+addColorText(label, 1317, [0.30152267, 0.086633116, 0.54109985])  //S
+addColorText(label, 1392, [0.30152267, 0.086633116, 0.54109985])  //H
+addColorText(label, 1467, [0.30152267, 0.086633116, 0.54109985])  //O
+addColorText(label, 1542, [0.30152267, 0.086633116, 0.54109985])  //T
+
+// "RIMA": 426-657 skip:77 
+addColorText(label, 426, [0.5441556, 0.13925381, 0.4231522])  //R
+addColorText(label, 503, [0.5441556, 0.13925381, 0.4231522])  //I
+addColorText(label, 580, [0.5441556, 0.13925381, 0.4231522])  //M
+addColorText(label, 657, [0.5441556, 0.13925381, 0.4231522])  //A
+
+// "IHEL": 514-742 skip:76 
+addColorText(label, 514, [0.5305857, 0.12677024, 0.282081])  //I
+addColorText(label, 590, [0.5305857, 0.12677024, 0.282081])  //H
+addColorText(label, 666, [0.5305857, 0.12677024, 0.282081])  //E
+addColorText(label, 742, [0.5305857, 0.12677024, 0.282081])  //L
+
+// "IHEL": 1907-2147 skip:80 
+addColorText(label, 1907, [0.7886049, 0.18090273, 0.8805431])  //I
+addColorText(label, 1987, [0.7886049, 0.18090273, 0.8805431])  //H
+addColorText(label, 2067, [0.7886049, 0.18090273, 0.8805431])  //E
+addColorText(label, 2147, [0.7886049, 0.18090273, 0.8805431])  //L
+
+// "LEHI": 2148-2457 skip:103 
+addColorText(label, 2148, [0.29711226, 0.44718087, 0.097454615])  //L
+addColorText(label, 2251, [0.29711226, 0.44718087, 0.097454615])  //E
+addColorText(label, 2354, [0.29711226, 0.44718087, 0.097454615])  //H
+addColorText(label, 2457, [0.29711226, 0.44718087, 0.097454615])  //I
+
+// "LAYE": 543-846 skip:101 
+addColorText(label, 543, [0.97691685, 0.0371455, 0.22228941])  //L
+addColorText(label, 644, [0.97691685, 0.0371455, 0.22228941])  //A
+addColorText(label, 745, [0.97691685, 0.0371455, 0.22228941])  //Y
+addColorText(label, 846, [0.97691685, 0.0371455, 0.22228941])  //E
+
+// "LAGI": 2157-2457 skip:100 
+addColorText(label, 2157, [0.6810783, 0.12075754, 0.31152245])  //L
+addColorText(label, 2257, [0.6810783, 0.12075754, 0.31152245])  //A
+addColorText(label, 2357, [0.6810783, 0.12075754, 0.31152245])  //G
+addColorText(label, 2457, [0.6810783, 0.12075754, 0.31152245])  //I
+
+// "IHEL": 1842-2157 skip:105 
+addColorText(label, 1842, [0.9328464, 0.37092447, 0.801055])  //I
+addColorText(label, 1947, [0.9328464, 0.37092447, 0.801055])  //H
+addColorText(label, 2052, [0.9328464, 0.37092447, 0.801055])  //E
+addColorText(label, 2157, [0.9328464, 0.37092447, 0.801055])  //L
+
+// "RIMA": 1104-1422 skip:106 
+addColorText(label, 1104, [0.73023146, 0.091462456, 0.4283571])  //R
+addColorText(label, 1210, [0.73023146, 0.091462456, 0.4283571])  //I
+addColorText(label, 1316, [0.73023146, 0.091462456, 0.4283571])  //M
+addColorText(label, 1422, [0.73023146, 0.091462456, 0.4283571])  //A
+
+// "LAGI": 1873-2200 skip:109 
+addColorText(label, 1873, [0.89699197, 0.34132674, 0.97892934])  //L
+addColorText(label, 1982, [0.89699197, 0.34132674, 0.97892934])  //A
+addColorText(label, 2091, [0.89699197, 0.34132674, 0.97892934])  //G
+addColorText(label, 2200, [0.89699197, 0.34132674, 0.97892934])  //I
+
+
+
+// "IGAL": 2090-2459 skip:123 
+addColorText(label, 2090, [0.64948946, 0.2758825, 0.7558235])  //I
+addColorText(label, 2213, [0.64948946, 0.2758825, 0.7558235])  //G
+addColorText(label, 2336, [0.64948946, 0.2758825, 0.7558235])  //A
+addColorText(label, 2459, [0.64948946, 0.2758825, 0.7558235])  //L
+
+// "TOHS": 2273-2657 skip:128 
+addColorText(label, 2273, [0.4038033, 0.06532556, 0.9859647])  //T
+addColorText(label, 2401, [0.4038033, 0.06532556, 0.9859647])  //O
+addColorText(label, 2529, [0.4038033, 0.06532556, 0.9859647])  //H
+addColorText(label, 2657, [0.4038033, 0.06532556, 0.9859647])  //S
+
+// "LAYE": 1850-2249 skip:133 
+addColorText(label, 1850, [0.89634174, 0.16104199, 0.7211478])  //L
+addColorText(label, 1983, [0.89634174, 0.16104199, 0.7211478])  //A
+addColorText(label, 2116, [0.89634174, 0.16104199, 0.7211478])  //Y
+addColorText(label, 2249, [0.89634174, 0.16104199, 0.7211478])  //E
+
+// "AMIR": 1814-2228 skip:138 
+addColorText(label, 1814, [0.6445398, 0.042760253, 0.6695753])  //A
+addColorText(label, 1952, [0.6445398, 0.042760253, 0.6695753])  //M
+addColorText(label, 2090, [0.6445398, 0.042760253, 0.6695753])  //I
+addColorText(label, 2228, [0.6445398, 0.042760253, 0.6695753])  //R
+
+// "RIMA": 1911-2331 skip:140 
+addColorText(label, 1911, [0.6227283, 0.18484642, 0.23682255])  //R
+addColorText(label, 2051, [0.6227283, 0.18484642, 0.23682255])  //I
+addColorText(label, 2191, [0.6227283, 0.18484642, 0.23682255])  //M
+addColorText(label, 2331, [0.6227283, 0.18484642, 0.23682255])  //A
+
+// "AMIR": 1175-1604 skip:143 
+addColorText(label, 1175, [0.5352819, 0.09362305, 0.2388407])  //A
+addColorText(label, 1318, [0.5352819, 0.09362305, 0.2388407])  //M
+addColorText(label, 1461, [0.5352819, 0.09362305, 0.2388407])  //I
+addColorText(label, 1604, [0.5352819, 0.09362305, 0.2388407])  //R
+
+// "SHOT": 1163-1595 skip:144 
+addColorText(label, 1163, [0.6280982, 0.063376464, 0.2813303])  //S
+addColorText(label, 1307, [0.6280982, 0.063376464, 0.2813303])  //H
+addColorText(label, 1451, [0.6280982, 0.063376464, 0.2813303])  //O
+addColorText(label, 1595, [0.6280982, 0.063376464, 0.2813303])  //T
+
+// "DAED": 515-947 skip:144 
+addColorText(label, 515, [0.41032284, 0.21745624, 0.625095])  //D
+addColorText(label, 659, [0.41032284, 0.21745624, 0.625095])  //A
+addColorText(label, 803, [0.41032284, 0.21745624, 0.625095])  //E
+addColorText(label, 947, [0.41032284, 0.21745624, 0.625095])  //D
+
+// "SHOT": 864-1308 skip:148 
+addColorText(label, 864, [0.55014694, 0.3118044, 0.72918075])  //S
+addColorText(label, 1012, [0.55014694, 0.3118044, 0.72918075])  //H
+addColorText(label, 1160, [0.55014694, 0.3118044, 0.72918075])  //O
+addColorText(label, 1308, [0.55014694, 0.3118044, 0.72918075])  //T
+
+// "DEAD": 2270-2717 skip:149 
+addColorText(label, 2270, [0.8305339, 0.00025690775, 0.7360686])  //D
+addColorText(label, 2419, [0.8305339, 0.00025690775, 0.7360686])  //E
+addColorText(label, 2568, [0.8305339, 0.00025690775, 0.7360686])  //A
+addColorText(label, 2717, [0.8305339, 0.00025690775, 0.7360686])  //D
+
+// "LAGI": 780-1236 skip:152 
+addColorText(label, 780, [0.39998376, 0.24893406, 0.6039781])  //L
+addColorText(label, 932, [0.39998376, 0.24893406, 0.6039781])  //A
+addColorText(label, 1084, [0.39998376, 0.24893406, 0.6039781])  //G
+addColorText(label, 1236, [0.39998376, 0.24893406, 0.6039781])  //I
+
+// "LEHI": 888-1344 skip:152 
+addColorText(label, 888, [0.4096183, 0.014835641, 0.0019038945])  //L
+addColorText(label, 1040, [0.4096183, 0.014835641, 0.0019038945])  //E
+addColorText(label, 1192, [0.4096183, 0.014835641, 0.0019038945])  //H
+addColorText(label, 1344, [0.4096183, 0.014835641, 0.0019038945])  //I
+
+// "DEAD": 904-1369 skip:155 
+addColorText(label, 904, [0.0028430412, 0.45791066, 0.5898342])  //D
+addColorText(label, 1059, [0.0028430412, 0.45791066, 0.5898342])  //E
+addColorText(label, 1214, [0.0028430412, 0.45791066, 0.5898342])  //A
+addColorText(label, 1369, [0.0028430412, 0.45791066, 0.5898342])  //D
+
+// "AMIR": 883-1351 skip:156 
+addColorText(label, 883, [0.55939245, 0.4077026, 0.87801176])  //A
+addColorText(label, 1039, [0.55939245, 0.4077026, 0.87801176])  //M
+addColorText(label, 1195, [0.55939245, 0.4077026, 0.87801176])  //I
+addColorText(label, 1351, [0.55939245, 0.4077026, 0.87801176])  //R
+
+// "RIMA": 1807-2284 skip:159 
+addColorText(label, 1807, [0.45844248, 0.3000828, 0.02626515])  //R
+addColorText(label, 1966, [0.45844248, 0.3000828, 0.02626515])  //I
+addColorText(label, 2125, [0.45844248, 0.3000828, 0.02626515])  //M
+addColorText(label, 2284, [0.45844248, 0.3000828, 0.02626515])  //A
+
+// "IHEL": 1517-2003 skip:162 
+addColorText(label, 1517, [0.84583277, 0.1248466, 0.6417843])  //I
+addColorText(label, 1679, [0.84583277, 0.1248466, 0.6417843])  //H
+addColorText(label, 1841, [0.84583277, 0.1248466, 0.6417843])  //E
+addColorText(label, 2003, [0.84583277, 0.1248466, 0.6417843])  //L
+
+// "DAED": 247-736 skip:163 
+addColorText(label, 247, [0.24746661, 0.08682792, 0.5926238])  //D
+addColorText(label, 410, [0.24746661, 0.08682792, 0.5926238])  //A
+addColorText(label, 573, [0.24746661, 0.08682792, 0.5926238])  //E
+addColorText(label, 736, [0.24746661, 0.08682792, 0.5926238])  //D
+
+// "SHOT": 1445-1937 skip:164 
+addColorText(label, 1445, [0.81439453, 0.34691906, 0.030322548])  //S
+addColorText(label, 1609, [0.81439453, 0.34691906, 0.030322548])  //H
+addColorText(label, 1773, [0.81439453, 0.34691906, 0.030322548])  //O
+addColorText(label, 1937, [0.81439453, 0.34691906, 0.030322548])  //T
+
+// "IHEL": 1143-1644 skip:167 
+addColorText(label, 1143, [0.5392101, 0.4878374, 0.75076306])  //I
+addColorText(label, 1310, [0.5392101, 0.4878374, 0.75076306])  //H
+addColorText(label, 1477, [0.5392101, 0.4878374, 0.75076306])  //E
+addColorText(label, 1644, [0.5392101, 0.4878374, 0.75076306])  //L
+
+// "TOHS": 2016-2523 skip:169 
+addColorText(label, 2016, [0.29400632, 0.37658063, 0.15096405])  //T
+addColorText(label, 2185, [0.29400632, 0.37658063, 0.15096405])  //O
+addColorText(label, 2354, [0.29400632, 0.37658063, 0.15096405])  //H
+addColorText(label, 2523, [0.29400632, 0.37658063, 0.15096405])  //S
+
+// "AMIR": 2055-2565 skip:170 
+addColorText(label, 2055, [0.35576728, 0.41596544, 0.23183005])  //A
+addColorText(label, 2225, [0.35576728, 0.41596544, 0.23183005])  //M
+addColorText(label, 2395, [0.35576728, 0.41596544, 0.23183005])  //I
+addColorText(label, 2565, [0.35576728, 0.41596544, 0.23183005])  //R
+
+// "RIMA": 2195-2714 skip:173 
+addColorText(label, 2195, [0.6278346, 0.24919716, 0.08983609])  //R
+addColorText(label, 2368, [0.6278346, 0.24919716, 0.08983609])  //I
+addColorText(label, 2541, [0.6278346, 0.24919716, 0.08983609])  //M
+addColorText(label, 2714, [0.6278346, 0.24919716, 0.08983609])  //A
+
+// "LEHI": 1042-1567 skip:175 
+addColorText(label, 1042, [0.02519396, 0.19610809, 0.58938307])  //L
+addColorText(label, 1217, [0.02519396, 0.19610809, 0.58938307])  //E
+addColorText(label, 1392, [0.02519396, 0.19610809, 0.58938307])  //H
+addColorText(label, 1567, [0.02519396, 0.19610809, 0.58938307])  //I
+
+// "IHEL": 413-944 skip:177 
+addColorText(label, 413, [0.9296116, 0.2860434, 0.5885763])  //I
+addColorText(label, 590, [0.9296116, 0.2860434, 0.5885763])  //H
+addColorText(label, 767, [0.9296116, 0.2860434, 0.5885763])  //E
+addColorText(label, 944, [0.9296116, 0.2860434, 0.5885763])  //L
+
+// "EYAL": 564-1107 skip:181 
+addColorText(label, 564, [0.41176268, 0.2762902, 0.4916074])  //E
+addColorText(label, 745, [0.41176268, 0.2762902, 0.4916074])  //Y
+addColorText(label, 926, [0.41176268, 0.2762902, 0.4916074])  //A
+addColorText(label, 1107, [0.41176268, 0.2762902, 0.4916074])  //L
+
+// "LAYE": 1576-2119 skip:181 
+addColorText(label, 1576, [0.95795393, 0.39860427, 0.10738111])  //L
+addColorText(label, 1757, [0.95795393, 0.39860427, 0.10738111])  //A
+addColorText(label, 1938, [0.95795393, 0.39860427, 0.10738111])  //Y
+addColorText(label, 2119, [0.95795393, 0.39860427, 0.10738111])  //E
+
+// "AMIR": 2019-2565 skip:182 
+addColorText(label, 2019, [0.783035, 0.1966255, 0.13041385])  //A
+addColorText(label, 2201, [0.783035, 0.1966255, 0.13041385])  //M
+addColorText(label, 2383, [0.783035, 0.1966255, 0.13041385])  //I
+addColorText(label, 2565, [0.783035, 0.1966255, 0.13041385])  //R
+
+// "RIMA": 426-999 skip:191 
+addColorText(label, 426, [0.19003277, 0.3699129, 0.6540414])  //R
+addColorText(label, 617, [0.19003277, 0.3699129, 0.6540414])  //I
+addColorText(label, 808, [0.19003277, 0.3699129, 0.6540414])  //M
+addColorText(label, 999, [0.19003277, 0.3699129, 0.6540414])  //A
+
+// "SHOT": 1029-1623 skip:198 
+addColorText(label, 1029, [0.09838379, 0.26019013, 0.099729665])  //S
+addColorText(label, 1227, [0.09838379, 0.26019013, 0.099729665])  //H
+addColorText(label, 1425, [0.09838379, 0.26019013, 0.099729665])  //O
+addColorText(label, 1623, [0.09838379, 0.26019013, 0.099729665])  //T
+
+// "LEHI": 2230-2824 skip:198 
+addColorText(label, 2230, [0.1518434, 0.03809513, 0.31520808])  //L
+addColorText(label, 2428, [0.1518434, 0.03809513, 0.31520808])  //E
+addColorText(label, 2626, [0.1518434, 0.03809513, 0.31520808])  //H
+addColorText(label, 2824, [0.1518434, 0.03809513, 0.31520808])  //I
+
+// "EYAL": 1414-2050 skip:212 
+addColorText(label, 1414, [0.15965092, 0.06890203, 0.32261068])  //E
+addColorText(label, 1626, [0.15965092, 0.06890203, 0.32261068])  //Y
+addColorText(label, 1838, [0.15965092, 0.06890203, 0.32261068])  //A
+addColorText(label, 2050, [0.15965092, 0.06890203, 0.32261068])  //L
+
+
+// "SHOT": 971-1652 skip:227 
+addColorText(label, 971, [0.68417513, 0.32652012, 0.5244998])  //S
+addColorText(label, 1198, [0.68417513, 0.32652012, 0.5244998])  //H
+addColorText(label, 1425, [0.68417513, 0.32652012, 0.5244998])  //O
+addColorText(label, 1652, [0.68417513, 0.32652012, 0.5244998])  //T
+
+
+
+// "TOHS": 489-1206 skip:239 
+addColorText(label, 489, [0.34431502, 0.1264999, 0.21647115])  //T
+addColorText(label, 728, [0.34431502, 0.1264999, 0.21647115])  //O
+addColorText(label, 967, [0.34431502, 0.1264999, 0.21647115])  //H
+addColorText(label, 1206, [0.34431502, 0.1264999, 0.21647115])  //S
+
+// "LEHI": 749-1466 skip:239 
+addColorText(label, 749, [0.55500215, 0.20103543, 0.5064971])  //L
+addColorText(label, 988, [0.55500215, 0.20103543, 0.5064971])  //E
+addColorText(label, 1227, [0.55500215, 0.20103543, 0.5064971])  //H
+addColorText(label, 1466, [0.55500215, 0.20103543, 0.5064971])  //I
+
+// "LEHI": 293-1010 skip:239 
+addColorText(label, 293, [0.16867967, 0.16568413, 0.8279281])  //L
+addColorText(label, 532, [0.16867967, 0.16568413, 0.8279281])  //E
+addColorText(label, 771, [0.16867967, 0.16568413, 0.8279281])  //H
+addColorText(label, 1010, [0.16867967, 0.16568413, 0.8279281])  //I
+
+// "DAED": 1816-2533 skip:239 
+addColorText(label, 1816, [0.7002879, 0.02896313, 0.9991595])  //D
+addColorText(label, 2055, [0.7002879, 0.02896313, 0.9991595])  //A
+addColorText(label, 2294, [0.7002879, 0.02896313, 0.9991595])  //E
+addColorText(label, 2533, [0.7002879, 0.02896313, 0.9991595])  //D
+
+// "SHOT": 1709-2423 skip:238 
+addColorText(label, 1709, [0.41154036, 0.05583732, 0.7807541])  //S
+addColorText(label, 1947, [0.41154036, 0.05583732, 0.7807541])  //H
+addColorText(label, 2185, [0.41154036, 0.05583732, 0.7807541])  //O
+addColorText(label, 2423, [0.41154036, 0.05583732, 0.7807541])  //T
+
+// "IHEL": 323-1043 skip:240 
+addColorText(label, 323, [0.09211762, 0.026747312, 0.7146958])  //I
+addColorText(label, 563, [0.09211762, 0.026747312, 0.7146958])  //H
+addColorText(label, 803, [0.09211762, 0.026747312, 0.7146958])  //E
+addColorText(label, 1043, [0.09211762, 0.026747312, 0.7146958])  //L
+
+// "RIMA": 886-1648 skip:254 
+addColorText(label, 886, [0.25076228, 0.42431647, 0.9738819])  //R
+addColorText(label, 1140, [0.25076228, 0.42431647, 0.9738819])  //I
+addColorText(label, 1394, [0.25076228, 0.42431647, 0.9738819])  //M
+addColorText(label, 1648, [0.25076228, 0.42431647, 0.9738819])  //A
+
+// "RIMA": 139-901 skip:254 
+addColorText(label, 139, [0.21256095, 0.010766892, 0.9451948])  //R
+addColorText(label, 393, [0.21256095, 0.010766892, 0.9451948])  //I
+addColorText(label, 647, [0.21256095, 0.010766892, 0.9451948])  //M
+addColorText(label, 901, [0.21256095, 0.010766892, 0.9451948])  //A
+
+// "EYAL": 730-1498 skip:256 
+addColorText(label, 730, [0.092970155, 0.3229167, 0.31188554])  //E
+addColorText(label, 986, [0.092970155, 0.3229167, 0.31188554])  //Y
+addColorText(label, 1242, [0.092970155, 0.3229167, 0.31188554])  //A
+addColorText(label, 1498, [0.092970155, 0.3229167, 0.31188554])  //L
+
+// "TOHS": 1542-2313 skip:257 
+addColorText(label, 1542, [0.44846436, 0.24361962, 0.08247968])  //T
+addColorText(label, 1799, [0.44846436, 0.24361962, 0.08247968])  //O
+addColorText(label, 2056, [0.44846436, 0.24361962, 0.08247968])  //H
+addColorText(label, 2313, [0.44846436, 0.24361962, 0.08247968])  //S
+
+// "AMIR": 1332-2112 skip:260 
+addColorText(label, 1332, [0.6718291, 0.20009415, 0.9002752])  //A
+addColorText(label, 1592, [0.6718291, 0.20009415, 0.9002752])  //M
+addColorText(label, 1852, [0.6718291, 0.20009415, 0.9002752])  //I
+addColorText(label, 2112, [0.6718291, 0.20009415, 0.9002752])  //R
+
+// "IHEL": 303-1083 skip:260 
+addColorText(label, 303, [0.9498832, 0.15966563, 0.4993855])  //I
+addColorText(label, 563, [0.9498832, 0.15966563, 0.4993855])  //H
+addColorText(label, 823, [0.9498832, 0.15966563, 0.4993855])  //E
+addColorText(label, 1083, [0.9498832, 0.15966563, 0.4993855])  //L
+
+// "LEHI": 174-966 skip:264 
+addColorText(label, 174, [0.40043232, 0.009904335, 0.64503884])  //L
+addColorText(label, 438, [0.40043232, 0.009904335, 0.64503884])  //E
+addColorText(label, 702, [0.40043232, 0.009904335, 0.64503884])  //H
+addColorText(label, 966, [0.40043232, 0.009904335, 0.64503884])  //I
+
+// "DAED": 1972-2770 skip:266 
+addColorText(label, 1972, [0.42868844, 0.16979837, 0.8874475])  //D
+addColorText(label, 2238, [0.42868844, 0.16979837, 0.8874475])  //A
+addColorText(label, 2504, [0.42868844, 0.16979837, 0.8874475])  //E
+addColorText(label, 2770, [0.42868844, 0.16979837, 0.8874475])  //D
+
+// "TOHS": 872-1703 skip:277 
+addColorText(label, 872, [0.23632747, 0.3825041, 0.035754647])  //T
+addColorText(label, 1149, [0.23632747, 0.3825041, 0.035754647])  //O
+addColorText(label, 1426, [0.23632747, 0.3825041, 0.035754647])  //H
+addColorText(label, 1703, [0.23632747, 0.3825041, 0.035754647])  //S
+
+// "IHEL": 1041-1887 skip:282 
+addColorText(label, 1041, [0.72757727, 0.3129183, 0.5130875])  //I
+addColorText(label, 1323, [0.72757727, 0.3129183, 0.5130875])  //H
+addColorText(label, 1605, [0.72757727, 0.3129183, 0.5130875])  //E
+addColorText(label, 1887, [0.72757727, 0.3129183, 0.5130875])  //L
+
+// "EYAL": 1328-2180 skip:284 
+addColorText(label, 1328, [0.07244836, 0.36211452, 0.87984484])  //E
+addColorText(label, 1612, [0.07244836, 0.36211452, 0.87984484])  //Y
+addColorText(label, 1896, [0.07244836, 0.36211452, 0.87984484])  //A
+addColorText(label, 2180, [0.07244836, 0.36211452, 0.87984484])  //L
+
+// "DAED": 1666-2533 skip:289 
+addColorText(label, 1666, [0.9777635, 0.42375013, 0.83219796])  //D
+addColorText(label, 1955, [0.9777635, 0.42375013, 0.83219796])  //A
+addColorText(label, 2244, [0.9777635, 0.42375013, 0.83219796])  //E
+addColorText(label, 2533, [0.9777635, 0.42375013, 0.83219796])  //D
+
+// "SHOT": 1936-2797 skip:287 
+addColorText(label, 1936, [0.24784452, 0.45669952, 0.07503721])  //S
+addColorText(label, 2223, [0.24784452, 0.45669952, 0.07503721])  //H
+addColorText(label, 2510, [0.24784452, 0.45669952, 0.07503721])  //O
+addColorText(label, 2797, [0.24784452, 0.45669952, 0.07503721])  //T
+
+// "EYAL": 1324-2230 skip:302 
+addColorText(label, 1324, [0.8351038, 0.31466585, 0.7517406])  //E
+addColorText(label, 1626, [0.8351038, 0.31466585, 0.7517406])  //Y
+addColorText(label, 1928, [0.8351038, 0.31466585, 0.7517406])  //A
+addColorText(label, 2230, [0.8351038, 0.31466585, 0.7517406])  //L
+
+// "DAED": 1681-2587 skip:302 
+addColorText(label, 1681, [0.6320034, 0.048467107, 0.01482737])  //D
+addColorText(label, 1983, [0.6320034, 0.048467107, 0.01482737])  //A
+addColorText(label, 2285, [0.6320034, 0.048467107, 0.01482737])  //E
+addColorText(label, 2587, [0.6320034, 0.048467107, 0.01482737])  //D
+
+// "DAED": 1072-1972 skip:300 
+addColorText(label, 1072, [0.58383477, 0.034378096, 0.9982738])  //D
+addColorText(label, 1372, [0.58383477, 0.034378096, 0.9982738])  //A
+addColorText(label, 1672, [0.58383477, 0.034378096, 0.9982738])  //E
+addColorText(label, 1972, [0.58383477, 0.034378096, 0.9982738])  //D
+
+// "DEAD": 1068-1989 skip:307 
+addColorText(label, 1068, [0.6491884, 0.4927328, 0.8348058])  //D
+addColorText(label, 1375, [0.6491884, 0.4927328, 0.8348058])  //E
+addColorText(label, 1682, [0.6491884, 0.4927328, 0.8348058])  //A
+addColorText(label, 1989, [0.6491884, 0.4927328, 0.8348058])  //D
+
+// "SHOT": 1305-2217 skip:304 
+addColorText(label, 1305, [0.33205608, 0.33069658, 0.95602065])  //S
+addColorText(label, 1609, [0.33205608, 0.33069658, 0.95602065])  //H
+addColorText(label, 1913, [0.33205608, 0.33069658, 0.95602065])  //O
+addColorText(label, 2217, [0.33205608, 0.33069658, 0.95602065])  //T
+
+// "IHEL": 2241-3165 skip:308 
+addColorText(label, 2241, [0.31051028, 0.09219535, 0.96709436])  //I
+addColorText(label, 2549, [0.31051028, 0.09219535, 0.96709436])  //H
+addColorText(label, 2857, [0.31051028, 0.09219535, 0.96709436])  //E
+addColorText(label, 3165, [0.31051028, 0.09219535, 0.96709436])  //L
+
+
+// "RIMA": 744-1719 skip:325 
+addColorText(label, 744, [0.41732585, 0.35926524, 0.40673676])  //R
+addColorText(label, 1069, [0.41732585, 0.35926524, 0.40673676])  //I
+addColorText(label, 1394, [0.41732585, 0.35926524, 0.40673676])  //M
+addColorText(label, 1719, [0.41732585, 0.35926524, 0.40673676])  //A
+
+// "AMIR": 2077-3064 skip:329 
+addColorText(label, 2077, [0.8958033, 0.4790882, 0.018713221])  //A
+addColorText(label, 2406, [0.8958033, 0.4790882, 0.018713221])  //M
+addColorText(label, 2735, [0.8958033, 0.4790882, 0.018713221])  //I
+addColorText(label, 3064, [0.8958033, 0.4790882, 0.018713221])  //R
+
+// "IHEL": 1580-2570 skip:330 
+addColorText(label, 1580, [0.7916723, 0.21177658, 0.015181277])  //I
+addColorText(label, 1910, [0.7916723, 0.21177658, 0.015181277])  //H
+addColorText(label, 2240, [0.7916723, 0.21177658, 0.015181277])  //E
+addColorText(label, 2570, [0.7916723, 0.21177658, 0.015181277])  //L
+
+// "AMIR": 1793-2789 skip:332 
+addColorText(label, 1793, [0.43269825, 0.4523881, 0.8557044])  //A
+addColorText(label, 2125, [0.43269825, 0.4523881, 0.8557044])  //M
+addColorText(label, 2457, [0.43269825, 0.4523881, 0.8557044])  //I
+addColorText(label, 2789, [0.43269825, 0.4523881, 0.8557044])  //R
+
+// "LEHI": 1835-2837 skip:334 
+addColorText(label, 1835, [0.042921644, 0.32951528, 0.34785905])  //L
+addColorText(label, 2169, [0.042921644, 0.32951528, 0.34785905])  //E
+addColorText(label, 2503, [0.042921644, 0.32951528, 0.34785905])  //H
+addColorText(label, 2837, [0.042921644, 0.32951528, 0.34785905])  //I
+
+// "IGAL": 1440-2451 skip:337 
+addColorText(label, 1440, [0.5034868, 0.4199737, 0.023109568])  //I
+addColorText(label, 1777, [0.5034868, 0.4199737, 0.023109568])  //G
+addColorText(label, 2114, [0.5034868, 0.4199737, 0.023109568])  //A
+addColorText(label, 2451, [0.5034868, 0.4199737, 0.023109568])  //L
+
+// "LAYE": 322-1333 skip:337 
+addColorText(label, 322, [0.12436352, 0.13058782, 0.8349475])  //L
+addColorText(label, 659, [0.12436352, 0.13058782, 0.8349475])  //A
+addColorText(label, 996, [0.12436352, 0.13058782, 0.8349475])  //Y
+addColorText(label, 1333, [0.12436352, 0.13058782, 0.8349475])  //E
+
+// "SHOT": 1233-2253 skip:340 
+addColorText(label, 1233, [0.3148048, 0.0038406032, 0.8997501])  //S
+addColorText(label, 1573, [0.3148048, 0.0038406032, 0.8997501])  //H
+addColorText(label, 1913, [0.3148048, 0.0038406032, 0.8997501])  //O
+addColorText(label, 2253, [0.3148048, 0.0038406032, 0.8997501])  //T
+
+// "TOHS": 285-1305 skip:340 
+addColorText(label, 285, [0.37026754, 0.050099704, 0.64320403])  //T
+addColorText(label, 625, [0.37026754, 0.050099704, 0.64320403])  //O
+addColorText(label, 965, [0.37026754, 0.050099704, 0.64320403])  //H
+addColorText(label, 1305, [0.37026754, 0.050099704, 0.64320403])  //S
+
+
+
+// "LEHI": 275-1298 skip:341 
+addColorText(label, 275, [0.34686387, 0.10732686, 0.8220929])  //L
+addColorText(label, 616, [0.34686387, 0.10732686, 0.8220929])  //E
+addColorText(label, 957, [0.34686387, 0.10732686, 0.8220929])  //H
+addColorText(label, 1298, [0.34686387, 0.10732686, 0.8220929])  //I
+
+
+// "AMIR": 2065-3115 skip:350 
+addColorText(label, 2065, [0.05378558, 0.11445879, 0.32417396])  //A
+addColorText(label, 2415, [0.05378558, 0.11445879, 0.32417396])  //M
+addColorText(label, 2765, [0.05378558, 0.11445879, 0.32417396])  //I
+addColorText(label, 3115, [0.05378558, 0.11445879, 0.32417396])  //R
+
+// "LAGI": 2050-3106 skip:352 
+addColorText(label, 2050, [0.35076514, 0.17464438, 0.30380213])  //L
+addColorText(label, 2402, [0.35076514, 0.17464438, 0.30380213])  //A
+addColorText(label, 2754, [0.35076514, 0.17464438, 0.30380213])  //G
+addColorText(label, 3106, [0.35076514, 0.17464438, 0.30380213])  //I
+
+// "AMIR": 2080-3148 skip:356 
+addColorText(label, 2080, [0.9687462, 0.33576328, 0.20794313])  //A
+addColorText(label, 2436, [0.9687462, 0.33576328, 0.20794313])  //M
+addColorText(label, 2792, [0.9687462, 0.33576328, 0.20794313])  //I
+addColorText(label, 3148, [0.9687462, 0.33576328, 0.20794313])  //R
+
+// "AMIR": 847-1927 skip:360 
+addColorText(label, 847, [0.9631394, 0.15110119, 0.8079411])  //A
+addColorText(label, 1207, [0.9631394, 0.15110119, 0.8079411])  //M
+addColorText(label, 1567, [0.9631394, 0.15110119, 0.8079411])  //I
+addColorText(label, 1927, [0.9631394, 0.15110119, 0.8079411])  //R
+
+// "AMIR": 208-1288 skip:360 
+addColorText(label, 208, [0.13408417, 0.47388014, 0.64086485])  //A
+addColorText(label, 568, [0.13408417, 0.47388014, 0.64086485])  //M
+addColorText(label, 928, [0.13408417, 0.47388014, 0.64086485])  //I
+addColorText(label, 1288, [0.13408417, 0.47388014, 0.64086485])  //R
+
+// "IHEL": 621-1707 skip:362 
+addColorText(label, 621, [0.95325875, 0.40493712, 0.18159084])  //I
+addColorText(label, 983, [0.95325875, 0.40493712, 0.18159084])  //H
+addColorText(label, 1345, [0.95325875, 0.40493712, 0.18159084])  //E
+addColorText(label, 1707, [0.95325875, 0.40493712, 0.18159084])  //L
+
+// "RIMA": 1557-2646 skip:363 
+addColorText(label, 1557, [0.94275737, 0.4156205, 0.49468043])  //R
+addColorText(label, 1920, [0.94275737, 0.4156205, 0.49468043])  //I
+addColorText(label, 2283, [0.94275737, 0.4156205, 0.49468043])  //M
+addColorText(label, 2646, [0.94275737, 0.4156205, 0.49468043])  //A
+
+// "SHOT": 1052-2141 skip:363 
+addColorText(label, 1052, [0.8553103, 0.35537195, 0.27349475])  //S
+addColorText(label, 1415, [0.8553103, 0.35537195, 0.27349475])  //H
+addColorText(label, 1778, [0.8553103, 0.35537195, 0.27349475])  //O
+addColorText(label, 2141, [0.8553103, 0.35537195, 0.27349475])  //T
+
+// "DEAD": 1846-2929 skip:361 
+addColorText(label, 1846, [0.40763286, 0.45488065, 0.94439715])  //D
+addColorText(label, 2207, [0.40763286, 0.45488065, 0.94439715])  //E
+addColorText(label, 2568, [0.40763286, 0.45488065, 0.94439715])  //A
+addColorText(label, 2929, [0.40763286, 0.45488065, 0.94439715])  //D
+
+// "LEHI": 225-1335 skip:370 
+addColorText(label, 225, [0.49863246, 0.14431916, 0.9758953])  //L
+addColorText(label, 595, [0.49863246, 0.14431916, 0.9758953])  //E
+addColorText(label, 965, [0.49863246, 0.14431916, 0.9758953])  //H
+addColorText(label, 1335, [0.49863246, 0.14431916, 0.9758953])  //I
+
+// "RIMA": 2030-3176 skip:382 
+addColorText(label, 2030, [0.45258448, 0.02249535, 0.31536198])  //R
+addColorText(label, 2412, [0.45258448, 0.02249535, 0.31536198])  //I
+addColorText(label, 2794, [0.45258448, 0.02249535, 0.31536198])  //M
+addColorText(label, 3176, [0.45258448, 0.02249535, 0.31536198])  //A
+
+// "AMIR": 224-1373 skip:383 
+addColorText(label, 224, [0.95190614, 0.37578154, 0.535791])  //A
+addColorText(label, 607, [0.95190614, 0.37578154, 0.535791])  //M
+addColorText(label, 990, [0.95190614, 0.37578154, 0.535791])  //I
+addColorText(label, 1373, [0.95190614, 0.37578154, 0.535791])  //R
+
+// "LEHI": 1715-2897 skip:394 
+addColorText(label, 1715, [0.66971457, 0.4325875, 0.45888445])  //L
+addColorText(label, 2109, [0.66971457, 0.4325875, 0.45888445])  //E
+addColorText(label, 2503, [0.66971457, 0.4325875, 0.45888445])  //H
+addColorText(label, 2897, [0.66971457, 0.4325875, 0.45888445])  //I
+
+// "AMIR": 1150-2344 skip:398 
+addColorText(label, 1150, [0.5785509, 0.24076492, 0.5506158])  //A
+addColorText(label, 1548, [0.5785509, 0.24076492, 0.5506158])  //M
+addColorText(label, 1946, [0.5785509, 0.24076492, 0.5506158])  //I
+addColorText(label, 2344, [0.5785509, 0.24076492, 0.5506158])  //R
+
+// "IGAL": 2009-3209 skip:400 
+addColorText(label, 2009, [0.9506232, 0.2549327, 0.7425147])  //I
+addColorText(label, 2409, [0.9506232, 0.2549327, 0.7425147])  //G
+addColorText(label, 2809, [0.9506232, 0.2549327, 0.7425147])  //A
+addColorText(label, 3209, [0.9506232, 0.2549327, 0.7425147])  //L
+
+// "TOHS": 2273-3476 skip:401 
+addColorText(label, 2273, [0.490794, 0.03307571, 0.26249066])  //T
+addColorText(label, 2674, [0.490794, 0.03307571, 0.26249066])  //O
+addColorText(label, 3075, [0.490794, 0.03307571, 0.26249066])  //H
+addColorText(label, 3476, [0.490794, 0.03307571, 0.26249066])  //S
+
+// "LEHI": 2171-3377 skip:402 
+addColorText(label, 2171, [0.92546797, 0.18574333, 0.4094194])  //L
+addColorText(label, 2573, [0.92546797, 0.18574333, 0.4094194])  //E
+addColorText(label, 2975, [0.92546797, 0.18574333, 0.4094194])  //H
+addColorText(label, 3377, [0.92546797, 0.18574333, 0.4094194])  //I
+
+// "TOHS": 586-1795 skip:403 
+addColorText(label, 586, [0.41575196, 0.0486308, 0.9016276])  //T
+addColorText(label, 989, [0.41575196, 0.0486308, 0.9016276])  //O
+addColorText(label, 1392, [0.41575196, 0.0486308, 0.9016276])  //H
+addColorText(label, 1795, [0.41575196, 0.0486308, 0.9016276])  //S
+
+// "LAGI": 142-1357 skip:405 
+addColorText(label, 142, [0.0044446597, 0.13696226, 0.10930666])  //L
+addColorText(label, 547, [0.0044446597, 0.13696226, 0.10930666])  //A
+addColorText(label, 952, [0.0044446597, 0.13696226, 0.10930666])  //G
+addColorText(label, 1357, [0.0044446597, 0.13696226, 0.10930666])  //I
+
+// "RIMA": 2121-3360 skip:413 
+addColorText(label, 2121, [0.8554484, 0.12852767, 0.9891321])  //R
+addColorText(label, 2534, [0.8554484, 0.12852767, 0.9891321])  //I
+addColorText(label, 2947, [0.8554484, 0.12852767, 0.9891321])  //M
+addColorText(label, 3360, [0.8554484, 0.12852767, 0.9891321])  //A
+
+// "AMIR": 1539-2778 skip:413 
+addColorText(label, 1539, [0.92641145, 0.085473016, 0.30388713])  //A
+addColorText(label, 1952, [0.92641145, 0.085473016, 0.30388713])  //M
+addColorText(label, 2365, [0.92641145, 0.085473016, 0.30388713])  //I
+addColorText(label, 2778, [0.92641145, 0.085473016, 0.30388713])  //R
+
+// "DEAD": 574-1816 skip:414 
+addColorText(label, 574, [0.53345144, 0.0882448, 0.81359076])  //D
+addColorText(label, 988, [0.53345144, 0.0882448, 0.81359076])  //E
+addColorText(label, 1402, [0.53345144, 0.0882448, 0.81359076])  //A
+addColorText(label, 1816, [0.53345144, 0.0882448, 0.81359076])  //D
+
+// "AMIR": 932-2195 skip:421 
+addColorText(label, 932, [0.70513713, 0.12860377, 0.25036892])  //A
+addColorText(label, 1353, [0.70513713, 0.12860377, 0.25036892])  //M
+addColorText(label, 1774, [0.70513713, 0.12860377, 0.25036892])  //I
+addColorText(label, 2195, [0.70513713, 0.12860377, 0.25036892])  //R
+
+// "EYAL": 1696-2956 skip:420 
+addColorText(label, 1696, [0.33509436, 0.3756203, 0.0048797824])  //E
+addColorText(label, 2116, [0.33509436, 0.3756203, 0.0048797824])  //Y
+addColorText(label, 2536, [0.33509436, 0.3756203, 0.0048797824])  //A
+addColorText(label, 2956, [0.33509436, 0.3756203, 0.0048797824])  //L
+
+// "IHEL": 1490-2750 skip:420 
+addColorText(label, 1490, [0.8409932, 0.114786796, 0.0132855475])  //I
+addColorText(label, 1910, [0.8409932, 0.114786796, 0.0132855475])  //H
+addColorText(label, 2330, [0.8409932, 0.114786796, 0.0132855475])  //E
+addColorText(label, 2750, [0.8409932, 0.114786796, 0.0132855475])  //L
+
+// "SHOT": 1153-2413 skip:420 
+addColorText(label, 1153, [0.9499374, 0.44968572, 0.9626242])  //S
+addColorText(label, 1573, [0.9499374, 0.44968572, 0.9626242])  //H
+addColorText(label, 1993, [0.9499374, 0.44968572, 0.9626242])  //O
+addColorText(label, 2413, [0.9499374, 0.44968572, 0.9626242])  //T
+
+
+// "LEHI": 561-1842 skip:427 
+addColorText(label, 561, [0.4075321, 0.23784868, 0.34746838])  //L
+addColorText(label, 988, [0.4075321, 0.23784868, 0.34746838])  //E
+addColorText(label, 1415, [0.4075321, 0.23784868, 0.34746838])  //H
+addColorText(label, 1842, [0.4075321, 0.23784868, 0.34746838])  //I
+
+// "SHOT": 202-1489 skip:429 
+addColorText(label, 202, [0.040719938, 0.2987831, 0.26012468])  //S
+addColorText(label, 631, [0.040719938, 0.2987831, 0.26012468])  //H
+addColorText(label, 1060, [0.040719938, 0.2987831, 0.26012468])  //O
+addColorText(label, 1489, [0.040719938, 0.2987831, 0.26012468])  //T
+
+// "DAED": 1197-2487 skip:430 
+addColorText(label, 1197, [0.8328559, 0.48024875, 0.93670756])  //D
+addColorText(label, 1627, [0.8328559, 0.48024875, 0.93670756])  //A
+addColorText(label, 2057, [0.8328559, 0.48024875, 0.93670756])  //E
+addColorText(label, 2487, [0.8328559, 0.48024875, 0.93670756])  //D
+
+// "IHEL": 2098-3391 skip:431 
+addColorText(label, 2098, [0.22932024, 0.36015654, 0.7564823])  //I
+addColorText(label, 2529, [0.22932024, 0.36015654, 0.7564823])  //H
+addColorText(label, 2960, [0.22932024, 0.36015654, 0.7564823])  //E
+addColorText(label, 3391, [0.22932024, 0.36015654, 0.7564823])  //L
+
+// "AMIR": 1757-3062 skip:435 
+addColorText(label, 1757, [0.45015392, 0.1694887, 0.47249204])  //A
+addColorText(label, 2192, [0.45015392, 0.1694887, 0.47249204])  //M
+addColorText(label, 2627, [0.45015392, 0.1694887, 0.47249204])  //I
+addColorText(label, 3062, [0.45015392, 0.1694887, 0.47249204])  //R
+
+// "TOHS": 1783-3088 skip:435 
+addColorText(label, 1783, [0.98599434, 0.18116574, 0.24965501])  //T
+addColorText(label, 2218, [0.98599434, 0.18116574, 0.24965501])  //O
+addColorText(label, 2653, [0.98599434, 0.18116574, 0.24965501])  //H
+addColorText(label, 3088, [0.98599434, 0.18116574, 0.24965501])  //S
+
+// "EYAL": 848-2171 skip:441 
+addColorText(label, 848, [0.04786835, 0.3948586, 0.7562102])  //E
+addColorText(label, 1289, [0.04786835, 0.3948586, 0.7562102])  //Y
+addColorText(label, 1730, [0.04786835, 0.3948586, 0.7562102])  //A
+addColorText(label, 2171, [0.04786835, 0.3948586, 0.7562102])  //L
+
+// "LEHI": 1042-2368 skip:442 
+addColorText(label, 1042, [0.65746903, 0.11049943, 0.6575054])  //L
+addColorText(label, 1484, [0.65746903, 0.11049943, 0.6575054])  //E
+addColorText(label, 1926, [0.65746903, 0.11049943, 0.6575054])  //H
+addColorText(label, 2368, [0.65746903, 0.11049943, 0.6575054])  //I
+
+// "AMIR": 786-2112 skip:442 
+addColorText(label, 786, [0.39084244, 0.45962724, 0.14968549])  //A
+addColorText(label, 1228, [0.39084244, 0.45962724, 0.14968549])  //M
+addColorText(label, 1670, [0.39084244, 0.45962724, 0.14968549])  //I
+addColorText(label, 2112, [0.39084244, 0.45962724, 0.14968549])  //R
+
+// "SHOT": 1238-2579 skip:447 
+addColorText(label, 1238, [0.520392, 0.38279426, 0.24818246])  //S
+addColorText(label, 1685, [0.520392, 0.38279426, 0.24818246])  //H
+addColorText(label, 2132, [0.520392, 0.38279426, 0.24818246])  //O
+addColorText(label, 2579, [0.520392, 0.38279426, 0.24818246])  //T
+
+// "SHOT": 505-1861 skip:452 
+addColorText(label, 505, [0.45544398, 0.34989458, 0.08196947])  //S
+addColorText(label, 957, [0.45544398, 0.34989458, 0.08196947])  //H
+addColorText(label, 1409, [0.45544398, 0.34989458, 0.08196947])  //O
+addColorText(label, 1861, [0.45544398, 0.34989458, 0.08196947])  //T
+
+// "LEHI": 742-2098 skip:452 
+addColorText(label, 742, [0.51227206, 0.1331909, 0.62200165])  //L
+addColorText(label, 1194, [0.51227206, 0.1331909, 0.62200165])  //E
+addColorText(label, 1646, [0.51227206, 0.1331909, 0.62200165])  //H
+addColorText(label, 2098, [0.51227206, 0.1331909, 0.62200165])  //I
+
+// "EYAL": 1480-2839 skip:453 
+addColorText(label, 1480, [0.09907018, 0.070287645, 0.15920356])  //E
+addColorText(label, 1933, [0.09907018, 0.070287645, 0.15920356])  //Y
+addColorText(label, 2386, [0.09907018, 0.070287645, 0.15920356])  //A
+addColorText(label, 2839, [0.09907018, 0.070287645, 0.15920356])  //L
+
+// "IHEL": 516-1878 skip:454 
+addColorText(label, 516, [0.9440151, 0.3157383, 0.24579196])  //I
+addColorText(label, 970, [0.9440151, 0.3157383, 0.24579196])  //H
+addColorText(label, 1424, [0.9440151, 0.3157383, 0.24579196])  //E
+addColorText(label, 1878, [0.9440151, 0.3157383, 0.24579196])  //L
+
+// "AMIR": 786-2160 skip:458 
+addColorText(label, 786, [0.9675052, 0.2684903, 0.3381811])  //A
+addColorText(label, 1244, [0.9675052, 0.2684903, 0.3381811])  //M
+addColorText(label, 1702, [0.9675052, 0.2684903, 0.3381811])  //I
+addColorText(label, 2160, [0.9675052, 0.2684903, 0.3381811])  //R
+
+// "LEHI": 382-1774 skip:464 
+addColorText(label, 382, [0.67166764, 0.41873297, 0.73385483])  //L
+addColorText(label, 846, [0.67166764, 0.41873297, 0.73385483])  //E
+addColorText(label, 1310, [0.67166764, 0.41873297, 0.73385483])  //H
+addColorText(label, 1774, [0.67166764, 0.41873297, 0.73385483])  //I
+
+// "IGAL": 1125-2520 skip:465 
+addColorText(label, 1125, [0.5022208, 0.21173689, 0.4630395])  //I
+addColorText(label, 1590, [0.5022208, 0.21173689, 0.4630395])  //G
+addColorText(label, 2055, [0.5022208, 0.21173689, 0.4630395])  //A
+addColorText(label, 2520, [0.5022208, 0.21173689, 0.4630395])  //L
+
+// "DEAD": 1068-2466 skip:466 
+addColorText(label, 1068, [0.95304465, 0.3720363, 0.4551896])  //D
+addColorText(label, 1534, [0.95304465, 0.3720363, 0.4551896])  //E
+addColorText(label, 2000, [0.95304465, 0.3720363, 0.4551896])  //A
+addColorText(label, 2466, [0.95304465, 0.3720363, 0.4551896])  //D
+
+// "LAYE": 1725-3147 skip:474 
+addColorText(label, 1725, [0.24841698, 0.3599428, 0.4237022])  //L
+addColorText(label, 2199, [0.24841698, 0.3599428, 0.4237022])  //A
+addColorText(label, 2673, [0.24841698, 0.3599428, 0.4237022])  //Y
+addColorText(label, 3147, [0.24841698, 0.3599428, 0.4237022])  //E
+
+// "AMIR": 2080-3496 skip:472 
+addColorText(label, 2080, [0.74259084, 0.32842413, 0.6825216])  //A
+addColorText(label, 2552, [0.74259084, 0.32842413, 0.6825216])  //M
+addColorText(label, 3024, [0.74259084, 0.32842413, 0.6825216])  //I
+addColorText(label, 3496, [0.74259084, 0.32842413, 0.6825216])  //R
+
+// "TOHS": 1315-2740 skip:475 
+addColorText(label, 1315, [0.6367909, 0.12429142, 0.38686144])  //T
+addColorText(label, 1790, [0.6367909, 0.12429142, 0.38686144])  //O
+addColorText(label, 2265, [0.6367909, 0.12429142, 0.38686144])  //H
+addColorText(label, 2740, [0.6367909, 0.12429142, 0.38686144])  //S
+
+// "LEHI": 792-2241 skip:483 
+addColorText(label, 792, [0.76997095, 0.06318218, 0.28663775])  //L
+addColorText(label, 1275, [0.76997095, 0.06318218, 0.28663775])  //E
+addColorText(label, 1758, [0.76997095, 0.06318218, 0.28663775])  //H
+addColorText(label, 2241, [0.76997095, 0.06318218, 0.28663775])  //I
+
+// "RIMA": 276-1728 skip:484 
+addColorText(label, 276, [0.5113392, 0.09928077, 0.9946064])  //R
+addColorText(label, 760, [0.5113392, 0.09928077, 0.9946064])  //I
+addColorText(label, 1244, [0.5113392, 0.09928077, 0.9946064])  //M
+addColorText(label, 1728, [0.5113392, 0.09928077, 0.9946064])  //A
+
+// "IHEL": 760-2230 skip:490 
+addColorText(label, 760, [0.6359533, 0.3636595, 0.41231543])  //I
+addColorText(label, 1250, [0.6359533, 0.3636595, 0.41231543])  //H
+addColorText(label, 1740, [0.6359533, 0.3636595, 0.41231543])  //E
+addColorText(label, 2230, [0.6359533, 0.3636595, 0.41231543])  //L
+
+// "TOHS": 1262-2744 skip:494 
+addColorText(label, 1262, [0.51402354, 0.06559496, 0.5456026])  //T
+addColorText(label, 1756, [0.51402354, 0.06559496, 0.5456026])  //O
+addColorText(label, 2250, [0.51402354, 0.06559496, 0.5456026])  //H
+addColorText(label, 2744, [0.51402354, 0.06559496, 0.5456026])  //S
+
+// "RIMA": 886-2377 skip:497 
+addColorText(label, 886, [0.845035, 0.14664218, 0.7783038])  //R
+addColorText(label, 1383, [0.845035, 0.14664218, 0.7783038])  //I
+addColorText(label, 1880, [0.845035, 0.14664218, 0.7783038])  //M
+addColorText(label, 2377, [0.845035, 0.14664218, 0.7783038])  //A
+
+// "LAGI": 173-1670 skip:499 
+addColorText(label, 173, [0.14177877, 0.32718977, 0.63134825])  //L
+addColorText(label, 672, [0.14177877, 0.32718977, 0.63134825])  //A
+addColorText(label, 1171, [0.14177877, 0.32718977, 0.63134825])  //G
+addColorText(label, 1670, [0.14177877, 0.32718977, 0.63134825])  //I
+
+// "IHEL": 1999-3511 skip:504 
+addColorText(label, 1999, [0.39396524, 0.000705772, 0.5658666])  //I
+addColorText(label, 2503, [0.39396524, 0.000705772, 0.5658666])  //H
+addColorText(label, 3007, [0.39396524, 0.000705772, 0.5658666])  //E
+addColorText(label, 3511, [0.39396524, 0.000705772, 0.5658666])  //L
+
+// "RIMA": 1529-3047 skip:506 
+addColorText(label, 1529, [0.88779205, 0.22624142, 0.59617865])  //R
+addColorText(label, 2035, [0.88779205, 0.22624142, 0.59617865])  //I
+addColorText(label, 2541, [0.88779205, 0.22624142, 0.59617865])  //M
+addColorText(label, 3047, [0.88779205, 0.22624142, 0.59617865])  //A
+
+// "RIMA": 534-2055 skip:507 
+addColorText(label, 534, [0.6428353, 0.4149192, 0.81038016])  //R
+addColorText(label, 1041, [0.6428353, 0.4149192, 0.81038016])  //I
+addColorText(label, 1548, [0.6428353, 0.4149192, 0.81038016])  //M
+addColorText(label, 2055, [0.6428353, 0.4149192, 0.81038016])  //A
+
+// "AMIR": 1998-3525 skip:509 
+addColorText(label, 1998, [0.06593483, 0.040737353, 0.33551803])  //A
+addColorText(label, 2507, [0.06593483, 0.040737353, 0.33551803])  //M
+addColorText(label, 3016, [0.06593483, 0.040737353, 0.33551803])  //I
+addColorText(label, 3525, [0.06593483, 0.040737353, 0.33551803])  //R
+
+// "AMIR": 1386-2925 skip:513 
+addColorText(label, 1386, [0.49063474, 0.30951485, 0.6276587])  //A
+addColorText(label, 1899, [0.49063474, 0.30951485, 0.6276587])  //M
+addColorText(label, 2412, [0.49063474, 0.30951485, 0.6276587])  //I
+addColorText(label, 2925, [0.49063474, 0.30951485, 0.6276587])  //R
+
+// "SHOT": 2299-3868 skip:523 
+addColorText(label, 2299, [0.32464412, 0.39660725, 0.08418688])  //S
+addColorText(label, 2822, [0.32464412, 0.39660725, 0.08418688])  //H
+addColorText(label, 3345, [0.32464412, 0.39660725, 0.08418688])  //O
+addColorText(label, 3868, [0.32464412, 0.39660725, 0.08418688])  //T
+
+// "IGAL": 1254-2823 skip:523 
+addColorText(label, 1254, [0.25432572, 0.3437841, 0.42021737])  //I
+addColorText(label, 1777, [0.25432572, 0.3437841, 0.42021737])  //G
+addColorText(label, 2300, [0.25432572, 0.3437841, 0.42021737])  //A
+addColorText(label, 2823, [0.25432572, 0.3437841, 0.42021737])  //L
+
+// "DEAD": 1666-3238 skip:524 
+addColorText(label, 1666, [0.022131132, 0.108498394, 0.07824574])  //D
+addColorText(label, 2190, [0.022131132, 0.108498394, 0.07824574])  //E
+addColorText(label, 2714, [0.022131132, 0.108498394, 0.07824574])  //A
+addColorText(label, 3238, [0.022131132, 0.108498394, 0.07824574])  //D
+
+// "LEHI": 1481-3053 skip:524 
+addColorText(label, 1481, [0.5638443, 0.1142876, 0.36757356])  //L
+addColorText(label, 2005, [0.5638443, 0.1142876, 0.36757356])  //E
+addColorText(label, 2529, [0.5638443, 0.1142876, 0.36757356])  //H
+addColorText(label, 3053, [0.5638443, 0.1142876, 0.36757356])  //I
+
+// "EYAL": 988-2560 skip:524 
+addColorText(label, 988, [0.27204487, 0.4501499, 0.66183007])  //E
+addColorText(label, 1512, [0.27204487, 0.4501499, 0.66183007])  //Y
+addColorText(label, 2036, [0.27204487, 0.4501499, 0.66183007])  //A
+addColorText(label, 2560, [0.27204487, 0.4501499, 0.66183007])  //L
+
+// "TOHS": 84-1665 skip:527 
+addColorText(label, 84, [0.4451299, 0.4843723, 0.6676133])  //T
+addColorText(label, 611, [0.4451299, 0.4843723, 0.6676133])  //O
+addColorText(label, 1138, [0.4451299, 0.4843723, 0.6676133])  //H
+addColorText(label, 1665, [0.4451299, 0.4843723, 0.6676133])  //S
+
+// "DEAD": 1816-3394 skip:526 
+addColorText(label, 1816, [0.36440006, 0.0033134827, 0.20617528])  //D
+addColorText(label, 2342, [0.36440006, 0.0033134827, 0.20617528])  //E
+addColorText(label, 2868, [0.36440006, 0.0033134827, 0.20617528])  //A
+addColorText(label, 3394, [0.36440006, 0.0033134827, 0.20617528])  //D
+
+// "LEHI": 953-2546 skip:531 
+addColorText(label, 953, [0.782455, 0.38321564, 0.8082416])  //L
+addColorText(label, 1484, [0.782455, 0.38321564, 0.8082416])  //E
+addColorText(label, 2015, [0.782455, 0.38321564, 0.8082416])  //H
+addColorText(label, 2546, [0.782455, 0.38321564, 0.8082416])  //I
+
+// "RIMA": 1525-3139 skip:538 
+addColorText(label, 1525, [0.28790948, 0.30497485, 0.45220393])  //R
+addColorText(label, 2063, [0.28790948, 0.30497485, 0.45220393])  //I
+addColorText(label, 2601, [0.28790948, 0.30497485, 0.45220393])  //M
+addColorText(label, 3139, [0.28790948, 0.30497485, 0.45220393])  //A
+
+// "AMIR": 1587-3201 skip:538 
+addColorText(label, 1587, [0.22650959, 0.19452819, 0.2468646])  //A
+addColorText(label, 2125, [0.22650959, 0.19452819, 0.2468646])  //M
+addColorText(label, 2663, [0.22650959, 0.19452819, 0.2468646])  //I
+addColorText(label, 3201, [0.22650959, 0.19452819, 0.2468646])  //R
+
+// "AMIR": 1402-3019 skip:539 
+addColorText(label, 1402, [0.0075284494, 0.07673785, 0.0044893017])  //A
+addColorText(label, 1941, [0.0075284494, 0.07673785, 0.0044893017])  //M
+addColorText(label, 2480, [0.0075284494, 0.07673785, 0.0044893017])  //I
+addColorText(label, 3019, [0.0075284494, 0.07673785, 0.0044893017])  //R
+
+// "DEAD": 904-2521 skip:539 
+addColorText(label, 904, [0.9092035, 0.11892046, 0.32726306])  //D
+addColorText(label, 1443, [0.9092035, 0.11892046, 0.32726306])  //E
+addColorText(label, 1982, [0.9092035, 0.11892046, 0.32726306])  //A
+addColorText(label, 2521, [0.9092035, 0.11892046, 0.32726306])  //D
+
+// "IHEL": 152-1802 skip:550 
+addColorText(label, 152, [0.7931566, 0.21514589, 0.4400947])  //I
+addColorText(label, 702, [0.7931566, 0.21514589, 0.4400947])  //H
+addColorText(label, 1252, [0.7931566, 0.21514589, 0.4400947])  //E
+addColorText(label, 1802, [0.7931566, 0.21514589, 0.4400947])  //L
+
+// "IGAL": 1140-2793 skip:551 
+addColorText(label, 1140, [0.09960947, 0.39201033, 0.5220791])  //I
+addColorText(label, 1691, [0.09960947, 0.39201033, 0.5220791])  //G
+addColorText(label, 2242, [0.09960947, 0.39201033, 0.5220791])  //A
+addColorText(label, 2793, [0.09960947, 0.39201033, 0.5220791])  //L
+*/
+app.endUndoGroup();
