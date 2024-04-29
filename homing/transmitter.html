@@ -1,0 +1,138 @@
+<html>
+<head>
+<script async src="https://maps.google.com/maps/api/js?key=AIzaSyCZMJEo_ubJMZLyqDFAmk7YtKrT17FmnFw&callback=initMap"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="./funcs.js?v=1" type="text/javascript" ></script>
+<link rel="stylesheet"  href="./style.css"></link>
+<script>
+var lastDistance = -1;
+
+let map;
+let innerCircle
+let outerCircle
+
+let receiverInnerCircle
+let receiverOuterCircle
+let connectingLine
+
+const zoom = 18;
+
+async function initMap() {
+    const { Map } = await google.maps.importLibrary("maps");
+
+    map = new Map(document.getElementById("map"), {
+        center: { lat: 34, lng: -118.5 },
+    });
+    
+    innerCircle = new google.maps.Circle({
+      strokeOpacity: 0.0,
+      fillColor: "#0000ff",
+      fillOpacity: 1.0,
+      map,
+      center: 0,
+      radius: 2,
+    });
+    outerCircle = new google.maps.Circle({
+      strokeColor: "#0000ff",
+      strokeOpacity: 0.8,
+      strokeWeight: 4,
+      fillColor: "#00ffff",
+      fillOpacity: 0.35,
+      map,
+      center: 0,
+      radius: 0,
+    });
+    
+    receiverInnerCircle = new google.maps.Circle({
+      strokeOpacity: 0.0,
+      fillColor: "#ffaaaa",
+      fillOpacity: 1.0,
+      map,
+      center: 0,
+      radius: 2,
+    });
+    receiverOuterCircle = new google.maps.Circle({
+      strokeColor: "#ff0000",
+      strokeOpacity: 0.8,
+      strokeWeight: 4,
+      fillColor: "#ff0000",
+      fillOpacity: 0.35,
+      map,
+      center: 0,
+      radius: 20,
+    });
+    
+    connectingLine = new google.maps.Polyline({
+        path: [{lat:34,lng:-118},{lat:34,lng:-118.6} ],
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1,
+        strokeWeight: 2,
+        map,
+      });
+
+
+}
+
+function updatePosition(position) {
+    refresh.disabled=false;
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    accuracy = position.coords.accuracy;
+    
+    latLong = new google.maps.LatLng(latitude,longitude)
+
+    if (lastDistance < 0) {
+        map.setZoom(zoom);
+        map.setCenter(latLong);
+    }
+    
+    innerCircle.setCenter(latLong);
+    outerCircle.setCenter(latLong);
+    outerCircle.setRadius(accuracy);
+    
+
+    $.post('./transmitter.py', {latitude:latitude, longitude:longitude}, 
+    function(response, status){
+        html = '<table class="distance" width=!00% border=1>\n'
+        html += '<tr><td>' + formatDistance(response.distance) + ' away</td></tr>\n';
+        html += '</table>\n'
+        responseDisplay.innerHTML = html
+        
+        html = '<p><table class="details" border=1>\n'
+        html += '<tr><td>Your location:</td><td>' + mapsLink(latitude,longitude) + '</td></tr>\n'
+        html += '<tr><td>Delay:</td><td>'+response.delay+' secs old</td></tr>\n';
+        html += '<tr><td>Status:</td><td>' + status + '</td></tr>\n';
+        html += '</table>\n'
+        statusDisplay.innerHTML = html
+        
+        warmerColder(response.distance)
+        
+        receiverlatLong = new google.maps.LatLng(response.latitude,response.longitude)
+        receiverInnerCircle.setCenter(receiverlatLong)
+        receiverOuterCircle.setCenter(receiverlatLong)
+        
+        connectingLine.setPath([latLong,receiverlatLong])
+    });
+    
+}
+
+function recenterMap() {
+    var bounds = new google.maps.LatLngBounds()
+    bounds.extend(latLong)
+    bounds.extend(receiverlatLong)
+    map.fitBounds(bounds)
+}
+</script>
+
+<body onload="load()">
+
+<div id="responseDisplay"></div>
+<div id="map" style="width: 100%; height: 800px;" >Loading Map...</div>
+<input id="refresh" type="button" value="Refresh" onclick="refreshPosition()" />
+<input id="refresh" type="button" value="Re-center" onclick="recenterMap()" /><br>
+<input id="enablesounds" type="checkbox" /> Enable Sounds
+<div id="statusDisplay"></div>
+
+</body>
+</html>

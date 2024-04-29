@@ -1,0 +1,30 @@
+:root {
+    --checkbox_scale: 5;
+    --white: #ffffff;
+}
+
+body,
+input {
+    margin: 20px;
+    background: white;
+    font-size: 80px;
+}
+
+.distance {
+    font-size: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.details {
+    font-size: 40px;
+}
+input[type=checkbox] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(var(--checkbox_scale)); /* IE */
+  -moz-transform: scale(var(--checkbox_scale)); /* FF */
+  -webkit-transform: scale(var(--checkbox_scale)); /* Safari and Chrome */
+  -o-transform: scale(var(--checkbox_scale)); /* Opera */
+  transform: scale(var(--checkbox_scale));
+  margin: 30px;
+}

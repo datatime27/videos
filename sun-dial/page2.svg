@@ -1,0 +1,816 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg viewBox="0 0 8.5in 11in" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .ruler {
+          font: 11px sans-serif;
+          fill: red;
+        }
+        .degrees {
+          font: 11px sans-serif;
+          fill: red;
+        }
+        .altitude {
+          font: 11px sans-serif;
+          fill: green;
+        }
+    </style>
+    <rect x="0" y="0" width="8.5in" height="11in" fill="none" stroke="black"/>
+
+<circle cx="4.25in" cy="30.75in" r="0.103073035477in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="0.206161771867in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="30.5438382281in" class="degrees">1°</text>
+<text text-anchor="middle" x="4.45in" y="30.5438382281in" class="altitude">89°</text>
+<circle cx="4.25in" cy="30.75in" r="0.309281919654in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="0.412449208467in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="30.3375507915in" class="degrees">2°</text>
+<text text-anchor="middle" x="4.45in" y="30.3375507915in" class="altitude">88°</text>
+<circle cx="4.25in" cy="30.75in" r="0.515679396692in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="0.618988281112in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="30.1310117189in" class="degrees">3°</text>
+<text text-anchor="middle" x="4.45in" y="30.1310117189in" class="altitude">87°</text>
+<circle cx="4.25in" cy="30.75in" r="0.722391706597in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="0.825905575865in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="29.9240944241in" class="degrees">4°</text>
+<text text-anchor="middle" x="4.45in" y="29.9240944241in" class="altitude">86°</text>
+<circle cx="4.25in" cy="30.75in" r="0.929545859306in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="1.0333286049in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="29.7166713951in" class="degrees">5°</text>
+<text text-anchor="middle" x="4.45in" y="29.7166713951in" class="altitude">85°</text>
+<circle cx="4.25in" cy="30.75in" r="1.13726994826in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="1.24138612272in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="29.5086138773in" class="degrees">6°</text>
+<text text-anchor="middle" x="4.45in" y="29.5086138773in" class="altitude">84°</text>
+<circle cx="4.25in" cy="30.75in" r="1.34569346965in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="1.45020844882in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="29.2997915512in" class="degrees">7°</text>
+<text text-anchor="middle" x="4.45in" y="29.2997915512in" class="altitude">83°</text>
+<circle cx="4.25in" cy="30.75in" r="1.554947649in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="1.65992779867in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="29.0900722013in" class="degrees">8°</text>
+<text text-anchor="middle" x="4.45in" y="29.0900722013in" class="altitude">82°</text>
+<circle cx="4.25in" cy="30.75in" r="1.76516577693in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="1.87067862467in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="28.8793213753in" class="degrees">9°</text>
+<text text-anchor="middle" x="4.45in" y="28.8793213753in" class="altitude">81°</text>
+<circle cx="4.25in" cy="30.75in" r="1.97648355586in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="2.08259796915in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="28.6674020309in" class="degrees">10°</text>
+<text text-anchor="middle" x="4.45in" y="28.6674020309in" class="altitude">80°</text>
+<circle cx="4.25in" cy="30.75in" r="2.18903945969in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="2.29582583123in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="28.4541741688in" class="degrees">11°</text>
+<text text-anchor="middle" x="4.45in" y="28.4541741688in" class="altitude">79°</text>
+<circle cx="4.25in" cy="30.75in" r="2.40297510849in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="2.51050554988in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="28.2394944501in" class="degrees">12°</text>
+<text text-anchor="middle" x="4.45in" y="28.2394944501in" class="altitude">78°</text>
+<circle cx="4.25in" cy="30.75in" r="2.61843566048in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="2.72678420538in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="28.0232157946in" class="degrees">13°</text>
+<text text-anchor="middle" x="4.45in" y="28.0232157946in" class="altitude">77°</text>
+<circle cx="4.25in" cy="30.75in" r="2.8355702235in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="2.94481304158in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="27.8051869584in" class="degrees">14°</text>
+<text text-anchor="middle" x="4.45in" y="27.8051869584in" class="altitude">76°</text>
+<circle cx="4.25in" cy="30.75in" r="3.05453228883in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="3.1647479118in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="27.5852520882in" class="degrees">15°</text>
+<text text-anchor="middle" x="4.45in" y="27.5852520882in" class="altitude">75°</text>
+<circle cx="4.25in" cy="30.75in" r="3.27548018989in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="3.3867497512in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="27.3632502488in" class="degrees">16°</text>
+<text text-anchor="middle" x="4.45in" y="27.3632502488in" class="altitude">74°</text>
+<circle cx="4.25in" cy="30.75in" r="3.498577589in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="3.61098507871in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="27.1390149213in" class="degrees">17°</text>
+<text text-anchor="middle" x="4.45in" y="27.1390149213in" class="altitude">73°</text>
+<circle cx="4.25in" cy="30.75in" r="3.72399399545in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="3.83762653221in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="26.9123734678in" class="degrees">18°</text>
+<text text-anchor="middle" x="4.45in" y="26.9123734678in" class="altitude">72°</text>
+<circle cx="4.25in" cy="30.75in" r="3.95190531864in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="4.06685344056in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="26.6831465594in" class="degrees">19°</text>
+<text text-anchor="middle" x="4.45in" y="26.6831465594in" class="altitude">71°</text>
+<circle cx="4.25in" cy="30.75in" r="4.18249446016in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="4.29885243692in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="26.4511475631in" class="degrees">20°</text>
+<text text-anchor="middle" x="4.45in" y="26.4511475631in" class="altitude">70°</text>
+<circle cx="4.25in" cy="30.75in" r="4.4159519494in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="4.5338181178in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="26.2161818822in" class="degrees">21°</text>
+<text text-anchor="middle" x="4.45in" y="26.2161818822in" class="altitude">69°</text>
+<circle cx="4.25in" cy="30.75in" r="4.65247662749in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="4.77195375334in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="25.9780462467in" class="degrees">22°</text>
+<text text-anchor="middle" x="4.45in" y="25.9780462467in" class="altitude">68°</text>
+<circle cx="4.25in" cy="30.75in" r="4.89227638519in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="5.01347205425in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="25.7365279457in" class="degrees">23°</text>
+<text text-anchor="middle" x="4.45in" y="25.7365279457in" class="altitude">67°</text>
+<circle cx="4.25in" cy="30.75in" r="5.13556896066in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="5.25859600218in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="25.4914039978in" class="degrees">24°</text>
+<text text-anchor="middle" x="4.45in" y="25.4914039978in" class="altitude">66°</text>
+<circle cx="4.25in" cy="30.75in" r="5.3825828041in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="5.50755975047in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="25.2424402495in" class="degrees">25°</text>
+<text text-anchor="middle" x="4.45in" y="25.2424402495in" class="altitude">65°</text>
+<circle cx="4.25in" cy="30.75in" r="5.6335580167in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="5.76060960355in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="24.9893903964in" class="degrees">26°</text>
+<text text-anchor="middle" x="4.45in" y="24.9893903964in" class="altitude">64°</text>
+<circle cx="4.25in" cy="30.75in" r="5.88874737272in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="6.01800508398in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="24.731994916in" class="degrees">27°</text>
+<text text-anchor="middle" x="4.45in" y="24.731994916in" class="altitude">63°</text>
+<circle cx="4.25in" cy="30.75in" r="6.14841743407in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="6.28002009735in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="24.4699799026in" class="degrees">28°</text>
+<text text-anchor="middle" x="4.45in" y="24.4699799026in" class="altitude">62°</text>
+<circle cx="4.25in" cy="30.75in" r="6.41284976843in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="6.54694420671in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="24.2030557933in" class="degrees">29°</text>
+<text text-anchor="middle" x="4.45in" y="24.2030557933in" class="altitude">61°</text>
+<circle cx="4.25in" cy="30.75in" r="6.68234228318in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="6.8190840294in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="23.9309159706in" class="degrees">30°</text>
+<text text-anchor="middle" x="4.45in" y="23.9309159706in" class="altitude">60°</text>
+<circle cx="4.25in" cy="30.75in" r="6.95721068894in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="7.09676477133in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="23.6532352287in" class="degrees">31°</text>
+<text text-anchor="middle" x="4.45in" y="23.6532352287in" class="altitude">59°</text>
+<circle cx="4.25in" cy="30.75in" r="7.23779010872in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="7.3803319154in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="23.3696680846in" class="degrees">32°</text>
+<text text-anchor="middle" x="4.45in" y="23.3696680846in" class="altitude">58°</text>
+<circle cx="4.25in" cy="30.75in" r="7.5244368504in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="7.67015308326in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="23.0798469167in" class="degrees">33°</text>
+<text text-anchor="middle" x="4.45in" y="23.0798469167in" class="altitude">57°</text>
+<circle cx="4.25in" cy="30.75in" r="7.81753036328in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="7.96662009243in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="22.7833799076in" class="degrees">34°</text>
+<text text-anchor="middle" x="4.45in" y="22.7833799076in" class="altitude">56°</text>
+<circle cx="4.25in" cy="30.75in" r="8.11747540204in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="8.27015123379in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="22.4798487662in" class="degrees">35°</text>
+<text text-anchor="middle" x="4.45in" y="22.4798487662in" class="altitude">55°</text>
+<circle cx="4.25in" cy="30.75in" r="8.42470442493in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="8.58119379827in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="22.1688062017in" class="degrees">36°</text>
+<text text-anchor="middle" x="4.45in" y="22.1688062017in" class="altitude">54°</text>
+<circle cx="4.25in" cy="30.75in" r="8.73968025716in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="8.90022688576in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="21.8497731142in" class="degrees">37°</text>
+<text text-anchor="middle" x="4.45in" y="21.8497731142in" class="altitude">53°</text>
+<circle cx="4.25in" cy="30.75in" r="9.06289905502in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="9.22776453467in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="21.5222354653in" class="degrees">38°</text>
+<text text-anchor="middle" x="4.45in" y="21.5222354653in" class="altitude">52°</text>
+<circle cx="4.25in" cy="30.75in" r="9.39489361176in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="9.56435921607in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="21.1856407839in" class="degrees">39°</text>
+<text text-anchor="middle" x="4.45in" y="21.1856407839in" class="altitude">51°</text>
+<circle cx="4.25in" cy="30.75in" r="9.73623705289in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="9.91060574383in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="20.8393942562in" class="degrees">40°</text>
+<text text-anchor="middle" x="4.45in" y="20.8393942562in" class="altitude">50°</text>
+<circle cx="4.25in" cy="30.75in" r="10.087546976in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="10.2671456603in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="20.4828543397in" class="degrees">41°</text>
+<text text-anchor="middle" x="4.45in" y="20.4828543397in" class="altitude">49°</text>
+<circle cx="4.25in" cy="30.75in" r="10.4494900997in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="10.6346721672in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="20.1153278328in" class="degrees">42°</text>
+<text text-anchor="middle" x="4.45in" y="20.1153278328in" class="altitude">48°</text>
+<circle cx="4.25in" cy="30.75in" r="10.8227874963in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="11.0139356824in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="19.7360643176in" class="degrees">43°</text>
+<text text-anchor="middle" x="4.45in" y="19.7360643176in" class="altitude">47°</text>
+<circle cx="4.25in" cy="30.75in" r="11.2082204975in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="11.4057501192in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="19.3442498808in" class="degrees">44°</text>
+<text text-anchor="middle" x="4.45in" y="19.3442498808in" class="altitude">46°</text>
+<circle cx="4.25in" cy="30.75in" r="11.6066373747in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="11.811in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="18.939in" class="degrees">45°</text>
+<text text-anchor="middle" x="4.45in" y="18.939in" class="altitude">45°</text>
+<circle cx="4.25in" cy="30.75in" r="12.0189609184in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="12.2306485362in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="18.5193514638in" class="degrees">46°</text>
+<text text-anchor="middle" x="4.45in" y="18.5193514638in" class="altitude">44°</text>
+<circle cx="4.25in" cy="30.75in" r="12.4461970597in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="12.6657468341in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="18.0842531659in" class="degrees">47°</text>
+<text text-anchor="middle" x="4.45in" y="18.0842531659in" class="altitude">43°</text>
+<circle cx="4.25in" cy="30.75in" r="12.8894447061in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="13.1174444126in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="17.6325555874in" class="degrees">48°</text>
+<text text-anchor="middle" x="4.45in" y="17.6325555874in" class="altitude">42°</text>
+<circle cx="4.25in" cy="30.75in" r="13.3499069973in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="13.5870012577in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="17.1629987423in" class="degrees">49°</text>
+<text text-anchor="middle" x="4.45in" y="17.1629987423in" class="altitude">41°</text>
+<circle cx="4.25in" cy="30.75in" r="13.8289042254in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="14.0758016821in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="16.6741983179in" class="degrees">50°</text>
+<text text-anchor="middle" x="4.45in" y="16.6741983179in" class="altitude">40°</text>
+<circle cx="4.25in" cy="30.75in" r="14.3278887153in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="14.5853703158in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="16.1646296842in" class="degrees">51°</text>
+<text text-anchor="middle" x="4.45in" y="16.1646296842in" class="altitude">39°</text>
+<circle cx="4.25in" cy="30.75in" r="14.8484620225in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="15.1173906178in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="15.6326093822in" class="degrees">52°</text>
+<text text-anchor="middle" x="4.45in" y="15.6326093822in" class="altitude">38°</text>
+<circle cx="4.25in" cy="30.75in" r="15.3923948786in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="15.6737263882in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="15.0762736118in" class="degrees">53°</text>
+<text text-anchor="middle" x="4.45in" y="15.0762736118in" class="altitude">37°</text>
+<circle cx="4.25in" cy="30.75in" r="15.9616504146in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="16.2564468627in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="14.4935531373in" class="degrees">54°</text>
+<text text-anchor="middle" x="4.45in" y="14.4935531373in" class="altitude">36°</text>
+<circle cx="4.25in" cy="30.75in" r="16.5584113061in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="16.8678561076in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="13.8821438924in" class="degrees">55°</text>
+<text text-anchor="middle" x="4.45in" y="13.8821438924in" class="altitude">35°</text>
+<circle cx="4.25in" cy="30.75in" r="17.1851116377in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="17.5105275991in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="13.2394724009in" class="degrees">56°</text>
+<text text-anchor="middle" x="4.45in" y="13.2394724009in" class="altitude">34°</text>
+<circle cx="4.25in" cy="30.75in" r="17.8444744718in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="18.1873450876in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="12.5626549124in" class="degrees">57°</text>
+<text text-anchor="middle" x="4.45in" y="12.5626549124in" class="altitude">33°</text>
+<circle cx="4.25in" cy="30.75in" r="18.5395563513in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="18.9015511225in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="11.8484488775in" class="degrees">58°</text>
+<text text-anchor="middle" x="4.45in" y="11.8484488775in" class="altitude">32°</text>
+<circle cx="4.25in" cy="30.75in" r="19.2738002767in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="19.656804966in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="11.093195034in" class="degrees">59°</text>
+<text text-anchor="middle" x="4.45in" y="11.093195034in" class="altitude">31°</text>
+<circle cx="4.25in" cy="30.75in" r="20.0510991024in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="20.4572520882in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="10.2927479118in" class="degrees">60°</text>
+<text text-anchor="middle" x="4.45in" y="10.2927479118in" class="altitude">30°</text>
+<circle cx="4.25in" cy="30.75in" r="20.8758718258in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="21.3076080375in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="9.44239196249in" class="degrees">61°</text>
+<text text-anchor="middle" x="4.45in" y="9.44239196249in" class="altitude">29°</text>
+<circle cx="4.25in" cy="30.75in" r="21.7531559349in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="22.2132602822in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="8.53673971779in" class="degrees">62°</text>
+<text text-anchor="middle" x="4.45in" y="8.53673971779in" class="altitude">28°</text>
+<circle cx="4.25in" cy="30.75in" r="22.6887199017in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="23.1803926805in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="7.56960731948in" class="degrees">63°</text>
+<text text-anchor="middle" x="4.45in" y="7.56960731948in" class="altitude">27°</text>
+<circle cx="4.25in" cy="30.75in" r="23.6892011442in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="24.2161386729in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="6.53386132711in" class="degrees">64°</text>
+<text text-anchor="middle" x="4.45in" y="6.53386132711in" class="altitude">26°</text>
+<circle cx="4.25in" cy="30.75in" r="24.7622764488in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="25.3287712381in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="5.42122876186in" class="degrees">65°</text>
+<text text-anchor="middle" x="4.45in" y="5.42122876186in" class="altitude">25°</text>
+<circle cx="4.25in" cy="30.75in" r="25.9168741248in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="26.5279403366in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="4.22205966342in" class="degrees">66°</text>
+<text text-anchor="middle" x="4.45in" y="4.22205966342in" class="altitude">24°</text>
+<circle cx="4.25in" cy="30.75in" r="27.1634403254in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="27.8249722927in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="2.92502770726in" class="degrees">67°</text>
+<text text-anchor="middle" x="4.45in" y="2.92502770726in" class="altitude">23°</text>
+<circle cx="4.25in" cy="30.75in" r="28.5142763852in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="29.2332508257in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="1.5167491743in" class="degrees">68°</text>
+<text text-anchor="middle" x="4.45in" y="1.5167491743in" class="altitude">22°</text>
+<circle cx="4.25in" cy="30.75in" r="29.9839702957in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="30.7687069431in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-0.0187069430985in" class="degrees">69°</text>
+<text text-anchor="middle" x="4.45in" y="-0.0187069430985in" class="altitude">21°</text>
+<circle cx="4.25in" cy="30.75in" r="31.5899544648in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="32.4504558012in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-1.70045580118in" class="degrees">70°</text>
+<text text-anchor="middle" x="4.45in" y="-1.70045580118in" class="altitude">20°</text>
+<circle cx="4.25in" cy="30.75in" r="33.3532350918in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="34.3016346762in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-3.55163467623in" class="degrees">71°</text>
+<text text-anchor="middle" x="4.45in" y="-3.55163467623in" class="altitude">19°</text>
+<circle cx="4.25in" cy="30.75in" r="35.299358095in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="36.3505202576in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-5.60052025758in" class="degrees">72°</text>
+<text text-anchor="middle" x="4.45in" y="-5.60052025758in" class="altitude">18°</text>
+<circle cx="4.25in" cy="30.75in" r="37.4597062107in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="38.6320402769in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-7.88204027692in" class="degrees">73°</text>
+<text text-anchor="middle" x="4.45in" y="-7.88204027692in" class="altitude">17°</text>
+<circle cx="4.25in" cy="30.75in" r="39.8732677642in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="41.1898519962in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-10.4398519962in" class="degrees">74°</text>
+<text text-anchor="middle" x="4.45in" y="-10.4398519962in" class="altitude">16°</text>
+<circle cx="4.25in" cy="30.75in" r="42.589090122in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="44.0792520882in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-13.3292520882in" class="degrees">75°</text>
+<text text-anchor="middle" x="4.45in" y="-13.3292520882in" class="altitude">15°</text>
+<circle cx="4.25in" cy="30.75in" r="45.6697483638in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="47.371333606in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-16.621333606in" class="degrees">76°</text>
+<text text-anchor="middle" x="4.45in" y="-16.621333606in" class="altitude">14°</text>
+<circle cx="4.25in" cy="30.75in" r="49.1963555845in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="51.1590615512in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-20.4090615512in" class="degrees">77°</text>
+<text text-anchor="middle" x="4.45in" y="-20.4090615512in" class="altitude">13°</text>
+<circle cx="4.25in" cy="30.75in" r="53.2759781368in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="55.566386223in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-24.816386223in" class="degrees">78°</text>
+<text text-anchor="middle" x="4.45in" y="-24.816386223in" class="altitude">12°</text>
+<circle cx="4.25in" cy="30.75in" r="58.052919694in" fill="none" stroke="black" stroke-width="0.2"/>
+<circle cx="4.25in" cy="30.75in" r="60.7623274826in" fill="none" stroke="black" stroke-width="1"/>
+<text text-anchor="middle" x="4.05in" y="-30.0123274826in" class="degrees">79°</text>
+<text text-anchor="middle" x="4.45in" y="-30.0123274826in" class="altitude">11°</text>
+<circle cx="4.25in" cy="30.75in" r="63.7264533459in" fill="none" stroke="black" stroke-width="0.2"/>
+            <text text-anchor="middle" x="0.4in" y="30.75in" class="ruler">0 in</text>
+            <line x1="0in" y1="30.75in" x2="0.4in" y2="30.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="29.75in" class="ruler">1 in</text>
+            <line x1="0in" y1="29.75in" x2="0.4in" y2="29.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="28.75in" class="ruler">2 in</text>
+            <line x1="0in" y1="28.75in" x2="0.4in" y2="28.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="27.75in" class="ruler">3 in</text>
+            <line x1="0in" y1="27.75in" x2="0.4in" y2="27.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="26.75in" class="ruler">4 in</text>
+            <line x1="0in" y1="26.75in" x2="0.4in" y2="26.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="25.75in" class="ruler">5 in</text>
+            <line x1="0in" y1="25.75in" x2="0.4in" y2="25.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="24.75in" class="ruler">6 in</text>
+            <line x1="0in" y1="24.75in" x2="0.4in" y2="24.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="23.75in" class="ruler">7 in</text>
+            <line x1="0in" y1="23.75in" x2="0.4in" y2="23.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="22.75in" class="ruler">8 in</text>
+            <line x1="0in" y1="22.75in" x2="0.4in" y2="22.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="21.75in" class="ruler">9 in</text>
+            <line x1="0in" y1="21.75in" x2="0.4in" y2="21.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="20.75in" class="ruler">10 in</text>
+            <line x1="0in" y1="20.75in" x2="0.4in" y2="20.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="19.75in" class="ruler">11 in</text>
+            <line x1="0in" y1="19.75in" x2="0.4in" y2="19.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="18.75in" class="ruler">12 in</text>
+            <line x1="0in" y1="18.75in" x2="0.4in" y2="18.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="17.75in" class="ruler">13 in</text>
+            <line x1="0in" y1="17.75in" x2="0.4in" y2="17.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="16.75in" class="ruler">14 in</text>
+            <line x1="0in" y1="16.75in" x2="0.4in" y2="16.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="15.75in" class="ruler">15 in</text>
+            <line x1="0in" y1="15.75in" x2="0.4in" y2="15.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="14.75in" class="ruler">16 in</text>
+            <line x1="0in" y1="14.75in" x2="0.4in" y2="14.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="13.75in" class="ruler">17 in</text>
+            <line x1="0in" y1="13.75in" x2="0.4in" y2="13.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="12.75in" class="ruler">18 in</text>
+            <line x1="0in" y1="12.75in" x2="0.4in" y2="12.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="11.75in" class="ruler">19 in</text>
+            <line x1="0in" y1="11.75in" x2="0.4in" y2="11.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="10.75in" class="ruler">20 in</text>
+            <line x1="0in" y1="10.75in" x2="0.4in" y2="10.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="9.75in" class="ruler">21 in</text>
+            <line x1="0in" y1="9.75in" x2="0.4in" y2="9.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="8.75in" class="ruler">22 in</text>
+            <line x1="0in" y1="8.75in" x2="0.4in" y2="8.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="7.75in" class="ruler">23 in</text>
+            <line x1="0in" y1="7.75in" x2="0.4in" y2="7.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="6.75in" class="ruler">24 in</text>
+            <line x1="0in" y1="6.75in" x2="0.4in" y2="6.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="5.75in" class="ruler">25 in</text>
+            <line x1="0in" y1="5.75in" x2="0.4in" y2="5.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="4.75in" class="ruler">26 in</text>
+            <line x1="0in" y1="4.75in" x2="0.4in" y2="4.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="3.75in" class="ruler">27 in</text>
+            <line x1="0in" y1="3.75in" x2="0.4in" y2="3.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="2.75in" class="ruler">28 in</text>
+            <line x1="0in" y1="2.75in" x2="0.4in" y2="2.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="1.75in" class="ruler">29 in</text>
+            <line x1="0in" y1="1.75in" x2="0.4in" y2="1.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="0.75in" class="ruler">30 in</text>
+            <line x1="0in" y1="0.75in" x2="0.4in" y2="0.75in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-0.25in" class="ruler">31 in</text>
+            <line x1="0in" y1="-0.25in" x2="0.4in" y2="-0.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-1.25in" class="ruler">32 in</text>
+            <line x1="0in" y1="-1.25in" x2="0.4in" y2="-1.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-2.25in" class="ruler">33 in</text>
+            <line x1="0in" y1="-2.25in" x2="0.4in" y2="-2.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-3.25in" class="ruler">34 in</text>
+            <line x1="0in" y1="-3.25in" x2="0.4in" y2="-3.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-4.25in" class="ruler">35 in</text>
+            <line x1="0in" y1="-4.25in" x2="0.4in" y2="-4.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-5.25in" class="ruler">36 in</text>
+            <line x1="0in" y1="-5.25in" x2="0.4in" y2="-5.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-6.25in" class="ruler">37 in</text>
+            <line x1="0in" y1="-6.25in" x2="0.4in" y2="-6.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-7.25in" class="ruler">38 in</text>
+            <line x1="0in" y1="-7.25in" x2="0.4in" y2="-7.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-8.25in" class="ruler">39 in</text>
+            <line x1="0in" y1="-8.25in" x2="0.4in" y2="-8.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-9.25in" class="ruler">40 in</text>
+            <line x1="0in" y1="-9.25in" x2="0.4in" y2="-9.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-10.25in" class="ruler">41 in</text>
+            <line x1="0in" y1="-10.25in" x2="0.4in" y2="-10.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-11.25in" class="ruler">42 in</text>
+            <line x1="0in" y1="-11.25in" x2="0.4in" y2="-11.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-12.25in" class="ruler">43 in</text>
+            <line x1="0in" y1="-12.25in" x2="0.4in" y2="-12.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-13.25in" class="ruler">44 in</text>
+            <line x1="0in" y1="-13.25in" x2="0.4in" y2="-13.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-14.25in" class="ruler">45 in</text>
+            <line x1="0in" y1="-14.25in" x2="0.4in" y2="-14.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-15.25in" class="ruler">46 in</text>
+            <line x1="0in" y1="-15.25in" x2="0.4in" y2="-15.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-16.25in" class="ruler">47 in</text>
+            <line x1="0in" y1="-16.25in" x2="0.4in" y2="-16.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-17.25in" class="ruler">48 in</text>
+            <line x1="0in" y1="-17.25in" x2="0.4in" y2="-17.25in" stroke="black" />
+
+            <text text-anchor="middle" x="0.4in" y="-18.25in" class="ruler">49 in</text>
+            <line x1="0in" y1="-18.25in" x2="0.4in" y2="-18.25in" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="78.105cm" class="ruler">0 cm</text>
+            <line x1="8.5in" y1="78.105cm" x2="8.0in" y2="78.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="77.105cm" class="ruler">1 cm</text>
+            <line x1="8.5in" y1="77.105cm" x2="8.0in" y2="77.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="76.105cm" class="ruler">2 cm</text>
+            <line x1="8.5in" y1="76.105cm" x2="8.0in" y2="76.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="75.105cm" class="ruler">3 cm</text>
+            <line x1="8.5in" y1="75.105cm" x2="8.0in" y2="75.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="74.105cm" class="ruler">4 cm</text>
+            <line x1="8.5in" y1="74.105cm" x2="8.0in" y2="74.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="73.105cm" class="ruler">5 cm</text>
+            <line x1="8.5in" y1="73.105cm" x2="8.0in" y2="73.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="72.105cm" class="ruler">6 cm</text>
+            <line x1="8.5in" y1="72.105cm" x2="8.0in" y2="72.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="71.105cm" class="ruler">7 cm</text>
+            <line x1="8.5in" y1="71.105cm" x2="8.0in" y2="71.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="70.105cm" class="ruler">8 cm</text>
+            <line x1="8.5in" y1="70.105cm" x2="8.0in" y2="70.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="69.105cm" class="ruler">9 cm</text>
+            <line x1="8.5in" y1="69.105cm" x2="8.0in" y2="69.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="68.105cm" class="ruler">10 cm</text>
+            <line x1="8.5in" y1="68.105cm" x2="8.0in" y2="68.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="67.105cm" class="ruler">11 cm</text>
+            <line x1="8.5in" y1="67.105cm" x2="8.0in" y2="67.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="66.105cm" class="ruler">12 cm</text>
+            <line x1="8.5in" y1="66.105cm" x2="8.0in" y2="66.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="65.105cm" class="ruler">13 cm</text>
+            <line x1="8.5in" y1="65.105cm" x2="8.0in" y2="65.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="64.105cm" class="ruler">14 cm</text>
+            <line x1="8.5in" y1="64.105cm" x2="8.0in" y2="64.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="63.105cm" class="ruler">15 cm</text>
+            <line x1="8.5in" y1="63.105cm" x2="8.0in" y2="63.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="62.105cm" class="ruler">16 cm</text>
+            <line x1="8.5in" y1="62.105cm" x2="8.0in" y2="62.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="61.105cm" class="ruler">17 cm</text>
+            <line x1="8.5in" y1="61.105cm" x2="8.0in" y2="61.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="60.105cm" class="ruler">18 cm</text>
+            <line x1="8.5in" y1="60.105cm" x2="8.0in" y2="60.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="59.105cm" class="ruler">19 cm</text>
+            <line x1="8.5in" y1="59.105cm" x2="8.0in" y2="59.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="58.105cm" class="ruler">20 cm</text>
+            <line x1="8.5in" y1="58.105cm" x2="8.0in" y2="58.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="57.105cm" class="ruler">21 cm</text>
+            <line x1="8.5in" y1="57.105cm" x2="8.0in" y2="57.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="56.105cm" class="ruler">22 cm</text>
+            <line x1="8.5in" y1="56.105cm" x2="8.0in" y2="56.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="55.105cm" class="ruler">23 cm</text>
+            <line x1="8.5in" y1="55.105cm" x2="8.0in" y2="55.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="54.105cm" class="ruler">24 cm</text>
+            <line x1="8.5in" y1="54.105cm" x2="8.0in" y2="54.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="53.105cm" class="ruler">25 cm</text>
+            <line x1="8.5in" y1="53.105cm" x2="8.0in" y2="53.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="52.105cm" class="ruler">26 cm</text>
+            <line x1="8.5in" y1="52.105cm" x2="8.0in" y2="52.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="51.105cm" class="ruler">27 cm</text>
+            <line x1="8.5in" y1="51.105cm" x2="8.0in" y2="51.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="50.105cm" class="ruler">28 cm</text>
+            <line x1="8.5in" y1="50.105cm" x2="8.0in" y2="50.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="49.105cm" class="ruler">29 cm</text>
+            <line x1="8.5in" y1="49.105cm" x2="8.0in" y2="49.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="48.105cm" class="ruler">30 cm</text>
+            <line x1="8.5in" y1="48.105cm" x2="8.0in" y2="48.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="47.105cm" class="ruler">31 cm</text>
+            <line x1="8.5in" y1="47.105cm" x2="8.0in" y2="47.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="46.105cm" class="ruler">32 cm</text>
+            <line x1="8.5in" y1="46.105cm" x2="8.0in" y2="46.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="45.105cm" class="ruler">33 cm</text>
+            <line x1="8.5in" y1="45.105cm" x2="8.0in" y2="45.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="44.105cm" class="ruler">34 cm</text>
+            <line x1="8.5in" y1="44.105cm" x2="8.0in" y2="44.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="43.105cm" class="ruler">35 cm</text>
+            <line x1="8.5in" y1="43.105cm" x2="8.0in" y2="43.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="42.105cm" class="ruler">36 cm</text>
+            <line x1="8.5in" y1="42.105cm" x2="8.0in" y2="42.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="41.105cm" class="ruler">37 cm</text>
+            <line x1="8.5in" y1="41.105cm" x2="8.0in" y2="41.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="40.105cm" class="ruler">38 cm</text>
+            <line x1="8.5in" y1="40.105cm" x2="8.0in" y2="40.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="39.105cm" class="ruler">39 cm</text>
+            <line x1="8.5in" y1="39.105cm" x2="8.0in" y2="39.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="38.105cm" class="ruler">40 cm</text>
+            <line x1="8.5in" y1="38.105cm" x2="8.0in" y2="38.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="37.105cm" class="ruler">41 cm</text>
+            <line x1="8.5in" y1="37.105cm" x2="8.0in" y2="37.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="36.105cm" class="ruler">42 cm</text>
+            <line x1="8.5in" y1="36.105cm" x2="8.0in" y2="36.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="35.105cm" class="ruler">43 cm</text>
+            <line x1="8.5in" y1="35.105cm" x2="8.0in" y2="35.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="34.105cm" class="ruler">44 cm</text>
+            <line x1="8.5in" y1="34.105cm" x2="8.0in" y2="34.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="33.105cm" class="ruler">45 cm</text>
+            <line x1="8.5in" y1="33.105cm" x2="8.0in" y2="33.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="32.105cm" class="ruler">46 cm</text>
+            <line x1="8.5in" y1="32.105cm" x2="8.0in" y2="32.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="31.105cm" class="ruler">47 cm</text>
+            <line x1="8.5in" y1="31.105cm" x2="8.0in" y2="31.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="30.105cm" class="ruler">48 cm</text>
+            <line x1="8.5in" y1="30.105cm" x2="8.0in" y2="30.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="29.105cm" class="ruler">49 cm</text>
+            <line x1="8.5in" y1="29.105cm" x2="8.0in" y2="29.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="28.105cm" class="ruler">50 cm</text>
+            <line x1="8.5in" y1="28.105cm" x2="8.0in" y2="28.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="27.105cm" class="ruler">51 cm</text>
+            <line x1="8.5in" y1="27.105cm" x2="8.0in" y2="27.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="26.105cm" class="ruler">52 cm</text>
+            <line x1="8.5in" y1="26.105cm" x2="8.0in" y2="26.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="25.105cm" class="ruler">53 cm</text>
+            <line x1="8.5in" y1="25.105cm" x2="8.0in" y2="25.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="24.105cm" class="ruler">54 cm</text>
+            <line x1="8.5in" y1="24.105cm" x2="8.0in" y2="24.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="23.105cm" class="ruler">55 cm</text>
+            <line x1="8.5in" y1="23.105cm" x2="8.0in" y2="23.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="22.105cm" class="ruler">56 cm</text>
+            <line x1="8.5in" y1="22.105cm" x2="8.0in" y2="22.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="21.105cm" class="ruler">57 cm</text>
+            <line x1="8.5in" y1="21.105cm" x2="8.0in" y2="21.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="20.105cm" class="ruler">58 cm</text>
+            <line x1="8.5in" y1="20.105cm" x2="8.0in" y2="20.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="19.105cm" class="ruler">59 cm</text>
+            <line x1="8.5in" y1="19.105cm" x2="8.0in" y2="19.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="18.105cm" class="ruler">60 cm</text>
+            <line x1="8.5in" y1="18.105cm" x2="8.0in" y2="18.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="17.105cm" class="ruler">61 cm</text>
+            <line x1="8.5in" y1="17.105cm" x2="8.0in" y2="17.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="16.105cm" class="ruler">62 cm</text>
+            <line x1="8.5in" y1="16.105cm" x2="8.0in" y2="16.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="15.105cm" class="ruler">63 cm</text>
+            <line x1="8.5in" y1="15.105cm" x2="8.0in" y2="15.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="14.105cm" class="ruler">64 cm</text>
+            <line x1="8.5in" y1="14.105cm" x2="8.0in" y2="14.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="13.105cm" class="ruler">65 cm</text>
+            <line x1="8.5in" y1="13.105cm" x2="8.0in" y2="13.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="12.105cm" class="ruler">66 cm</text>
+            <line x1="8.5in" y1="12.105cm" x2="8.0in" y2="12.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="11.105cm" class="ruler">67 cm</text>
+            <line x1="8.5in" y1="11.105cm" x2="8.0in" y2="11.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="10.105cm" class="ruler">68 cm</text>
+            <line x1="8.5in" y1="10.105cm" x2="8.0in" y2="10.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="9.105cm" class="ruler">69 cm</text>
+            <line x1="8.5in" y1="9.105cm" x2="8.0in" y2="9.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="8.105cm" class="ruler">70 cm</text>
+            <line x1="8.5in" y1="8.105cm" x2="8.0in" y2="8.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="7.105cm" class="ruler">71 cm</text>
+            <line x1="8.5in" y1="7.105cm" x2="8.0in" y2="7.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="6.105cm" class="ruler">72 cm</text>
+            <line x1="8.5in" y1="6.105cm" x2="8.0in" y2="6.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="5.105cm" class="ruler">73 cm</text>
+            <line x1="8.5in" y1="5.105cm" x2="8.0in" y2="5.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="4.105cm" class="ruler">74 cm</text>
+            <line x1="8.5in" y1="4.105cm" x2="8.0in" y2="4.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="3.105cm" class="ruler">75 cm</text>
+            <line x1="8.5in" y1="3.105cm" x2="8.0in" y2="3.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="2.105cm" class="ruler">76 cm</text>
+            <line x1="8.5in" y1="2.105cm" x2="8.0in" y2="2.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="1.105cm" class="ruler">77 cm</text>
+            <line x1="8.5in" y1="1.105cm" x2="8.0in" y2="1.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="0.105cm" class="ruler">78 cm</text>
+            <line x1="8.5in" y1="0.105cm" x2="8.0in" y2="0.105cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-0.895cm" class="ruler">79 cm</text>
+            <line x1="8.5in" y1="-0.895cm" x2="8.0in" y2="-0.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-1.895cm" class="ruler">80 cm</text>
+            <line x1="8.5in" y1="-1.895cm" x2="8.0in" y2="-1.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-2.895cm" class="ruler">81 cm</text>
+            <line x1="8.5in" y1="-2.895cm" x2="8.0in" y2="-2.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-3.895cm" class="ruler">82 cm</text>
+            <line x1="8.5in" y1="-3.895cm" x2="8.0in" y2="-3.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-4.895cm" class="ruler">83 cm</text>
+            <line x1="8.5in" y1="-4.895cm" x2="8.0in" y2="-4.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-5.895cm" class="ruler">84 cm</text>
+            <line x1="8.5in" y1="-5.895cm" x2="8.0in" y2="-5.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-6.895cm" class="ruler">85 cm</text>
+            <line x1="8.5in" y1="-6.895cm" x2="8.0in" y2="-6.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-7.895cm" class="ruler">86 cm</text>
+            <line x1="8.5in" y1="-7.895cm" x2="8.0in" y2="-7.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-8.895cm" class="ruler">87 cm</text>
+            <line x1="8.5in" y1="-8.895cm" x2="8.0in" y2="-8.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-9.895cm" class="ruler">88 cm</text>
+            <line x1="8.5in" y1="-9.895cm" x2="8.0in" y2="-9.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-10.895cm" class="ruler">89 cm</text>
+            <line x1="8.5in" y1="-10.895cm" x2="8.0in" y2="-10.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-11.895cm" class="ruler">90 cm</text>
+            <line x1="8.5in" y1="-11.895cm" x2="8.0in" y2="-11.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-12.895cm" class="ruler">91 cm</text>
+            <line x1="8.5in" y1="-12.895cm" x2="8.0in" y2="-12.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-13.895cm" class="ruler">92 cm</text>
+            <line x1="8.5in" y1="-13.895cm" x2="8.0in" y2="-13.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-14.895cm" class="ruler">93 cm</text>
+            <line x1="8.5in" y1="-14.895cm" x2="8.0in" y2="-14.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-15.895cm" class="ruler">94 cm</text>
+            <line x1="8.5in" y1="-15.895cm" x2="8.0in" y2="-15.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-16.895cm" class="ruler">95 cm</text>
+            <line x1="8.5in" y1="-16.895cm" x2="8.0in" y2="-16.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-17.895cm" class="ruler">96 cm</text>
+            <line x1="8.5in" y1="-17.895cm" x2="8.0in" y2="-17.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-18.895cm" class="ruler">97 cm</text>
+            <line x1="8.5in" y1="-18.895cm" x2="8.0in" y2="-18.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-19.895cm" class="ruler">98 cm</text>
+            <line x1="8.5in" y1="-19.895cm" x2="8.0in" y2="-19.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-20.895cm" class="ruler">99 cm</text>
+            <line x1="8.5in" y1="-20.895cm" x2="8.0in" y2="-20.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-21.895cm" class="ruler">100 cm</text>
+            <line x1="8.5in" y1="-21.895cm" x2="8.0in" y2="-21.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-22.895cm" class="ruler">101 cm</text>
+            <line x1="8.5in" y1="-22.895cm" x2="8.0in" y2="-22.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-23.895cm" class="ruler">102 cm</text>
+            <line x1="8.5in" y1="-23.895cm" x2="8.0in" y2="-23.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-24.895cm" class="ruler">103 cm</text>
+            <line x1="8.5in" y1="-24.895cm" x2="8.0in" y2="-24.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-25.895cm" class="ruler">104 cm</text>
+            <line x1="8.5in" y1="-25.895cm" x2="8.0in" y2="-25.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-26.895cm" class="ruler">105 cm</text>
+            <line x1="8.5in" y1="-26.895cm" x2="8.0in" y2="-26.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-27.895cm" class="ruler">106 cm</text>
+            <line x1="8.5in" y1="-27.895cm" x2="8.0in" y2="-27.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-28.895cm" class="ruler">107 cm</text>
+            <line x1="8.5in" y1="-28.895cm" x2="8.0in" y2="-28.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-29.895cm" class="ruler">108 cm</text>
+            <line x1="8.5in" y1="-29.895cm" x2="8.0in" y2="-29.895cm" stroke="black" />
+
+            <text text-anchor="middle" x="8.0in" y="-30.895cm" class="ruler">109 cm</text>
+            <line x1="8.5in" y1="-30.895cm" x2="8.0in" y2="-30.895cm" stroke="black" />
+</svg>
