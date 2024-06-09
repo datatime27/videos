@@ -1,8 +1,8 @@
 
 PLEASE NOTE THIS CODE IS PRETTY HACKY AND PROBABLY WON'T WORK OUT OF THE BOX.
-PLEASE USE THIS AS REFERENCE TO BUILD YOUR OWN CODE.
+*PLEASE USE THIS AS REFERENCE TO BUILD YOUR OWN CODE.
 
-Requirements to build "The Scott Bot":
+# Requirements to build "The Scott Bot":
 
 * Make sure you have Adobe Premiere and ExtendScript Toolkit
 
@@ -36,7 +36,7 @@ buildCut.py should also write a .jsx file in your 'cuts' directory which looks s
 Once the .jsx is written, and you have downloaded the video files, you can load the .jsx file into Adobe ExtendScript Toolkit and run it against your Premiere timeline.
 
 
-Project Bin Folder:
+# Project Bin Folder:
 Make sure you have created a Project bin folder in Premiere that matches the name you set in PRPROJ_BIN_NAME.
 The .jsx files should ask you to load in the video file of any video that's not already in your project bin folder.
 
