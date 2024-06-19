@@ -22,12 +22,10 @@ SCOPES = [
 
 API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'
-CLIENT_SECRETS_FILE = 'client_secret.json' # Add your youtube api client login file here.
+CLIENT_SECRETS_FILE = 'client secret' # Add your youtube api client login file here.
 
-# This is the channel ID for Mr Beast - replace with your youtube channel id.
-# Don't know your id? Use this tool https://commentpicker.com/youtube-channel-id.php
-YOUTUBE_CHANNEL_ID = "UCX6OQ3DkcsbYNE6H8uQQuVA"
-CAPTIONS_DIR = 'mrbeast'
+YOUTUBE_CHANNEL_ID = input('Enter channel ID:')
+CAPTIONS_DIR = input('Enter Directory name for the data to be saved in:')
 
 class YoutubeConnection:
     def __init__(self):
