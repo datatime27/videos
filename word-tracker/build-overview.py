@@ -6,7 +6,7 @@ from collections import defaultdict
 from statistics import mean,stdev
 
 p = Parser()
-p.parse('mrbeast',cut_off_date='2012-01-01')
+p.parse(input('Channel Name:'),cut_off_date='2005-02-14') # Date youtube was founded
 words_per_year = defaultdict(int)
 duration_per_year = defaultdict(int)
 videos_per_year = defaultdict(int)
