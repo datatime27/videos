@@ -12,22 +12,8 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
 
     p = captions.Parser()
-    p.parse('mrbeast')
-    
-    # Always lowercase
-    print ('"lets go":')
-    for ref in p.findWords(['lets','go']):
+    p.parse(input('Channel Name:'))
+    for ref in p.findWords(input('Enter String to search for:').lower().split()):
         print(ref.link,ref.text)
     print()
-    
-    print ('"feast.*":')
-    for words in p.reWord('feast.*'):
-        print(words)
-    print()
-    
-    print ('"feastables":')
-    for ref in p.findWord('feastables'):
-        print(ref.link,ref.text)
-    print()
-        
     
