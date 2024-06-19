@@ -16,7 +16,7 @@ def getSentiment(text):
     return scores
 
 p = Parser()
-p.parse('mrbeast',cut_off_date='2012-01-01')
+p.parse(input('Channel Name:'),cut_off_date='2005-02-14')
 
 text_by_year = defaultdict(list)
 
