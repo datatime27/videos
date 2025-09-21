@@ -115,12 +115,22 @@ def download_captions(counter, item, stats):
     filepath = os.path.join(CAPTIONS_DIR, videoId+'.json')
     
     try:
-        srt = YouTubeTranscriptApi.get_transcript(videoId,languages=['en', 'en-US'])
+        srt = YouTubeTranscriptApi().fetch(videoId, languages=['en', 'en-US'])
+        
+        # To Solve: Object of type FetchedTranscript is not JSON serializable
+        captions_list = []
+        for snippet in srt:
+            captions_list.append({
+                "text": snippet.text,
+                "start": snippet.start,
+                "duration": snippet.duration
+            })
+
         obj = {
             'id': videoId,
             'title': title,
             'publishedAt': publishedAt,
-            'captions': srt,
+            'captions': captions_list,
             'stats': stats,
         }
 
